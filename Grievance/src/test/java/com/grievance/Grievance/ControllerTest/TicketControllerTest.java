@@ -58,7 +58,7 @@ public class TicketControllerTest {
 		
 		TicketInDto ticketInDto = new TicketInDto();
 	    ticketInDto.setTicketTitle("Technical Issue");
-	    ticketInDto.setTicketType(TicketType.valueOf("Grievance"));
+	    ticketInDto.setTicketType(TicketType.valueOf("GRIEVANCE"));
 	    ticketInDto.setDescription("abcd");
 	    ticketInDto.setUserDetails(new UserDetails());
 	    ticketInDto.setComments(new ArrayList<Comment>());
@@ -66,7 +66,7 @@ public class TicketControllerTest {
 	    TicketOutDto ticketOutDto = new TicketOutDto();
 	    ticketOutDto.setComments(new ArrayList<Comment>());
 	    ticketOutDto.setDepartment(new Department());
-	    ticketOutDto.setTicketStatus(TicketStatus.valueOf("Being_Addressed"));
+	    ticketOutDto.setTicketStatus(TicketStatus.valueOf("BEING_ADDRESSED"));
 	    ticketOutDto.setDescription("abcd");
 	    ticketOutDto.setTicketId(1);
 	    ticketOutDto.setUserDetails(new UserDetails());

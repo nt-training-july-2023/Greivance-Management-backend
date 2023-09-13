@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
 		UserDetails userDetailsdb = userRepo.findByEmail(loginInDto.getEmail());
 		System.out.println("Database"+userDetailsdb);
 		
-		if(userDetailsdb != null && userDetailsdb.getEmail().equals(loginInDto.getEmail()) ) {
+		if((userDetailsdb!=null) && userDetailsdb.getEmail().equals(loginInDto.getEmail()) ) {
 			
 			if(userDetailsdb.getPassword().equals(loginInDto.getPassword())) {
 				UserDetailsOutDto userDetailsOutDto = this.UserDetailsToUserOutDto(userDetailsdb);
@@ -57,6 +57,32 @@ public class UserServiceImpl implements UserService {
 			throw new ResourceNotFoundException("User", "email",loginInDto.getEmail());
 		}
 		}
+//	@Override
+//	public Optional<UserDetailsOutDto> loginService(LoginInDto loginInDto) {
+//	    // from database
+//	    UserDetails userDetailsdb = userRepo.findByEmail(loginInDto.getEmail());
+//	    
+//	    if (userDetailsdb != null) { // Check if userDetailsdb is not null
+//	        String userEmail = userDetailsdb.getEmail();
+//	        
+//	        if (userEmail != null && userEmail.equals(loginInDto.getEmail())) {
+//	            // Rest of your login logic
+//	            if (userDetailsdb.getPassword().equals(loginInDto.getPassword())) {
+//	                UserDetailsOutDto userDetailsOutDto = this.UserDetailsToUserOutDto(userDetailsdb);
+//	                userDetailsdb.setIsLoggedIn(true);
+//	                userDetailsOutDto.setIsLoggedIn(true);
+//	                return Optional.ofNullable(userDetailsOutDto);
+//	            } else {
+//	                throw new ResourceNotFoundException("User", "entered Wrong password", loginInDto.getPassword());
+//	            }
+//	        } else {
+//	            throw new ResourceNotFoundException("User", "email", loginInDto.getEmail());
+//	        }
+//	    } else {
+//	        throw new ResourceNotFoundException("User", "email", loginInDto.getEmail());
+//	    }
+//	}
+
 	
 
 	// Create user

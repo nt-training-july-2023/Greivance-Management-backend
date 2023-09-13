@@ -83,7 +83,6 @@ public class DepartmentServiceImpl implements DepartmentService {
 	// Conversion methods
 	// DepartmentInDto to Department.
 	public Department departmentInDtoToDepartment(DepartmentInDto departmentInDto) {
-
 		Department department = this.modelMapper.map(departmentInDto, Department.class);
 		return department;
 	}

@@ -9,6 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Department {
 
@@ -19,12 +23,29 @@ public class Department {
 	// Department is the parent entity if dept deletes it's users also get deleted
 
 	@OneToMany(mappedBy = "department")
-//	 @JoinColumn(name = "Id")
+	@JsonManagedReference
+//	@JsonIgnore
 	private List<UserDetails> userDetails;
 
 	@OneToMany(mappedBy = "department")
-//	 @JoinColumn(name = "ticketId")
+	@JsonManagedReference
 	private List<Ticket> tickets;
+
+	public List<UserDetails> getUserDetails() {
+		return userDetails;
+	}
+
+	public void setUserDetails(List<UserDetails> userDetails) {
+		this.userDetails = userDetails;
+	}
+
+	public List<Ticket> getTickets() {
+		return tickets;
+	}
+
+	public void setTickets(List<Ticket> tickets) {
+		this.tickets = tickets;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)

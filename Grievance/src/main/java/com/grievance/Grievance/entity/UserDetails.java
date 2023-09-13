@@ -9,13 +9,16 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class UserDetails {
@@ -32,7 +35,7 @@ public class UserDetails {
 	private UserType userType;
 
 	@NotEmpty(message = "Password is required")
-	@Size(min = 5, message = "Password should be at least 8 characters")
+	@Size(min = 5, message = "Password should be at least 5 characters")
 	private String password;
 
 	@NotEmpty(message = "Email (Username) is required")
@@ -48,17 +51,19 @@ public class UserDetails {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "deptId")
+	@JsonBackReference
+//	@JsonIgnore
 	private Department department;
 
 	// One user can have many tickets.
 	@OneToMany(mappedBy = "userDetails")
-//	@JoinColumn(name = "ticketId")
+	@JsonManagedReference
 	private List<Ticket> tickets;
 
 	// one user can have multiple comments
 
 	@OneToMany(mappedBy = "userDetails")
-//	@JoinColumn(name = "commentId")
+	@JsonManagedReference
 	private List<Comment> comments;
 
 	/**

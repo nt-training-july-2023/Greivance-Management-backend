@@ -66,4 +66,16 @@ public class DepartmentControllerTest {
 			.header("password", "Sneha@01")).andExpect(status().isCreated());
 			
 	}
+	
+//	@Test
+//	public void testDepartmentController_Returns_DepartmentList() throws Exception{
+//		DepartmentInDto departmentInDto = new DepartmentInDto();
+//		departmentInDto.setDeptName("IT");	
+//		
+//		DepartmentOutDto departmentOutDto = new DepartmentOutDto();
+//		departmentOutDto.setDeptId(1);
+//		departmentOutDto.setDeptName("IT");
+//		departmentOutDto.setUserDetails(new ArrayList<UserDetails>());
+//		departmentOutDto.setTickets(new ArrayList<Ticket>());
+//	}
 }

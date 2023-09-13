@@ -18,6 +18,9 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Ticket {
 
@@ -45,13 +48,16 @@ public class Ticket {
 	
 	@ManyToOne
 	@JoinColumn(name = "deptId")
+	@JsonBackReference
 	private Department department;
 	
 	@ManyToOne
 	@JoinColumn(name = "Id")
+	@JsonBackReference
 	private UserDetails userDetails;
 	
     @OneToMany(mappedBy = "ticket")
+    @JsonManagedReference
     private List<Comment> comments;
     
 	/**
