@@ -1,53 +1,36 @@
 package com.grievance.Grievance.OutDto;
+
 import java.sql.Date;
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.grievance.Grievance.Enum.TicketStatus;
+import com.grievance.Grievance.Enum.TicketType;
 import com.grievance.Grievance.entity.Comment;
-import com.grievance.Grievance.entity.Department;
-import com.grievance.Grievance.entity.TicketStatus;
-import com.grievance.Grievance.entity.TicketType;
-import com.grievance.Grievance.entity.UserDetails;
 
 public class TicketOutDto {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long ticketId;
 
-	@Enumerated(EnumType.STRING)
 	private TicketType ticketType;
 
-	@Enumerated(EnumType.STRING)
 	private TicketStatus ticketStatus;
 
-	@NotNull(message = "Title is required")
 	private String ticketTitle;
 
-	@NotNull(message = "Must add description")
 	private String description;
 
-	@CreationTimestamp
-	@Column(name = "createdAt", nullable = false, updatable = false)
 	private Date createdAt;
 
-	@UpdateTimestamp
-	@Column(name = "updatedAt")
 	private Date updatedAt;
 
-	private Department department;
+	// deptoutdto BR
+	private String department;
 
-	private UserDetails userDetails;
+	@JsonBackReference
+	private UserDetailsOutDto userDetails;
 
 	private List<Comment> comments;
-	
 
 	/**
 	 * @return the ticketId
@@ -150,28 +133,28 @@ public class TicketOutDto {
 	/**
 	 * @return the department
 	 */
-	public Department getDepartment() {
+	public String getDepartment() {
 		return department;
 	}
 
 	/**
 	 * @param department the department to set
 	 */
-	public void setDepartment(Department department) {
+	public void setDepartment(String department) {
 		this.department = department;
 	}
 
 	/**
 	 * @return the userDetails
 	 */
-	public UserDetails getUserDetails() {
+	public UserDetailsOutDto getUserDetails() {
 		return userDetails;
 	}
 
 	/**
 	 * @param userDetails the userDetails to set
 	 */
-	public void setUserDetails(UserDetails userDetails) {
+	public void setUserDetails(UserDetailsOutDto userDetails) {
 		this.userDetails = userDetails;
 	}
 
@@ -201,10 +184,9 @@ public class TicketOutDto {
 	 * @param userDetails
 	 * @param comments
 	 */
-	public TicketOutDto(long ticketId, TicketType ticketType, TicketStatus ticketStatus,
-			@NotNull(message = "Title is required") String ticketTitle,
-			@NotNull(message = "Must add description") String description, Date createdAt, Date updatedAt,
-			Department department, UserDetails userDetails, List<Comment> comments) {
+	public TicketOutDto(long ticketId, TicketType ticketType, TicketStatus ticketStatus, String ticketTitle,
+			String description, Date createdAt, Date updatedAt, String department, UserDetailsOutDto userDetails,
+			List<Comment> comments) {
 		super();
 		this.ticketId = ticketId;
 		this.ticketType = ticketType;
@@ -225,8 +207,5 @@ public class TicketOutDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	
-	
+
 }

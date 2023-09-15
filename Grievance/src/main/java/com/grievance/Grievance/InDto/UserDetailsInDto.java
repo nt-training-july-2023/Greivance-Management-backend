@@ -1,33 +1,34 @@
 package com.grievance.Grievance.InDto;
 
-import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.grievance.Grievance.Enum.UserType;
 import com.grievance.Grievance.entity.Department;
-import com.grievance.Grievance.entity.UserType;
 
 public class UserDetailsInDto {
+	
+	
 	
 	@NotEmpty(message = "Name is required")
 	private String name;
 	
 	@Enumerated(EnumType.STRING)
 	private UserType userType;
+	
 	@NotEmpty(message = "Password is required")
-	@Size(min = 5, message = "Password should be at least 8 characters")
+	@Size(min = 8, message = "Password should be at least 8 characters")
 	private String password;
 
 	@NotEmpty(message = "Email (Username) is required")
-	@Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$")
-	@Column(unique = true)
+//	@Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$")
 	private String email;
 	
-	@NotNull
+	@JsonBackReference 
 	private Department department;
 
 	/**
@@ -108,7 +109,7 @@ public class UserDetailsInDto {
 	 * @param department
 	 */
 	public UserDetailsInDto(@NotEmpty(message = "Name is required") String name, UserType userType,
-			@NotEmpty(message = "Password is required") @Size(min = 5, message = "Password should be at least 8 characters") String password,
+			@NotEmpty(message = "Password is required") @Size(min = 8, message = "Password should be at least 8 characters") String password,
 			@NotEmpty(message = "Email (Username) is required") @Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$") String email,
 			Department department) {
 		super();

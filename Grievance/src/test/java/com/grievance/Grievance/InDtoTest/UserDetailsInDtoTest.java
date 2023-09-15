@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+import com.grievance.Grievance.Enum.UserType;
 import com.grievance.Grievance.InDto.UserDetailsInDto;
 import com.grievance.Grievance.entity.Department;
-import com.grievance.Grievance.entity.UserType;
 
 public class UserDetailsInDtoTest {
 

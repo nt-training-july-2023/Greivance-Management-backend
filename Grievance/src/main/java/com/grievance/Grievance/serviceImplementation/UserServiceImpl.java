@@ -8,12 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.grievance.Grievance.InDto.LoginInDto;
 import com.grievance.Grievance.InDto.UserDetailsInDto;
-import com.grievance.Grievance.OutDto.DepartmentOutDto;
 import com.grievance.Grievance.OutDto.UserDetailsOutDto;
 import com.grievance.Grievance.entity.Department;
 import com.grievance.Grievance.entity.UserDetails;
 import com.grievance.Grievance.exception.ResourceNotFoundException;
-import com.grievance.Grievance.payload.LoginDto;
 import com.grievance.Grievance.repository.DepartmentRepository;
 import com.grievance.Grievance.repository.UserRepository;
 import com.grievance.Grievance.service.UserService;
@@ -57,33 +55,6 @@ public class UserServiceImpl implements UserService {
 			throw new ResourceNotFoundException("User", "email",loginInDto.getEmail());
 		}
 		}
-//	@Override
-//	public Optional<UserDetailsOutDto> loginService(LoginInDto loginInDto) {
-//	    // from database
-//	    UserDetails userDetailsdb = userRepo.findByEmail(loginInDto.getEmail());
-//	    
-//	    if (userDetailsdb != null) { // Check if userDetailsdb is not null
-//	        String userEmail = userDetailsdb.getEmail();
-//	        
-//	        if (userEmail != null && userEmail.equals(loginInDto.getEmail())) {
-//	            // Rest of your login logic
-//	            if (userDetailsdb.getPassword().equals(loginInDto.getPassword())) {
-//	                UserDetailsOutDto userDetailsOutDto = this.UserDetailsToUserOutDto(userDetailsdb);
-//	                userDetailsdb.setIsLoggedIn(true);
-//	                userDetailsOutDto.setIsLoggedIn(true);
-//	                return Optional.ofNullable(userDetailsOutDto);
-//	            } else {
-//	                throw new ResourceNotFoundException("User", "entered Wrong password", loginInDto.getPassword());
-//	            }
-//	        } else {
-//	            throw new ResourceNotFoundException("User", "email", loginInDto.getEmail());
-//	        }
-//	    } else {
-//	        throw new ResourceNotFoundException("User", "email", loginInDto.getEmail());
-//	    }
-//	}
-
-	
 
 	// Create user
 
@@ -93,7 +64,7 @@ public class UserServiceImpl implements UserService {
 		UserDetails userdetails = this.UserInDtoToUserDetails(userDetailsInDto);
 		userdetails.setIsLoggedIn(false);
 		Department deptfromUser = departmentRepository.findBydeptName(userdetails.getDepartment().getDeptName());
-		System.out.println("dept from user"+deptfromUser);
+		System.out.println("dept from user "+deptfromUser);
 		userdetails.setDepartment(deptfromUser);
 		UserDetails savedUser = this.userRepo.save(userdetails);
 		UserDetailsOutDto saveduserOutDto = this.UserDetailsToUserOutDto(savedUser);

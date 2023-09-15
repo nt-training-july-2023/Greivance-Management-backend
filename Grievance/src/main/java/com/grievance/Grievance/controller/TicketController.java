@@ -13,12 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.grievance.Grievance.InDto.TicketInDto;
-import com.grievance.Grievance.OutDto.DepartmentOutDto;
 import com.grievance.Grievance.OutDto.TicketOutDto;
 import com.grievance.Grievance.service.TicketService;
-import com.grievance.Grievance.serviceImplementation.TicketServiceImpl;
 
 @RestController
 @RequestMapping("/grievance")
@@ -30,7 +27,7 @@ public class TicketController {
 
 	// Create new Ticket API.
 
-	@PostMapping("/saveTicket")
+	@PostMapping("/ticket")
 	public ResponseEntity<TicketOutDto> createTicket(@Validated @RequestBody TicketInDto ticketInDto) {
 		Optional<TicketOutDto> savedTicketOutDto = this.ticketService.createTicket(ticketInDto);
 		return new ResponseEntity(savedTicketOutDto, HttpStatus.CREATED);
@@ -38,7 +35,7 @@ public class TicketController {
 	
 	// Get All Tickets
 	
-	@GetMapping("/getAllTickets")
+	@GetMapping("/tickets")
 	public ResponseEntity<List<TicketOutDto>> getAllTickets(){
 		List<TicketOutDto> ticketOutDtosList = this.ticketService.getAllTickets();
 		return ResponseEntity.ok(ticketOutDtosList);

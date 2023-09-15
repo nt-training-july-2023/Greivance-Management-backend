@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 
+import com.grievance.Grievance.Enum.UserType;
 import com.grievance.Grievance.InDto.LoginInDto;
 import com.grievance.Grievance.InDto.UserDetailsInDto;
 import com.grievance.Grievance.OutDto.UserDetailsOutDto;
@@ -21,7 +22,6 @@ import com.grievance.Grievance.entity.Comment;
 import com.grievance.Grievance.entity.Department;
 import com.grievance.Grievance.entity.Ticket;
 import com.grievance.Grievance.entity.UserDetails;
-import com.grievance.Grievance.entity.UserType;
 import com.grievance.Grievance.exception.ResourceNotFoundException;
 import com.grievance.Grievance.repository.DepartmentRepository;
 import com.grievance.Grievance.repository.UserRepository;
@@ -123,7 +123,6 @@ public class UserServiceImplTest {
 		userDetails.setPassword("correctPasswrod");
 		userDetails.setIsLoggedIn(true);
 		userDetails.setUserType(UserType.valueOf("MEMBER"));
-		userDetails.setComments(new ArrayList<Comment>());
 		userDetails.setTickets(new ArrayList<Ticket>());
 	    UserDetailsInDto userDetailsInDto = new UserDetailsInDto();
 	    when(modelMapper.map(userDetailsInDto, UserDetails.class)).thenReturn(userDetails);

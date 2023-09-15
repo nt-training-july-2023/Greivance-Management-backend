@@ -21,18 +21,14 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.grievance.Grievance.Enum.UserType;
 import com.grievance.Grievance.InDto.LoginInDto;
 import com.grievance.Grievance.InDto.UserDetailsInDto;
 import com.grievance.Grievance.OutDto.UserDetailsOutDto;
 import com.grievance.Grievance.controller.UserController;
 import com.grievance.Grievance.entity.Comment;
 import com.grievance.Grievance.entity.Department;
-import com.grievance.Grievance.entity.Ticket;
-import com.grievance.Grievance.entity.UserType;
-import com.grievance.Grievance.payload.LoginDto;
 import com.grievance.Grievance.service.UserService;
-
-import ch.qos.logback.core.util.ContentTypeUtil;
 
 @ExtendWith(MockitoExtension.class)
 public class UserControllerTest {
@@ -58,7 +54,7 @@ public class UserControllerTest {
 
 	@Test
 	public void testLoginMember() throws Exception {
-		LoginDto loginDto = new LoginDto();
+		LoginInDto loginDto = new LoginInDto();
 		loginDto.setEmail("testtesttest@nucleusteq.com");
 		loginDto.setPassword("Test@123");
 		UserDetailsOutDto userDetailsOutDtoExpected = new UserDetailsOutDto();
@@ -66,8 +62,8 @@ public class UserControllerTest {
 		userDetailsOutDtoExpected.setIsLoggedIn(false);
 		userDetailsOutDtoExpected.setEmail("testtesttest@nucleusteq.com");
 		userDetailsOutDtoExpected.setUserType(UserType.valueOf("MEMBER"));
-		userDetailsOutDtoExpected.setDepartment(new Department());
-		userDetailsOutDtoExpected.setTickets(new ArrayList<Ticket>());
+	//	userDetailsOutDtoExpected.setDepartment(new Department());
+	//	userDetailsOutDtoExpected.setTickets(new ArrayList<Ticket>());
 
 		when(userService.loginService(Mockito.any(LoginInDto.class))).thenReturn(Optional.of(userDetailsOutDtoExpected));
 
@@ -89,11 +85,11 @@ public class UserControllerTest {
 		
 		UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
 		userDetailsOutDto.setComments(new ArrayList<Comment>());
-		userDetailsOutDto.setDepartment(new Department());
+	//	userDetailsOutDto.setDepartment(new Department());
 		userDetailsOutDto.setId(1);
 		userDetailsOutDto.setIsLoggedIn(true);
 		userDetailsOutDto.setName("Sneha Bhate");
-		userDetailsOutDto.setTickets(new ArrayList<Ticket>());
+	//	userDetailsOutDto.setTickets(new ArrayList<Ticket>());
 		
 		when(userService.createUser(Mockito.any(UserDetailsInDto.class))).thenReturn(Optional.of(userDetailsOutDto));
 		

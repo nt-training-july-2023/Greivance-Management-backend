@@ -1,5 +1,6 @@
 package com.grievance.Grievance.serviceImplementation;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -48,9 +49,14 @@ public class DepartmentServiceImpl implements DepartmentService {
 	@Override
 	public List<DepartmentOutDto> getAllDepartment() {
 		List<Department> departments = this.departmentRepo.findAll();
-		List<DepartmentOutDto> departmentList = departments.stream()
-				.map(department -> this.departmentToDepartmentOutDto(department)).collect(Collectors.toList());
-		return departmentList;
+//		List<DepartmentOutDto> departmentList = departments.stream()
+//				.map(department -> this.departmentToDepartmentOutDto(department)).collect(Collectors.toList());
+		List<DepartmentOutDto> list= new ArrayList<DepartmentOutDto>();
+		
+		for(Department department : departments) {
+			list.add(this.modelMapper.map(department, DepartmentOutDto.class));
+		}
+		return list;
 	}
 
 	// Get department by Id

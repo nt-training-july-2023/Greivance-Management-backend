@@ -14,7 +14,7 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<String>(exception.getMessage(), HttpStatus.NOT_FOUND);
 	}
 	
-	// Credentials doesnot match
+	// Credentials does not match
 	@ExceptionHandler(DataIntegrityViolationException.class)
 	public ResponseEntity<String> handlDataIntegrity(Exception exception){
 		return new ResponseEntity<String>("Email Already Exist" , HttpStatus.BAD_REQUEST);

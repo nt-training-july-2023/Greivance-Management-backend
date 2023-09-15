@@ -57,8 +57,8 @@ public class DepartmentControllerTest {
 	DepartmentOutDto departmentOutDto = new DepartmentOutDto();
 	departmentOutDto.setDeptId(1);
 	departmentOutDto.setDeptName("IT");
-	departmentOutDto.setUserDetails(new ArrayList<UserDetails>());
-	departmentOutDto.setTickets(new ArrayList<Ticket>());
+	//departmentOutDto.setUserDetails(new ArrayList<UserDetails>());
+//	departmentOutDto.setTickets(new ArrayList<Ticket>());
 	
 	when(departmentService.createDepartment(Mockito.any(DepartmentInDto.class))).thenReturn(Optional.of(departmentOutDto));
 	mockMvc.perform(MockMvcRequestBuilders.post("/grievance/saveDepartment").contentType(MediaType.APPLICATION_JSON)

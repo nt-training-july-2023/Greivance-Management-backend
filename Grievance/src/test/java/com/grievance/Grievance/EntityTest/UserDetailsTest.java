@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
+import com.grievance.Grievance.Enum.UserType;
 import com.grievance.Grievance.entity.Comment;
 import com.grievance.Grievance.entity.Department;
 import com.grievance.Grievance.entity.Ticket;
 import com.grievance.Grievance.entity.UserDetails;
-import com.grievance.Grievance.entity.UserType;
 
 public class UserDetailsTest{
 	
@@ -24,7 +24,6 @@ public class UserDetailsTest{
 		userDetails.setPassword("Sneha@01");
 		userDetails.setIsLoggedIn(false);
 		userDetails.setUserType(UserType.valueOf("MEMBER"));
-		userDetails.setComments(new ArrayList<Comment>());
 		userDetails.setDepartment(new Department());
 		userDetails.setTickets(new ArrayList<Ticket>());
 		userDetails.setEmail("sneha@nucleusteq.com");
@@ -39,7 +38,6 @@ public class UserDetailsTest{
 		userDetails.setPassword("Sneha@01");
 		userDetails.setIsLoggedIn(false);
 		userDetails.setUserType(UserType.valueOf("MEMBER"));
-		userDetails.setComments(new ArrayList<Comment>());
 		userDetails.setDepartment(new Department());
 		userDetails.setTickets(new ArrayList<Ticket>());
 		userDetails.setEmail("sneha@nucleusteq.com");
@@ -55,7 +53,6 @@ public class UserDetailsTest{
 		userDetails.setPassword("Sneha@01");
 		userDetails.setIsLoggedIn(false);
 		userDetails.setUserType(UserType.valueOf("MEMBER"));
-		userDetails.setComments(new ArrayList<Comment>());
 		userDetails.setDepartment(new Department());
 		userDetails.setTickets(new ArrayList<Ticket>());
 		userDetails.setEmail("sneha@nucleusteq.com");
@@ -70,7 +67,6 @@ public class UserDetailsTest{
 		userDetails.setPassword("Sneha@01");
 		userDetails.setIsLoggedIn(false);
 		userDetails.setUserType(UserType.valueOf("MEMBER"));
-		userDetails.setComments(new ArrayList<Comment>());
 		userDetails.setDepartment(new Department());
 		userDetails.setTickets(new ArrayList<Ticket>());
 		userDetails.setEmail("sneha@nucleusteq.com");
@@ -85,7 +81,6 @@ public class UserDetailsTest{
 		userDetails.setPassword("Sneha@01");
 		userDetails.setIsLoggedIn(false);
 		userDetails.setUserType(UserType.valueOf("MEMBER"));
-		userDetails.setComments(new ArrayList<Comment>());
 		userDetails.setDepartment(new Department());
 		userDetails.setTickets(new ArrayList<Ticket>());
 		userDetails.setEmail("sneha@nucleusteq.com");
@@ -100,7 +95,6 @@ public class UserDetailsTest{
 		userDetails.setPassword("Sneha@01");
 		userDetails.setIsLoggedIn(false);
 		userDetails.setUserType(UserType.valueOf("MEMBER"));
-		userDetails.setComments(new ArrayList<Comment>());
 		userDetails.setDepartment(new Department());
 		userDetails.setTickets(new ArrayList<Ticket>());
 		userDetails.setEmail("sneha@nucleusteq.com");
@@ -114,7 +108,6 @@ public class UserDetailsTest{
 		userDetails.setPassword("Sneha@01");
 		userDetails.setIsLoggedIn(false);
 		userDetails.setUserType(UserType.valueOf("MEMBER"));
-		userDetails.setComments(new ArrayList<Comment>());
 		userDetails.setDepartment(new Department());
 		userDetails.setTickets(new ArrayList<Ticket>());
 		userDetails.setEmail("sneha@nucleusteq.com");
@@ -129,7 +122,6 @@ public class UserDetailsTest{
 		userDetails.setPassword("Sneha@01");
 		userDetails.setIsLoggedIn(false);
 		userDetails.setUserType(UserType.valueOf("MEMBER"));
-		userDetails.setComments(new ArrayList<Comment>());
 		userDetails.setDepartment(new Department());
 		userDetails.setTickets(new ArrayList<Ticket>());
 		userDetails.setEmail("sneha@nucleusteq.com");

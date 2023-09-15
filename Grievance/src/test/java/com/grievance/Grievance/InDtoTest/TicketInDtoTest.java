@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
+import com.grievance.Grievance.Enum.TicketType;
 import com.grievance.Grievance.InDto.TicketInDto;
 import com.grievance.Grievance.entity.Comment;
 import com.grievance.Grievance.entity.Department;
-import com.grievance.Grievance.entity.TicketType;
 import com.grievance.Grievance.entity.UserDetails;
 
 public class TicketInDtoTest {

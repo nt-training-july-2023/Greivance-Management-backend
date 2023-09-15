@@ -1,4 +1,4 @@
-package com.grievance.Grievance.entity;
+package com.grievance.Grievance.Enum;
 
 public enum TicketType {
 

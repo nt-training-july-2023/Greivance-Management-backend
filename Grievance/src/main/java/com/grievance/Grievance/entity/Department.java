@@ -2,70 +2,47 @@ package com.grievance.Grievance.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-public class Department {
-
-	@NotNull
-	private String deptName;
-
-	// One department have List of users.
-	// Department is the parent entity if dept deletes it's users also get deleted
-
-	@OneToMany(mappedBy = "department")
-	@JsonManagedReference
-//	@JsonIgnore
-	private List<UserDetails> userDetails;
-
-	@OneToMany(mappedBy = "department")
-	@JsonManagedReference
-	private List<Ticket> tickets;
-
-	public List<UserDetails> getUserDetails() {
-		return userDetails;
-	}
-
-	public void setUserDetails(List<UserDetails> userDetails) {
-		this.userDetails = userDetails;
-	}
-
-	public List<Ticket> getTickets() {
-		return tickets;
-	}
-
-	public void setTickets(List<Ticket> tickets) {
-		this.tickets = tickets;
-	}
-
+public class Department{
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long deptId;
+	
+	@NotEmpty
+//	@JsonManagedReference
+	private String deptName;
+	
+	@JsonManagedReference(value = "depar")
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "department", fetch = FetchType.LAZY)
+	private List<Ticket> tickets;
+	
+	@JsonManagedReference 
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "department", fetch = FetchType.LAZY)
+	private List<UserDetails> userDetails;
 
 	/**
-	 * 
+	 * @return the deptId
 	 */
-	public Department() {
-		super();
-		// TODO Auto-generated constructor stub
+	public long getDeptId() {
+		return deptId;
 	}
 
 	/**
-	 * @param deptName
-	 * @param deptId
+	 * @param deptId the deptId to set
 	 */
-	public Department(String deptName, long deptId) {
-		super();
-		this.deptName = deptName;
+	public void setDeptId(long deptId) {
 		this.deptId = deptId;
 	}
 
@@ -84,16 +61,61 @@ public class Department {
 	}
 
 	/**
-	 * @return the deptId
+	 * @return the tickets
 	 */
-	public long getDeptId() {
-		return deptId;
+	public List<Ticket> getTickets() {
+		return tickets;
 	}
 
 	/**
-	 * @param deptId the deptId to set
+	 * @param tickets the tickets to set
 	 */
-	public void setDeptId(long deptId) {
-		this.deptId = deptId;
+	public void setTickets(List<Ticket> tickets) {
+		this.tickets = tickets;
 	}
+
+	/**
+	 * @return the userDetails
+	 */
+	public List<UserDetails> getUserDetails() {
+		return userDetails;
+	}
+
+	/**
+	 * @param userDetails the userDetails to set
+	 */
+	public void setUserDetails(List<UserDetails> userDetails) {
+		this.userDetails = userDetails;
+	}
+
+	/**
+	 * @param deptId
+	 * @param deptName
+	 * @param tickets
+	 * @param userDetails
+	 */
+	public Department(long deptId, @NotEmpty String deptName, List<Ticket> tickets, List<UserDetails> userDetails) {
+		super();
+		this.deptId = deptId;
+		this.deptName = deptName;
+		this.tickets = tickets;
+		this.userDetails = userDetails;
+	}
+
+	/**
+	 * 
+	 */
+	public Department() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return deptName;
+	}
+	
+	
+	
+	
 }

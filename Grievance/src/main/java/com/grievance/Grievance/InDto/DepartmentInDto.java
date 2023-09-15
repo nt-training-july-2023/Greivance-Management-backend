@@ -1,7 +1,10 @@
 package com.grievance.Grievance.InDto;
 
+import javax.validation.constraints.NotEmpty;
+
 public class DepartmentInDto {
 	
+	@NotEmpty
 	private String deptName;
 
 	/**
@@ -19,20 +22,11 @@ public class DepartmentInDto {
 	}
 
 	/**
-	 * @param deptName
-	 */
-	public DepartmentInDto(String deptName) {
-		super();
-		this.deptName = deptName;
-	}
-
-	/**
 	 * 
 	 */
 	public DepartmentInDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-
+	
 }

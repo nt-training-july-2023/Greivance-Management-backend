@@ -12,12 +12,12 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 
+import com.grievance.Grievance.Enum.TicketStatus;
+import com.grievance.Grievance.Enum.TicketType;
 import com.grievance.Grievance.InDto.TicketInDto;
 import com.grievance.Grievance.OutDto.TicketOutDto;
 import com.grievance.Grievance.entity.Department;
 import com.grievance.Grievance.entity.Ticket;
-import com.grievance.Grievance.entity.TicketStatus;
-import com.grievance.Grievance.entity.TicketType;
 import com.grievance.Grievance.entity.UserDetails;
 import com.grievance.Grievance.repository.TicketRepository;
 import com.grievance.Grievance.serviceImplementation.TicketServiceImpl;

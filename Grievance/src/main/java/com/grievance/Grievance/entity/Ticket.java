@@ -3,30 +3,41 @@ package com.grievance.Grievance.entity;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.core.sym.Name;
+import com.grievance.Grievance.Enum.TicketStatus;
+import com.grievance.Grievance.Enum.TicketType;
 
 @Entity
-public class Ticket {
-
+public class Ticket{
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long ticketId;
+	
+	@NotEmpty
+	private String ticketTitle;
+	
+	@NotEmpty
+	private String description;
 	
 	@Enumerated(EnumType.STRING)
 	private TicketType ticketType;
@@ -34,10 +45,6 @@ public class Ticket {
 	@Enumerated(EnumType.STRING)
 	private TicketStatus ticketStatus;
 	
-	@NotNull(message = "Title is required")
-	private String ticketTitle;
-	private String description;
-		
 	@CreationTimestamp
 	@Column(name = "createdAt",nullable = false, updatable = false )
 	private Date createdAt;
@@ -46,55 +53,19 @@ public class Ticket {
 	@Column(name = "updatedAt")
 	private Date updatedAt;
 	
+	@JsonBackReference(value = "depar")
 	@ManyToOne
 	@JoinColumn(name = "deptId")
-	@JsonBackReference
 	private Department department;
 	
+	@JsonBackReference(value = "user")
 	@ManyToOne
 	@JoinColumn(name = "Id")
-	@JsonBackReference
 	private UserDetails userDetails;
 	
-    @OneToMany(mappedBy = "ticket")
-    @JsonManagedReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ticket", fetch = FetchType.LAZY)
     private List<Comment> comments;
-    
-	/**
-	 * 
-	 */
-	public Ticket() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
-	/**
-	 * @param ticketId
-	 * @param ticketType
-	 * @param ticketStatus
-	 * @param ticketTitle
-	 * @param description
-	 * @param createdAt
-	 * @param updatedAt
-	 * @param department
-	 * @param userDetails
-	 */
-	public Ticket(long ticketId, TicketType ticketType, TicketStatus ticketStatus, String ticketTitle,
-			 String description, Date createdAt, Date updatedAt,
-			Department department, UserDetails userDetails) {
-		super();
-		this.ticketId = ticketId;
-		this.ticketType = ticketType;
-		this.ticketStatus = ticketStatus;
-		this.ticketTitle = ticketTitle;
-		this.description = description;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-		this.department = department;
-      	this.userDetails = userDetails;
-	}
-
-	
 	/**
 	 * @return the ticketId
 	 */
@@ -107,6 +78,34 @@ public class Ticket {
 	 */
 	public void setTicketId(long ticketId) {
 		this.ticketId = ticketId;
+	}
+
+	/**
+	 * @return the ticketTitle
+	 */
+	public String getTicketTitle() {
+		return ticketTitle;
+	}
+
+	/**
+	 * @param ticketTitle the ticketTitle to set
+	 */
+	public void setTicketTitle(String ticketTitle) {
+		this.ticketTitle = ticketTitle;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDecription() {
+		return description;
+	}
+
+	/**
+	 * @param decription the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	/**
@@ -135,33 +134,6 @@ public class Ticket {
 	 */
 	public void setTicketStatus(TicketStatus ticketStatus) {
 		this.ticketStatus = ticketStatus;
-	}
-
-	/**
-	 * @return the ticketTitle
-	 */
-	public String getTicketTitle() {
-		return ticketTitle;
-	}
-
-	/**
-	 * @param ticketTitle the ticketTitle to set
-	 */
-	public void setTicketTitle(String ticketTitle) {
-		this.ticketTitle = ticketTitle;
-	}
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
-	}
-
-	/**
-	 * @param description the description to set
-	 */
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	/**
@@ -219,5 +191,57 @@ public class Ticket {
 	public void setUserDetails(UserDetails userDetails) {
 		this.userDetails = userDetails;
 	}
+
+	/**
+	 * @return the comments
+	 */
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	/**
+	 * @param comments the comments to set
+	 */
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+	/**
+	 * @param ticketId
+	 * @param ticketTitle
+	 * @param decription
+	 * @param ticketType
+	 * @param ticketStatus
+	 * @param createdAt
+	 * @param updatedAt
+	 * @param department
+	 * @param userDetails
+	 * @param comments
+	 */
+	public Ticket(long ticketId, @NotEmpty String ticketTitle, @NotEmpty String description, TicketType ticketType,
+			TicketStatus ticketStatus, Date createdAt, Date updatedAt, Department department, UserDetails userDetails,
+			List<Comment> comments) {
+		super();
+		this.ticketId = ticketId;
+		this.ticketTitle = ticketTitle;
+		this.description = description;
+		this.ticketType = ticketType;
+		this.ticketStatus = ticketStatus;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.department = department;
+		this.userDetails = userDetails;
+		this.comments = comments;
+	}
+
+	/**
+	 * 
+	 */
+	public Ticket() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 	
 }

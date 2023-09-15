@@ -2,10 +2,11 @@ package com.grievance.Grievance.EntityTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
+
+import com.grievance.Grievance.Enum.TicketStatus;
+import com.grievance.Grievance.Enum.TicketType;
 import com.grievance.Grievance.entity.Department;
 import com.grievance.Grievance.entity.Ticket;
-import com.grievance.Grievance.entity.TicketStatus;
-import com.grievance.Grievance.entity.TicketType;
 import com.grievance.Grievance.entity.UserDetails;
 
 public class TicketTest {

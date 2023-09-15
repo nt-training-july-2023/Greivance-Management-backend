@@ -2,51 +2,32 @@ package com.grievance.Grievance.OutDto;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.grievance.Grievance.Enum.UserType;
 import com.grievance.Grievance.entity.Comment;
-import com.grievance.Grievance.entity.Department;
-import com.grievance.Grievance.entity.Ticket;
-import com.grievance.Grievance.entity.UserType;
 
 public class UserDetailsOutDto {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long Id;
-
-	@NotEmpty(message = "Name is required")
 	private String name;
-
-	@Enumerated(EnumType.STRING)
 	private UserType userType;
-
-	@NotEmpty(message = "Email (Username) is required")
-	@Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$")
-	@Column(unique = true)
 	private String email;
-
-	private Boolean isLoggedIn;
+	private Boolean isLoggedIn; 
 	
-	// Many users can have one department
-	private Department department;
-
-	// One user can have many tickets.
-	private List<Ticket> tickets;
-
-	// one user can have multiple comments
-	private List<Comment> comments;
+	//department out dto
+	private String department; 
+	
+	@JsonManagedReference
+	private List<TicketOutDto> tickets;
+	
+    private List<Comment> comments;
 
 	/**
 	 * @return the id
 	 */
-	public long getId() {
+	public long getsId() {
 		return Id;
 	}
 
@@ -116,28 +97,28 @@ public class UserDetailsOutDto {
 	/**
 	 * @return the department
 	 */
-	public Department getDepartment() {
+	public String getDepartment() {
 		return department;
 	}
 
 	/**
 	 * @param department the department to set
 	 */
-	public void setDepartment(Department department) {
+	public void setDepartment(String department) {
 		this.department = department;
 	}
 
 	/**
 	 * @return the tickets
 	 */
-	public List<Ticket> getTickets() {
+	public List<TicketOutDto> getTickets() {
 		return tickets;
 	}
 
 	/**
 	 * @param tickets the tickets to set
 	 */
-	public void setTickets(List<Ticket> tickets) {
+	public void setTickets(List<TicketOutDto> tickets) {
 		this.tickets = tickets;
 	}
 
@@ -165,9 +146,9 @@ public class UserDetailsOutDto {
 	 * @param tickets
 	 * @param comments
 	 */
-	public UserDetailsOutDto(long id, @NotEmpty(message = "Name is required") String name, UserType userType,
-			@NotEmpty(message = "Email (Username) is required") @Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$") String email,
-			Boolean isLoggedIn, Department department, List<Ticket> tickets, List<Comment> comments) {
+	public UserDetailsOutDto(long id, String name, UserType userType,
+			@Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$") String email, Boolean isLoggedIn,
+			String department, List<TicketOutDto> tickets, List<Comment> comments) {
 		super();
 		Id = id;
 		this.name = name;
@@ -190,10 +171,10 @@ public class UserDetailsOutDto {
 	@Override
 	public String toString() {
 		return "UserDetailsOutDto [Id=" + Id + ", name=" + name + ", userType=" + userType + ", email=" + email
-				+ ", isLoggedIn=" + isLoggedIn + ", department=" + department + ", tickets=" + tickets + ", comments="
+				+ ", isLoggedIn=" + isLoggedIn + ", comments="
 				+ comments + "]";
 	}
-	
+
 	
 
 }

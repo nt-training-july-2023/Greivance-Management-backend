@@ -1,25 +1,19 @@
 package com.grievance.Grievance.OutDto;
 
 import java.util.List;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import com.grievance.Grievance.entity.Ticket;
-import com.grievance.Grievance.entity.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 public class DepartmentOutDto {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long deptId;
-
-	@NotNull
 	private String deptName;
 
-	private List<UserDetails> userDetails;
+//	@JsonManagedReference
+	private List<UserDetailsOutDto> userDetails;
 
-	private List<Ticket> tickets;
+	@JsonManagedReference
+	private List<TicketOutDto> tickets;
 
 	/**
 	 * @return the deptId
@@ -52,28 +46,28 @@ public class DepartmentOutDto {
 	/**
 	 * @return the userDetails
 	 */
-	public List<UserDetails> getUserDetails() {
+	public List<UserDetailsOutDto> getUserDetails() {
 		return userDetails;
 	}
 
 	/**
 	 * @param userDetails the userDetails to set
 	 */
-	public void setUserDetails(List<UserDetails> userDetails) {
+	public void setUserDetails(List<UserDetailsOutDto> userDetails) {
 		this.userDetails = userDetails;
 	}
 
 	/**
 	 * @return the tickets
 	 */
-	public List<Ticket> getTickets() {
+	public List<TicketOutDto> getTickets() {
 		return tickets;
 	}
 
 	/**
 	 * @param tickets the tickets to set
 	 */
-	public void setTickets(List<Ticket> tickets) {
+	public void setTickets(List<TicketOutDto> tickets) {
 		this.tickets = tickets;
 	}
 
@@ -83,8 +77,7 @@ public class DepartmentOutDto {
 	 * @param userDetails
 	 * @param tickets
 	 */
-	public DepartmentOutDto(long deptId, @NotNull String deptName, List<UserDetails> userDetails,
-			List<Ticket> tickets) {
+	public DepartmentOutDto(long deptId, String deptName, List<UserDetailsOutDto> userDetails, List<TicketOutDto> tickets) {
 		super();
 		this.deptId = deptId;
 		this.deptName = deptName;

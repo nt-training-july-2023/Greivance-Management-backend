@@ -1,26 +1,26 @@
 package com.grievance.Grievance.InDto;
 import java.util.List;
+
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
+import com.grievance.Grievance.Enum.TicketType;
 import com.grievance.Grievance.entity.Comment;
 import com.grievance.Grievance.entity.Department;
-import com.grievance.Grievance.entity.TicketType;
 import com.grievance.Grievance.entity.UserDetails;
 
 public class TicketInDto {
+	//status
 	
 	@Enumerated(EnumType.STRING)
 	private TicketType ticketType;
 	
-	
-	@NotNull(message = "Title is required")
+	@NotEmpty(message = "Title is required")
 	private String ticketTitle;
 	
-	@NotNull(message = "Must add description")
+	@NotEmpty(message = "Must add description")
 	private String description;
 		
-	
 	private Department department;
 	
 	private UserDetails userDetails;
@@ -119,8 +119,8 @@ public class TicketInDto {
 	 * @param userDetails
 	 * @param comments
 	 */
-	public TicketInDto(TicketType ticketType, @NotNull(message = "Title is required") String ticketTitle,
-			@NotNull(message = "Must add description") String description, Department department,
+	public TicketInDto(TicketType ticketType, @NotEmpty(message = "Title is required") String ticketTitle,
+			@NotEmpty(message = "Must add description") String description, Department department,
 			UserDetails userDetails, List<Comment> comments) {
 		super();
 		this.ticketType = ticketType;

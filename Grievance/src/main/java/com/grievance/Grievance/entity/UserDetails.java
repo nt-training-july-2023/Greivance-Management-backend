@@ -3,10 +3,10 @@ package com.grievance.Grievance.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,66 +19,40 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.grievance.Grievance.Enum.UserType;
 
 @Entity
-public class UserDetails {
-
+public class UserDetails{
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long Id;
-
-	@NotEmpty(message = "Name is required")
+	
+	@NotEmpty(message = "name is required")
 	private String name;
-
+	
+	private Boolean isLoggedIn;
+	
+	@Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$")
+	@NotEmpty(message = "Email is required")
+	private String email;
+	
+	@NotEmpty(message = "Password is required")
+	@Size(min = 8, message = "Password should be at least 8 characters")
+	private String password;
 	
 	@Enumerated(EnumType.STRING)
 	private UserType userType;
-
-	@NotEmpty(message = "Password is required")
-	@Size(min = 5, message = "Password should be at least 5 characters")
-	private String password;
-
-	@NotEmpty(message = "Email (Username) is required")
-	@Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$")
 	
-	@Column(unique = true)
-	@NotEmpty(message = "Email is required")
-	private String email;
-
-	private Boolean isLoggedIn;
-	
-	// Many users can have one department
-
+	@JsonBackReference
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "deptId")
-	@JsonBackReference
-//	@JsonIgnore
 	private Department department;
-
-	// One user can have many tickets.
-	@OneToMany(mappedBy = "userDetails")
-	@JsonManagedReference
+	
+	@JsonManagedReference(value = "user")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userDetails", fetch = FetchType.LAZY)
 	private List<Ticket> tickets;
 
-	// one user can have multiple comments
-
-	@OneToMany(mappedBy = "userDetails")
-	@JsonManagedReference
-	private List<Comment> comments;
-
-	/**
-	 * @return the department
-	 */
-	public Department getDepartment() {
-		return department;
-	}
-
-	/**
-	 * @param department the department to set
-	 */
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
 	/**
 	 * @return the id
 	 */
@@ -108,31 +82,17 @@ public class UserDetails {
 	}
 
 	/**
-	 * @return the userType
+	 * @return the isLoggedIn
 	 */
-	public UserType getUserType() {
-		return userType;
+	public Boolean getIsLoggedIn() {
+		return isLoggedIn;
 	}
 
 	/**
-	 * @param userType the userType to set
+	 * @param isLoggedIn the isLoggedIn to set
 	 */
-	public void setUserType(UserType userType) {
-		this.userType = userType;
-	}
-
-	/**
-	 * @return the password
-	 */ //?
-	public String getPassword() {
-		return password;
-	}
-
-	/**
-	 * @param password the password to set
-	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public void setIsLoggedIn(Boolean isLoggedIn) {
+		this.isLoggedIn = isLoggedIn;
 	}
 
 	/**
@@ -148,21 +108,47 @@ public class UserDetails {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
 
 	/**
-	 * @return the isLoggedInBoolean
+	 * @return the password
 	 */
-	public Boolean getIsLoggedIn() {
-		return isLoggedIn;
+	public String getPassword() {
+		return password;
 	}
 
 	/**
-	 * @param isLoggedInBoolean the isLoggedInBoolean to set
+	 * @param password the password to set
 	 */
-	public void setIsLoggedIn(Boolean isLoggedIn) {
-		this.isLoggedIn = isLoggedIn;
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	/**
+	 * @return the userType
+	 */
+	public UserType getUserType() {
+		return userType;
+	}
+
+	/**
+	 * @param userType the userType to set
+	 */
+	public void setUserType(UserType userType) {
+		this.userType = userType;
+	}
+
+	/**
+	 * @return the department
+	 */
+	public Department getDepartment() {
+		return department;
+	}
+
+	/**
+	 * @param department the department to set
+	 */
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
 	/**
@@ -180,18 +166,30 @@ public class UserDetails {
 	}
 
 	/**
-	 * @return the comments
+	 * @param id
+	 * @param name
+	 * @param isLoggedIn
+	 * @param email
+	 * @param password
+	 * @param userType
+	 * @param department
+	 * @param tickets
 	 */
-	public List<Comment> getComments() {
-		return comments;
+	public UserDetails(long id, @NotEmpty(message = "name is required") String name, Boolean isLoggedIn,
+			@Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$") @NotEmpty(message = "Email is required") String email,
+			@NotEmpty(message = "Password is required") @Size(min = 8, message = "Password should be at least 8 characters") String password,
+			UserType userType, Department department, List<Ticket> tickets) {
+		super();
+		Id = id;
+		this.name = name;
+		this.isLoggedIn = isLoggedIn;
+		this.email = email;
+		this.password = password;
+		this.userType = userType;
+		this.department = department;
+		this.tickets = tickets;//ticket list not passed 
 	}
 
-	/**
-	 * @param comments the comments to set
-	 */
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
-	}
 	/**
 	 * 
 	 */
@@ -200,40 +198,5 @@ public class UserDetails {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param id
-	 * @param name
-	 * @param userType
-	 * @param password
-	 * @param email
-	 * @param isLoggedIn
-	 * @param department
-	 * @param tickets
-	 * @param comments
-	 * @param isLoggedIn 
-	 */
-	public UserDetails(long id, @NotEmpty(message = "Name is required") String name, UserType userType,
-			@NotEmpty(message = "Password is required") @Size(min = 5, message = "Password should be at least 8 characters") String password,
-			@NotEmpty(message = "Email (Username) is required") @Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$") String email,
-			 Department department, List<Ticket> tickets,
-			List<Comment> comments, Boolean isLoggedIn) {
-		super();
-		Id = id;
-		this.name = name;
-		this.userType = userType;
-		this.password = password;
-		this.email = email;
-		this.isLoggedIn = isLoggedIn;
-		this.department = department;
-		this.tickets = tickets;
-		this.comments = comments;
-	}
-
-	@Override
-	public String toString() {
-		return "UserDetails [Id=" + Id + ", name=" + name + ", userType=" + userType + ", password=" + password
-				+ ", email=" + email + ", isLoggedIn=" + isLoggedIn + ", department=" + department + ", tickets="
-				+ tickets + ", comments=" + comments + "]";
-	}
-
+	
 }

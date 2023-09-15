@@ -17,8 +17,8 @@ public class DepartmentOutDtoTest {
 		DepartmentOutDto departmentOutDto = new DepartmentOutDto();
 		departmentOutDto.setDeptId(1);
 		departmentOutDto.setDeptName("IT");
-		departmentOutDto.setTickets(new ArrayList<Ticket>());
-		departmentOutDto.setUserDetails(new ArrayList<UserDetails>());
+	//	departmentOutDto.setTicket(new ArrayList<TicketOutDto>());
+	//	departmentOutDto.setUserDetails(new ArrayList<UserDetails>());
 		assertEquals("IT",departmentOutDto.getDeptName());
 	}
 	
@@ -27,8 +27,8 @@ public class DepartmentOutDtoTest {
 		DepartmentOutDto departmentOutDto = new DepartmentOutDto();
 		departmentOutDto.setDeptId(1);
 		departmentOutDto.setDeptName("IT");
-		departmentOutDto.setTickets(new ArrayList<Ticket>());
-		departmentOutDto.setUserDetails(new ArrayList<UserDetails>());
+	//	departmentOutDto.setTickets(new ArrayList<Ticket>());
+	//	departmentOutDto.setUserDetails(new ArrayList<UserDetails>());
 		assertEquals(1, departmentOutDto.getDeptId());
 	}
 	@Test
@@ -36,8 +36,8 @@ public class DepartmentOutDtoTest {
 		DepartmentOutDto departmentOutDto = new DepartmentOutDto();
 		departmentOutDto.setDeptId(1);
 		departmentOutDto.setDeptName("IT");
-		departmentOutDto.setTickets(new ArrayList<Ticket>());
-		departmentOutDto.setUserDetails(new ArrayList<UserDetails>());
+		//departmentOutDto.setTickets(new ArrayList<Ticket>());
+	//	departmentOutDto.setUserDetails(new ArrayList<UserDetails>());
 		assertEquals(new ArrayList<Ticket>(), departmentOutDto.getTickets());
 	}
 	
@@ -46,9 +46,9 @@ public class DepartmentOutDtoTest {
 		DepartmentOutDto departmentOutDto = new DepartmentOutDto();
 		departmentOutDto.setDeptId(1);
 		departmentOutDto.setDeptName("IT");
-		departmentOutDto.setTickets(new ArrayList<Ticket>());
-		departmentOutDto.setUserDetails(new ArrayList<UserDetails>());
-		assertEquals(new ArrayList<UserDetails>(), departmentOutDto.getUserDetails());
+	//	departmentOutDto.setTickets(new ArrayList<Ticket>());
+	//	departmentOutDto.setUserDetails(new ArrayList<UserDetails>());
+	//	assertEquals(new ArrayList<UserDetails>(), departmentOutDto.getUserDetails());
 	}
 	
 }

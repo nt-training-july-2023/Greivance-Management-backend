@@ -21,13 +21,12 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.grievance.Grievance.Enum.TicketStatus;
+import com.grievance.Grievance.Enum.TicketType;
 import com.grievance.Grievance.InDto.TicketInDto;
 import com.grievance.Grievance.OutDto.TicketOutDto;
 import com.grievance.Grievance.controller.TicketController;
 import com.grievance.Grievance.entity.Comment;
-import com.grievance.Grievance.entity.Department;
-import com.grievance.Grievance.entity.TicketStatus;
-import com.grievance.Grievance.entity.TicketType;
 import com.grievance.Grievance.entity.UserDetails;
 import com.grievance.Grievance.service.TicketService;
 
@@ -65,11 +64,11 @@ public class TicketControllerTest {
 	    
 	    TicketOutDto ticketOutDto = new TicketOutDto();
 	    ticketOutDto.setComments(new ArrayList<Comment>());
-	    ticketOutDto.setDepartment(new Department());
-	    ticketOutDto.setTicketStatus(TicketStatus.valueOf("BEING_ADDRESSED"));
+	//    ticketOutDto.setDepartment(new Department());
+	    ticketOutDto.setTicketStatus(TicketStatus.valueOf("OPEN"));
 	    ticketOutDto.setDescription("abcd");
 	    ticketOutDto.setTicketId(1);
-	    ticketOutDto.setUserDetails(new UserDetails());
+	//    ticketOutDto.setUserDetails(new UserDetails());
 	    ticketOutDto.setCreatedAt(null);
 	    ticketOutDto.setUpdatedAt(null);
 	    ticketOutDto.setTicketTitle("Technical Issue");
