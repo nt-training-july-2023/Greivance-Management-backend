@@ -8,7 +8,14 @@ import com.grievance.Grievance.OutDto.TicketOutDto;
 
 public interface TicketService {
 
-	public Optional<TicketOutDto> createTicket(TicketInDto ticketInDto);
-	public List<TicketOutDto> getAllTickets();
-	
+public TicketOutDto createTicket(TicketInDto tickdeTicketInDto);
+
+public List<TicketOutDto> getAllTickets();
+
+public TicketOutDto getTicketById(long ticketId);
+
+public TicketOutDto updateTicket(TicketInDto ticketInDto, long ticketId);
+
+public List<TicketOutDto>   getAllTicketsByDepartment(long deptId);
+
 }

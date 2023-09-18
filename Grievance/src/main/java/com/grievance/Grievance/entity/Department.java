@@ -3,6 +3,7 @@ package com.grievance.Grievance.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,23 +16,22 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Department{
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long deptId;
 	
-	@NotEmpty
-//	@JsonManagedReference
-	private String deptName;
-	
-	@JsonManagedReference(value = "depar")
+	 @Column(name = "deptName", unique = true)
+	 private String deptName;
+
+	@JsonManagedReference(value = "dep")
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "department", fetch = FetchType.LAZY)
 	private List<Ticket> tickets;
 	
 	@JsonManagedReference 
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "department", fetch = FetchType.LAZY)
 	private List<UserDetails> userDetails;
-
+	
 	/**
 	 * @return the deptId
 	 */
@@ -89,20 +89,6 @@ public class Department{
 	}
 
 	/**
-	 * @param deptId
-	 * @param deptName
-	 * @param tickets
-	 * @param userDetails
-	 */
-	public Department(long deptId, @NotEmpty String deptName, List<Ticket> tickets, List<UserDetails> userDetails) {
-		super();
-		this.deptId = deptId;
-		this.deptName = deptName;
-		this.tickets = tickets;
-		this.userDetails = userDetails;
-	}
-
-	/**
 	 * 
 	 */
 	public Department() {
@@ -112,10 +98,8 @@ public class Department{
 
 	@Override
 	public String toString() {
-		return deptName;
+		return "" + deptName + "";
 	}
-	
-	
 	
 	
 }

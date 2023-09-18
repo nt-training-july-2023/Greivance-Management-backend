@@ -53,4 +53,17 @@ public class DepartmentTest {
 		department.setUserDetails(new ArrayList<UserDetails>());
 		assertEquals(new ArrayList<UserDetails>(), department.getUserDetails());
 	}
+	
+	 @Test
+	    public void testToString() {
+	     
+	        Department department = new Department();
+	        department.setDeptName("HR");
+
+
+	        String toStringResult = department.toString();
+
+
+	        assertEquals("HR", toStringResult);
+	    }
 }

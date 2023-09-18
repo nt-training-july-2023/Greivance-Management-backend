@@ -8,15 +8,10 @@ import com.grievance.Grievance.OutDto.DepartmentOutDto;
 
 public interface DepartmentService {
 
-	public List<DepartmentOutDto> getAllDepartment();
+	public DepartmentOutDto createDepartment(DepartmentInDto departmentInDto);
+
+	public List<DepartmentOutDto> getAllDepartments();
 
 	public DepartmentOutDto getDepartmentById(long deptId);
 
-	public Optional<DepartmentOutDto> createDepartment(DepartmentInDto departmentInDto);
-
-	public DepartmentOutDto updateDepartment(DepartmentInDto departmentInDto, long deptId);
-
-	public void deleteDepartmentById(long deptId);
-	
-	public Optional<DepartmentOutDto> getDepartmentByName (String deptName);
 }

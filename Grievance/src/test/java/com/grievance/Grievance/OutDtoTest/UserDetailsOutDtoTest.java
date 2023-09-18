@@ -1,12 +1,17 @@
 package com.grievance.Grievance.OutDtoTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.grievance.Grievance.Enum.UserType;
+import com.grievance.Grievance.OutDto.CommentOutDto;
+import com.grievance.Grievance.OutDto.TicketOutDto;
 import com.grievance.Grievance.OutDto.UserDetailsOutDto;
 import com.grievance.Grievance.entity.Comment;
 import com.grievance.Grievance.entity.Ticket;
@@ -14,124 +19,80 @@ import com.grievance.Grievance.entity.Ticket;
 
 public class UserDetailsOutDtoTest {
 
-	@Test
-	public void testName() {
-		  
-		UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
-		userDetailsOutDto.setId(1);
-	//	userDetailsOutDto.setDepartment(new DepartmentOutDto());
-		userDetailsOutDto.setName("Sneha");
-		userDetailsOutDto.setComments(new ArrayList<Comment>());
-		userDetailsOutDto.setEmail("sneha@nucleusteq.com");
-		userDetailsOutDto.setIsLoggedIn(false);
-	//	userDetailsOutDto.setTickets(new ArrayList<Ticket>());
-		userDetailsOutDto.setUserType(UserType.valueOf("MEMBER"));
-		assertEquals("Sneha" , userDetailsOutDto.getName());
-		
-	}
-	@Test
-	public void testId() {
-		  
-		UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
-		userDetailsOutDto.setId(1);
-	//	userDetailsOutDto.setDepartment(new DepartmentOutDto());
-		userDetailsOutDto.setName("Sneha");
-		userDetailsOutDto.setComments(new ArrayList<Comment>());
-		userDetailsOutDto.setEmail("sneha@nucleusteq.com");
-		userDetailsOutDto.setIsLoggedIn(false);
-//		userDetailsOutDto.setTickets(new ArrayList<Ticket>());
-		userDetailsOutDto.setUserType(UserType.valueOf("MEMBER"));
-	//	assertEquals(1 , userDetailsOutDto.getId());
-	}
-	
-	@Test
-	public void testEmail() {
-		  
-		UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
-		userDetailsOutDto.setId(1);
-	//	userDetailsOutDto.setDepartment(new DepartmentOutDto());
-		userDetailsOutDto.setName("Sneha");
-		userDetailsOutDto.setComments(new ArrayList<Comment>());
-		userDetailsOutDto.setEmail("sneha@nucleusteq.com");
-		userDetailsOutDto.setIsLoggedIn(false);
-//		userDetailsOutDto.setTickets(new ArrayList<Ticket>());
-		userDetailsOutDto.setUserType(UserType.valueOf("MEMBER"));
-		assertEquals("sneha@nucleusteq.com" , userDetailsOutDto.getEmail());
-	}
+	private UserDetailsOutDto userDetailsOutDto;
 
-	@Test
-	public void testComments() {
-		  
-		UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
-		userDetailsOutDto.setId(1);
-	//	userDetailsOutDto.setDepartment(new DepartmentOutDto());
-		userDetailsOutDto.setName("Sneha");
-		userDetailsOutDto.setComments(new ArrayList<Comment>());
-		userDetailsOutDto.setEmail("sneha@nucleusteq.com");
-		userDetailsOutDto.setIsLoggedIn(false);
-	//	userDetailsOutDto.setTickets(new ArrayList<Ticket>());
-		userDetailsOutDto.setUserType(UserType.valueOf("MEMBER"));
-		assertEquals(new ArrayList<Comment>() , userDetailsOutDto.getComments());
-	}
-	
-	@Test
-	public void testDepartment() {
-		  
-		UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
-		userDetailsOutDto.setId(1);
-	//	userDetailsOutDto.setDepartment(new DepartmentOutDto());
-		userDetailsOutDto.setName("Sneha");
-		userDetailsOutDto.setComments(new ArrayList<Comment>());
-		userDetailsOutDto.setEmail("sneha@nucleusteq.com");
-		userDetailsOutDto.setIsLoggedIn(false);
-	//	userDetailsOutDto.setTickets(new ArrayList<Ticket>());
-		userDetailsOutDto.setUserType(UserType.valueOf("MEMBER"));
-		//assertEquals(new Department(), userDetailsOutDto.getDepartment());
-	}
-	@Test
-	public void testIsLoggedIn() {
-		  
-		UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
-		userDetailsOutDto.setId(1);
-	//	userDetailsOutDto.setDepartment(new DepartmentOutDto());
-		userDetailsOutDto.setName("Sneha");
-		userDetailsOutDto.setComments(new ArrayList<Comment>());
-		userDetailsOutDto.setEmail("sneha@nucleusteq.com");
-		userDetailsOutDto.setIsLoggedIn(false);
-	//	userDetailsOutDto.setTickets(new ArrayList<Ticket>());
-		userDetailsOutDto.setUserType(UserType.valueOf("MEMBER"));
-		assertEquals(false, userDetailsOutDto.getIsLoggedIn());
-	}
-	
-	@Test
-	public void testTickets() {
-		  
-		UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
-		userDetailsOutDto.setId(1);
-	//	userDetailsOutDto.setDepartment(new DepartmentOutDto());
-		userDetailsOutDto.setName("Sneha");
-		userDetailsOutDto.setComments(new ArrayList<Comment>());
-		userDetailsOutDto.setEmail("sneha@nucleusteq.com");
-		userDetailsOutDto.setIsLoggedIn(false);
-	//	userDetailsOutDto.setTickets(new ArrayList<Ticket>());
-		userDetailsOutDto.setUserType(UserType.valueOf("MEMBER"));
-		assertEquals(new ArrayList<Ticket>(), userDetailsOutDto.getTickets());
-	}
-	
-	@Test
-	public void testUserType() {
-		  
-		UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
-		userDetailsOutDto.setId(1);
-	//	userDetailsOutDto.setDepartment(new DepartmentOutDto());
-		userDetailsOutDto.setName("Sneha");
-		userDetailsOutDto.setComments(new ArrayList<Comment>());
-		userDetailsOutDto.setEmail("sneha@nucleusteq.com");
-		userDetailsOutDto.setIsLoggedIn(false);
-	//	userDetailsOutDto.setTickets(new ArrayList<Ticket>());
-		userDetailsOutDto.setUserType(UserType.valueOf("MEMBER"));
-		assertEquals(UserType.valueOf("MEMBER"), userDetailsOutDto.getUserType());
-	}
-	
-	
+	 @BeforeEach
+	    public void setUp() {
+	        userDetailsOutDto = new UserDetailsOutDto();
+	        userDetailsOutDto.setId(1);
+	        userDetailsOutDto.setDepartment("IT");
+	        userDetailsOutDto.setName("Sneha");
+
+	       
+	        List<CommentOutDto> comments = new ArrayList<>();
+	        CommentOutDto comment1 = new CommentOutDto();
+	        CommentOutDto comment2 = new CommentOutDto();
+	        comments.add(comment1);
+	        comments.add(comment2);
+	        userDetailsOutDto.setComments(comments);
+
+	        userDetailsOutDto.setEmail("sneha@nucleusteq.com");
+	        userDetailsOutDto.setIsLoggedIn(false);
+
+	        List<TicketOutDto> tickets = new ArrayList<>();
+	        TicketOutDto ticket1 = new TicketOutDto();
+	        TicketOutDto ticket2 = new TicketOutDto();
+	        tickets.add(ticket1);
+	        tickets.add(ticket2);
+	        userDetailsOutDto.setTickets(tickets);
+
+	        userDetailsOutDto.setUserType(UserType.Member);
+	    }
+
+	    @Test
+	    public void testId() {
+	        assertEquals(1, userDetailsOutDto.getId());
+	    }
+
+	    @Test
+	    public void testDepartment() {
+	      
+	        assertEquals("IT", userDetailsOutDto.getDepartment());
+	    }
+
+	    @Test
+	    public void testName() {
+	        assertEquals("Sneha", userDetailsOutDto.getName());
+	    }
+
+	    @Test
+	    public void testComments() {
+	        List<CommentOutDto> comments = userDetailsOutDto.getComments();
+	        assertEquals(comments, userDetailsOutDto.getComments());
+	       
+	    }
+
+	    @Test
+	    public void testEmail() {
+	        assertEquals("sneha@nucleusteq.com", userDetailsOutDto.getEmail());
+	    }
+
+	    @Test
+	    public void testIsLoggedIn() {
+	        assertFalse(userDetailsOutDto.getIsLoggedIn());
+	    }
+
+	    @Test
+	    public void testTickets() {
+	        List<TicketOutDto> tickets = userDetailsOutDto.getTickets();
+	        assertEquals(tickets, userDetailsOutDto.getTickets());
+	   
+	    }
+
+	    @Test
+	    public void testUserType() {
+	        assertEquals(UserType.Member, userDetailsOutDto.getUserType());
+	    }
+	    
+	   
 }

@@ -23,15 +23,13 @@ import com.grievance.Grievance.Enum.UserType;
 
 @Entity
 public class UserDetails{
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private long Id;
+	private long userId;
 	
 	@NotEmpty(message = "name is required")
 	private String name;
-	
-	private Boolean isLoggedIn;
 	
 	@Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$")
 	@NotEmpty(message = "Email is required")
@@ -42,161 +40,112 @@ public class UserDetails{
 	private String password;
 	
 	@Enumerated(EnumType.STRING)
-	private UserType userType;
+	private UserType usertype;
+	
+	private Boolean isLoggedIn;
 	
 	@JsonBackReference
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "deptId")
 	private Department department;
 	
+//	@ManyToOne
+//	  @JoinColumn(name = "department_id")
+//	  @JsonBackReference
+//	  private Department department;
+
 	@JsonManagedReference(value = "user")
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userDetails", fetch = FetchType.LAZY)
-	private List<Ticket> tickets;
+	@OneToMany(mappedBy = "userDetails",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Ticket> tickets; 
+	
+//	@OneToMany(
+//		      cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
+//		  @JsonManagedReference(value = "emp")
+//		  private List<Ticket> ticket;
 
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return Id;
+
+	public long getUserId() {
+		return userId;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		Id = id;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
-	/**
-	 * @return the name
-	 */
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * @param name the name to set
-	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	/**
-	 * @return the isLoggedIn
-	 */
-	public Boolean getIsLoggedIn() {
-		return isLoggedIn;
-	}
-
-	/**
-	 * @param isLoggedIn the isLoggedIn to set
-	 */
-	public void setIsLoggedIn(Boolean isLoggedIn) {
-		this.isLoggedIn = isLoggedIn;
-	}
-
-	/**
-	 * @return the email
-	 */
 	public String getEmail() {
 		return email;
 	}
 
-	/**
-	 * @param email the email to set
-	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	/**
-	 * @return the password
-	 */
 	public String getPassword() {
 		return password;
 	}
 
-	/**
-	 * @param password the password to set
-	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	/**
-	 * @return the userType
-	 */
-	public UserType getUserType() {
-		return userType;
+	public UserType getUsertype() {
+		return usertype;
 	}
 
-	/**
-	 * @param userType the userType to set
-	 */
-	public void setUserType(UserType userType) {
-		this.userType = userType;
+	public void setUsertype(UserType usertype) {
+		this.usertype = usertype;
 	}
 
-	/**
-	 * @return the department
-	 */
+	public Boolean getIsLoggedIn() {
+		return isLoggedIn;
+	}
+
+	public void setIsLoggedIn(Boolean isLoggedIn) {
+		this.isLoggedIn = isLoggedIn;
+	}
+
 	public Department getDepartment() {
 		return department;
 	}
 
-	/**
-	 * @param department the department to set
-	 */
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
 
-	/**
-	 * @return the tickets
-	 */
 	public List<Ticket> getTickets() {
 		return tickets;
 	}
 
-	/**
-	 * @param tickets the tickets to set
-	 */
 	public void setTickets(List<Ticket> tickets) {
 		this.tickets = tickets;
 	}
 
-	/**
-	 * @param id
-	 * @param name
-	 * @param isLoggedIn
-	 * @param email
-	 * @param password
-	 * @param userType
-	 * @param department
-	 * @param tickets
-	 */
-	public UserDetails(long id, @NotEmpty(message = "name is required") String name, Boolean isLoggedIn,
+	public UserDetails(long userId, @NotEmpty(message = "name is required") String name,
 			@Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$") @NotEmpty(message = "Email is required") String email,
-			@NotEmpty(message = "Password is required") @Size(min = 8, message = "Password should be at least 8 characters") String password,
-			UserType userType, Department department, List<Ticket> tickets) {
+			@NotEmpty(message = "Password is required") String password, UserType usertype, Boolean isLoggedIn,
+			Department department, List<Ticket> tickets) {
 		super();
-		Id = id;
+		this.userId = userId;
 		this.name = name;
-		this.isLoggedIn = isLoggedIn;
 		this.email = email;
 		this.password = password;
-		this.userType = userType;
+		this.usertype = usertype;
+		this.isLoggedIn = isLoggedIn;
 		this.department = department;
-		this.tickets = tickets;//ticket list not passed 
+		this.tickets = tickets;
 	}
 
-	/**
-	 * 
-	 */
 	public UserDetails() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	
 }

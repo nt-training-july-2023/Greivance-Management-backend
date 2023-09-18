@@ -9,7 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,21 +26,29 @@ public class TicketController {
 
 	@Autowired
 	TicketService ticketService;
-
-	// Create new Ticket API.
-
+	
 	@PostMapping("/ticket")
 	public ResponseEntity<TicketOutDto> createTicket(@Validated @RequestBody TicketInDto ticketInDto) {
-		Optional<TicketOutDto> savedTicketOutDto = this.ticketService.createTicket(ticketInDto);
-		return new ResponseEntity(savedTicketOutDto, HttpStatus.CREATED);
+		TicketOutDto ticketOutDto = ticketService.createTicket(ticketInDto);
+		ResponseEntity ticketResponse = new ResponseEntity(ticketOutDto,HttpStatus.CREATED);
+		return ticketResponse;
 	}
-	
-	// Get All Tickets
-	
 	@GetMapping("/tickets")
 	public ResponseEntity<List<TicketOutDto>> getAllTickets(){
-		List<TicketOutDto> ticketOutDtosList = this.ticketService.getAllTickets();
-		return ResponseEntity.ok(ticketOutDtosList);
+		List<TicketOutDto> ticketOutDtos = ticketService.getAllTickets();
+		return ResponseEntity.ok(ticketOutDtos);
+	}
+	
+	@GetMapping("/ticket/{ticketId}")
+	public ResponseEntity<TicketOutDto> getTicketById(@PathVariable ("ticketId") long ticketId){
+		TicketOutDto ticketOutDto = ticketService.getTicketById(ticketId);
+		return ResponseEntity.ok(ticketOutDto);
+	}
+	
+	@PutMapping("/ticket/{ticketId}")
+	public ResponseEntity<TicketOutDto> updateTicket(@RequestBody TicketInDto ticketInDto ,@PathVariable ("ticketId") long ticketId ){
+		TicketOutDto ticketOutDto = ticketService.updateTicket(ticketInDto, ticketId);
+		return ResponseEntity.ok(ticketOutDto);
 	}
 
 }

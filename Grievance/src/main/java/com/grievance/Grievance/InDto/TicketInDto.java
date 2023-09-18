@@ -4,13 +4,17 @@ import java.util.List;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import com.grievance.Grievance.Enum.TicketStatus;
 import com.grievance.Grievance.Enum.TicketType;
+import com.grievance.Grievance.OutDto.CommentOutDto;
+import com.grievance.Grievance.OutDto.UserDetailsOutDto;
 import com.grievance.Grievance.entity.Comment;
 import com.grievance.Grievance.entity.Department;
 import com.grievance.Grievance.entity.UserDetails;
 
 public class TicketInDto {
-	//status
 	
 	@Enumerated(EnumType.STRING)
 	private TicketType ticketType;
@@ -20,9 +24,14 @@ public class TicketInDto {
 	
 	@NotEmpty(message = "Must add description")
 	private String description;
-		
+	
+	@Enumerated(EnumType.STRING)
+	private TicketStatus ticketStatus;
+	
+	@NotNull
 	private Department department;
 	
+	@NotNull
 	private UserDetails userDetails;
 	
     private List<Comment> comments;
@@ -86,19 +95,18 @@ public class TicketInDto {
 	/**
 	 * @return the userDetails
 	 */
-	public UserDetails getUserDetails() {
+	public @NotNull UserDetails getUserDetails() {
 		return userDetails;
 	}
 
 	/**
 	 * @param userDetails the userDetails to set
 	 */
-	public void setUserDetails(UserDetails userDetails) {
+	public void setUserDetails(@NotNull UserDetails userDetails) {
 		this.userDetails = userDetails;
 	}
 
 	/**
-	 * @return the comments
 	 */
 	public List<Comment> getComments() {
 		return comments;
@@ -111,33 +119,11 @@ public class TicketInDto {
 		this.comments = comments;
 	}
 
-	/**
-	 * @param ticketType
-	 * @param ticketTitle
-	 * @param description
-	 * @param department
-	 * @param userDetails
-	 * @param comments
-	 */
-	public TicketInDto(TicketType ticketType, @NotEmpty(message = "Title is required") String ticketTitle,
-			@NotEmpty(message = "Must add description") String description, Department department,
-			UserDetails userDetails, List<Comment> comments) {
-		super();
-		this.ticketType = ticketType;
-		this.ticketTitle = ticketTitle;
-		this.description = description;
-		this.department = department;
-		this.userDetails = userDetails;
-		this.comments = comments;
+	public TicketStatus getTicketStatus() {
+		return ticketStatus;
 	}
 
-	/**
-	 * 
-	 */
-	public TicketInDto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-    
-	
+	public void setTicketStatus(TicketStatus ticketStatus) {
+		this.ticketStatus = ticketStatus;
+	}	
 }

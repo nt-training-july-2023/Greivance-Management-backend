@@ -23,15 +23,24 @@ public class TicketOutDto {
 	private Date createdAt;
 
 	private Date updatedAt;
+	
 
-	// deptoutdto BR
-	private String department;
+//	 @JsonBackReference(value = "dep")
+//	  private DepartmentOutDto department;
 
-	@JsonBackReference
+	
+	@JsonBackReference(value = "dep")
+	private DepartmentOutDto department;
+//
+//	  @JsonBackReference(value = "emp")
+//	  private EmployeeOutDto employee;
+	
+	@JsonBackReference(value = "user")
 	private UserDetailsOutDto userDetails;
 
 	private List<Comment> comments;
 
+	
 	/**
 	 * @return the ticketId
 	 */
@@ -133,14 +142,14 @@ public class TicketOutDto {
 	/**
 	 * @return the department
 	 */
-	public String getDepartment() {
+	public DepartmentOutDto getDepartment() {
 		return department;
 	}
 
 	/**
 	 * @param department the department to set
 	 */
-	public void setDepartment(String department) {
+	public void setDepartment(DepartmentOutDto department) {
 		this.department = department;
 	}
 
@@ -170,42 +179,6 @@ public class TicketOutDto {
 	 */
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
-	}
-
-	/**
-	 * @param ticketId
-	 * @param ticketType
-	 * @param ticketStatus
-	 * @param ticketTitle
-	 * @param description
-	 * @param createdAt
-	 * @param updatedAt
-	 * @param department
-	 * @param userDetails
-	 * @param comments
-	 */
-	public TicketOutDto(long ticketId, TicketType ticketType, TicketStatus ticketStatus, String ticketTitle,
-			String description, Date createdAt, Date updatedAt, String department, UserDetailsOutDto userDetails,
-			List<Comment> comments) {
-		super();
-		this.ticketId = ticketId;
-		this.ticketType = ticketType;
-		this.ticketStatus = ticketStatus;
-		this.ticketTitle = ticketTitle;
-		this.description = description;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-		this.department = department;
-		this.userDetails = userDetails;
-		this.comments = comments;
-	}
-
-	/**
-	 * 
-	 */
-	public TicketOutDto() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 }

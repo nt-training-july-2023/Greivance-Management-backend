@@ -1,106 +1,73 @@
 package com.grievance.Grievance.entity;
+import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 public class Comment{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private long commentId;
-	private String content;
+    private long commentId;
 	
-	@ManyToOne
-	@JoinColumn(name = "ticketId")
-	private Ticket ticket;
-	
-//	@JsonBackReference
-	@ManyToOne
-	@JoinColumn(name = "Id")
-	private UserDetails userDetails;
+	 private String content;
+	 
+	  @Column(name = "createdAt",nullable = false, updatable = false)
+	  @CreationTimestamp
+	  @Temporal(TemporalType.TIMESTAMP)
+	  private Date createdAt;
+	  
+	  @ManyToOne
+	  @JoinColumn(name = "ticketId")
+	  private Ticket ticket;
 
-	/**
-	 * @return the commentId
-	 */
+
 	public long getCommentId() {
 		return commentId;
 	}
 
-	/**
-	 * @param commentId the commentId to set
-	 */
+
 	public void setCommentId(long commentId) {
 		this.commentId = commentId;
 	}
 
-	/**
-	 * @return the content
-	 */
+
 	public String getContent() {
 		return content;
 	}
 
-	/**
-	 * @param content the content to set
-	 */
+
 	public void setContent(String content) {
 		this.content = content;
 	}
 
-	/**
-	 * @return the ticket
-	 */
+
 	public Ticket getTicket() {
 		return ticket;
 	}
 
-	/**
-	 * @param ticket the ticket to set
-	 */
+
 	public void setTicket(Ticket ticket) {
 		this.ticket = ticket;
 	}
 
-	/**
-	 * @return the userDetails
-	 */
-	public UserDetails getUserDetails() {
-		return userDetails;
+
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
-	/**
-	 * @param userDetails the userDetails to set
-	 */
-	public void setUserDetails(UserDetails userDetails) {
-		this.userDetails = userDetails;
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
-	/**
-	 * @param commentId
-	 * @param content
-	 * @param ticket
-	 * @param userDetails
-	 */
-	public Comment(long commentId, String content, Ticket ticket, UserDetails userDetails) {
-		super();
-		this.commentId = commentId;
-		this.content = content;
-		this.ticket = ticket;
-		this.userDetails = userDetails;
-	}
-
-	/**
-	 * 
-	 */
-	public Comment() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
-	
 }

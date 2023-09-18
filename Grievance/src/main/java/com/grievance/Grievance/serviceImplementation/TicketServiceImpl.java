@@ -1,65 +1,73 @@
 package com.grievance.Grievance.serviceImplementation;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.grievance.Grievance.Enum.TicketStatus;
 import com.grievance.Grievance.InDto.TicketInDto;
-import com.grievance.Grievance.OutDto.DepartmentOutDto;
 import com.grievance.Grievance.OutDto.TicketOutDto;
-import com.grievance.Grievance.entity.Department;
 import com.grievance.Grievance.entity.Ticket;
 import com.grievance.Grievance.repository.TicketRepository;
 import com.grievance.Grievance.service.TicketService;
-
-import net.bytebuddy.asm.Advice.This;
 
 @Service
 public class TicketServiceImpl implements TicketService {
 
 	@Autowired
-	TicketRepository ticketRepo;
-	
-
-	@Autowired
 	private ModelMapper modelMapper;
-
-	// Create ticket API
-
-	@Override
-	public Optional<TicketOutDto> createTicket(TicketInDto ticketInDto) {
-
-		Ticket ticket = this.ticketInDtoToTicket(ticketInDto);
-		Ticket savedTicket = this.ticketRepo.save(ticket);
-		return Optional.ofNullable(this.ticketToTicketOutDto(savedTicket));
-	}
 	
+	@Autowired
+	private TicketRepository ticketRepository;
+
 	@Override
-	public List<TicketOutDto> getAllTickets(){
-		List<Ticket> tickets = this.ticketRepo.findAll();
-		List<TicketOutDto> ticketList = tickets.stream().map(ticket -> this.ticketToTicketOutDto(ticket)).collect(Collectors.toList());
-		return ticketList;
-	}
-
-	// TicketInDto to Ticket.
-
-	public Ticket ticketInDtoToTicket(TicketInDto ticketInDto) {
+	public TicketOutDto createTicket(TicketInDto ticketInDto) {
+		// TODO Auto-generated method stub
+		System.out.println(ticketInDto.getComments());
+		
+		ticketInDto.setTicketStatus(TicketStatus.Open);
+		System.out.println("status:" +ticketInDto.getDescription());
 		Ticket ticket = this.modelMapper.map(ticketInDto, Ticket.class);
-		return ticket;
-
+		System.out.println();
+		Ticket savedTicket = ticketRepository.save(ticket);
+		TicketOutDto ticketOutDto = this.modelMapper.map(savedTicket, TicketOutDto.class);
+		return ticketOutDto;
 	}
 
-	// Ticket to TicketOutDto.
+	@Override
+	public List<TicketOutDto> getAllTickets() {
+		// TODO Auto-generated method stub
+		List<Ticket> tickets = ticketRepository.findAll();
+		List<TicketOutDto> list = new ArrayList<TicketOutDto>();
+		for(Ticket ticket :tickets) {
+			list.add(this.modelMapper.map(ticket, TicketOutDto.class));		
+		}
+		return list;
+	}
 
-	public TicketOutDto ticketToTicketOutDto(Ticket ticket) {
-
+	@Override
+	public TicketOutDto getTicketById(long ticketId) {
+		// TODO Auto-generated method stub
+		Ticket ticket = ticketRepository.findById(ticketId).get();
 		TicketOutDto ticketOutDto = this.modelMapper.map(ticket, TicketOutDto.class);
 		return ticketOutDto;
 	}
+
+	@Override
+	public TicketOutDto updateTicket(TicketInDto ticketInDto, long ticketId) {
+		// TODO Auto-generated method stub
+		Ticket ticket = ticketRepository.findById(ticketId).get();
+		 ticket.setTicketStatus(ticketInDto.getTicketStatus());	
+		return null;
+	}
+
+	@Override
+	public List<TicketOutDto> getAllTicketsByDepartment(long deptId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 
 }

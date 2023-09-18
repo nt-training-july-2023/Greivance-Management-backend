@@ -1,6 +1,6 @@
 package com.grievance.Grievance.entity;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -46,23 +48,26 @@ public class Ticket{
 	private TicketStatus ticketStatus;
 	
 	@CreationTimestamp
-	@Column(name = "createdAt",nullable = false, updatable = false )
-	private Date createdAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private Date createdAt;
 	
 	@UpdateTimestamp
-	@Column(name = "updatedAt")
-	private Date updatedAt;
+	@Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updatedAt")
+    private Date updatedAt;
 	
-	@JsonBackReference(value = "depar")
+	
+	@JsonBackReference(value = "dep")
 	@ManyToOne
 	@JoinColumn(name = "deptId")
 	private Department department;
-	
+
 	@JsonBackReference(value = "user")
 	@ManyToOne
-	@JoinColumn(name = "Id")
+	@JoinColumn(name = "userId")
 	private UserDetails userDetails;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ticket", fetch = FetchType.LAZY)
     private List<Comment> comments;
 
@@ -92,20 +97,6 @@ public class Ticket{
 	 */
 	public void setTicketTitle(String ticketTitle) {
 		this.ticketTitle = ticketTitle;
-	}
-
-	/**
-	 * @return the description
-	 */
-	public String getDecription() {
-		return description;
-	}
-
-	/**
-	 * @param decription the description to set
-	 */
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	/**
@@ -205,6 +196,15 @@ public class Ticket{
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
+	
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	/**
 	 * @param ticketId
@@ -218,13 +218,12 @@ public class Ticket{
 	 * @param userDetails
 	 * @param comments
 	 */
-	public Ticket(long ticketId, @NotEmpty String ticketTitle, @NotEmpty String description, TicketType ticketType,
+	public Ticket(long ticketId, @NotEmpty String ticketTitle,TicketType ticketType,
 			TicketStatus ticketStatus, Date createdAt, Date updatedAt, Department department, UserDetails userDetails,
 			List<Comment> comments) {
 		super();
 		this.ticketId = ticketId;
 		this.ticketTitle = ticketTitle;
-		this.description = description;
 		this.ticketType = ticketType;
 		this.ticketStatus = ticketStatus;
 		this.createdAt = createdAt;
@@ -241,7 +240,6 @@ public class Ticket{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 	
 	
 }

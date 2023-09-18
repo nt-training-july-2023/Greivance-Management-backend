@@ -17,85 +17,39 @@ import com.grievance.Grievance.service.DepartmentService;
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
 
-	@Autowired
-	DepartmentRepository departmentRepo;
-	Department department;
-
-	@Autowired
-	ModelMapper modelMapper;
-
-	// Create the Department
-
-	@Override
-	public Optional<DepartmentOutDto> createDepartment(DepartmentInDto departmentInDto) {
-		Department department = this.departmentInDtoToDepartment(departmentInDto);
-		Department savedDepartment = this.departmentRepo.save(department);
-	    DepartmentOutDto departmentOutDtoSaved = this.departmentToDepartmentOutDto(savedDepartment);
-		return Optional.ofNullable(departmentOutDtoSaved);
-	}
-
-	@Override
-	public Optional<DepartmentOutDto> getDepartmentByName(String deptName){
-		Department department = departmentRepo.findBydeptName(deptName);
-		if(department!=null) {
-			DepartmentOutDto departmentOutDto = this.departmentToDepartmentOutDto(department);
-			return Optional.ofNullable(departmentOutDto);
-		}
-		return Optional.empty();
-	}
+	@Autowired 
+	private ModelMapper modelMapper;
 	
-	// get All department
+	@Autowired
+	private DepartmentRepository departmentRepository;
 
 	@Override
-	public List<DepartmentOutDto> getAllDepartment() {
-		List<Department> departments = this.departmentRepo.findAll();
-//		List<DepartmentOutDto> departmentList = departments.stream()
-//				.map(department -> this.departmentToDepartmentOutDto(department)).collect(Collectors.toList());
-		List<DepartmentOutDto> list= new ArrayList<DepartmentOutDto>();
-		
-		for(Department department : departments) {
-			list.add(this.modelMapper.map(department, DepartmentOutDto.class));
-		}
-		return list;
+	public DepartmentOutDto createDepartment(DepartmentInDto departmentInDto) {
+		// TODO Auto-generated method stub	
+		System.out.println("In"+departmentInDto);
+        Department department = this.modelMapper.map(departmentInDto, Department.class);
+        System.out.println("Dep"+department);
+		Department savedDepartment = departmentRepository.save(department);
+		System.out.println("save"+savedDepartment);
+		DepartmentOutDto departmentOutDto = this.modelMapper.map(savedDepartment, DepartmentOutDto.class);
+		System.out.println("out"+departmentOutDto);
+		return departmentOutDto;
 	}
 
-	// Get department by Id
-
+	@Override
+	public List<DepartmentOutDto> getAllDepartments() {
+		// TODO Auto-generated method stub
+		List<Department> departments = departmentRepository.findAll();
+		List<DepartmentOutDto> list = new ArrayList<DepartmentOutDto>();
+		for (Department department : departments) {
+			list.add(this.modelMapper.map(department,DepartmentOutDto.class));
+		}
+		return list;	
+	}
 	@Override
 	public DepartmentOutDto getDepartmentById(long deptId) {
 		// TODO Auto-generated method stub
-		Department department = this.departmentRepo.findById(deptId).get();
-		return this.departmentToDepartmentOutDto(department);
-	}
-
-	// Updating the Department.
-
-	@Override
-	public DepartmentOutDto updateDepartment(DepartmentInDto departmentInDto, long deptId) {
-		// TODO Auto-generated method stub
-		Department department = this.departmentRepo.findById(deptId).get();
-		department.setDeptName(departmentInDto.getDeptName());
-		Department updateDepartment = this.departmentRepo.save(department);
-		return this.departmentToDepartmentOutDto(updateDepartment);
-	}
-
-	// Delete department by Id.
-
-	@Override
-	public void deleteDepartmentById(long deptId) {
-		this.departmentRepo.deleteById(deptId);
-	}
-
-	// Conversion methods
-	// DepartmentInDto to Department.
-	public Department departmentInDtoToDepartment(DepartmentInDto departmentInDto) {
-		Department department = this.modelMapper.map(departmentInDto, Department.class);
-		return department;
-	}
-
-	// Department to DepartmentOutDto.
-
-	public DepartmentOutDto departmentToDepartmentOutDto(Department department) {
+		Department department = departmentRepository.findById(deptId).get();
 		DepartmentOutDto departmentOutDto = this.modelMapper.map(department, DepartmentOutDto.class);
 		return departmentOutDto;
 	}

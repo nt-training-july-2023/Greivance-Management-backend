@@ -24,6 +24,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grievance.Grievance.Enum.UserType;
 import com.grievance.Grievance.InDto.LoginInDto;
 import com.grievance.Grievance.InDto.UserDetailsInDto;
+import com.grievance.Grievance.OutDto.CommentOutDto;
+import com.grievance.Grievance.OutDto.TicketOutDto;
 import com.grievance.Grievance.OutDto.UserDetailsOutDto;
 import com.grievance.Grievance.controller.UserController;
 import com.grievance.Grievance.entity.Comment;
@@ -57,15 +59,16 @@ public class UserControllerTest {
 		LoginInDto loginDto = new LoginInDto();
 		loginDto.setEmail("testtesttest@nucleusteq.com");
 		loginDto.setPassword("Test@123");
-		UserDetailsOutDto userDetailsOutDtoExpected = new UserDetailsOutDto();
+		
+	    UserDetailsOutDto userDetailsOutDtoExpected = new UserDetailsOutDto();
 		userDetailsOutDtoExpected.setName("Test3");
 		userDetailsOutDtoExpected.setIsLoggedIn(false);
 		userDetailsOutDtoExpected.setEmail("testtesttest@nucleusteq.com");
-		userDetailsOutDtoExpected.setUserType(UserType.valueOf("MEMBER"));
-	//	userDetailsOutDtoExpected.setDepartment(new Department());
-	//	userDetailsOutDtoExpected.setTickets(new ArrayList<Ticket>());
+		userDetailsOutDtoExpected.setUserType(UserType.valueOf("Member"));
+		userDetailsOutDtoExpected.setDepartment("IT");
+		userDetailsOutDtoExpected.setTickets(new ArrayList<TicketOutDto>());
 
-		when(userService.loginService(Mockito.any(LoginInDto.class))).thenReturn(Optional.of(userDetailsOutDtoExpected));
+		when(userService.userLogin(Mockito.any(LoginInDto.class))).thenReturn(userDetailsOutDtoExpected);
 
 		mockMvc.perform(MockMvcRequestBuilders.post("/grievance/login").contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(loginDto)).header("email", "ayushi@nucleusteq.com")
@@ -81,20 +84,20 @@ public class UserControllerTest {
 		userDetailsInDto.setEmail("sneha@nucleusteq.com");
 		userDetailsInDto.setName("Sneha Bhate");
 		userDetailsInDto.setPassword("Sneha@01");
-		userDetailsInDto.setUserType(UserType.valueOf("MEMBER"));
+		userDetailsInDto.setUserType(UserType.valueOf("Member"));
 		
 		UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
-		userDetailsOutDto.setComments(new ArrayList<Comment>());
-	//	userDetailsOutDto.setDepartment(new Department());
+		userDetailsOutDto.setComments(new ArrayList<CommentOutDto>());
+		userDetailsOutDto.setDepartment("IT");
 		userDetailsOutDto.setId(1);
 		userDetailsOutDto.setIsLoggedIn(true);
 		userDetailsOutDto.setName("Sneha Bhate");
-	//	userDetailsOutDto.setTickets(new ArrayList<Ticket>());
+		userDetailsOutDto.setTickets(new ArrayList<TicketOutDto>());
 		
-		when(userService.createUser(Mockito.any(UserDetailsInDto.class))).thenReturn(Optional.of(userDetailsOutDto));
+		when(userService.createUser(Mockito.any(UserDetailsInDto.class))).thenReturn(userDetailsOutDto);
 		
-		mockMvc.perform(MockMvcRequestBuilders.post("/grievance/saveUser").contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsBytes(userDetailsInDto)).header("email", "sneha@nucleusteq.com")
+		mockMvc.perform(MockMvcRequestBuilders.post("/grievance/user").contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsBytes(userDetailsInDto))
 				.header("password", "Sneha@01")).andExpect(status().isCreated())
 				.andDo(MockMvcResultHandlers.print());
 		
