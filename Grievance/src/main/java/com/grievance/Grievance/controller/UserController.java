@@ -1,10 +1,5 @@
 package com.grievance.Grievance.controller;
 
-import java.util.List;
-import java.util.Optional;
-
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,34 +28,31 @@ public class UserController {
 
 	@Autowired
 	UserService userservice;
-	
+
 	@PostMapping("/user")
 	public ResponseEntity<UserDetailsOutDto> createUser(@Validated @RequestBody UserDetailsInDto userDetailsInDto) {
-		System.out.println("userservice"+userDetailsInDto.getUserType());
 		UserDetailsOutDto userDetailsOutDto = userservice.createUser(userDetailsInDto);
-//		System.out.println("controller"+userDetailsOutDto.getIsLoggedIn());
-		System.out.println();
-		ResponseEntity userResponse = new ResponseEntity(userDetailsOutDto,HttpStatus.CREATED);
+		ResponseEntity userResponse = new ResponseEntity(userDetailsOutDto, HttpStatus.CREATED);
 		return userResponse;
 	}
-	
+
 	@PostMapping("/login")
-	public ResponseEntity<UserDetailsOutDto> userLogin(@Validated @RequestBody LoginInDto loginInDto){
+	public ResponseEntity<UserDetailsOutDto> userLogin(@Validated @RequestBody LoginInDto loginInDto) {
 		UserDetailsOutDto userDetailsOutDto = userservice.userLogin(loginInDto);
-		System.out.println("controller "+userDetailsOutDto.getIsLoggedIn());
-		ResponseEntity loginResponse = new ResponseEntity(userDetailsOutDto,HttpStatus.ACCEPTED);
+		ResponseEntity loginResponse = new ResponseEntity(userDetailsOutDto, HttpStatus.ACCEPTED);
 		return loginResponse;
 	}
-	
+
 	@PostMapping("/changepassword")
-	public ResponseEntity<UserDetailsOutDto> changePassword(@Validated @RequestBody ChangePasswordInDto changePasswordInDto){
+	public ResponseEntity<UserDetailsOutDto> changePassword(
+			@Validated @RequestBody ChangePasswordInDto changePasswordInDto) {
 		UserDetailsOutDto userDetailsOutDto = userservice.changePassword(changePasswordInDto);
-		ResponseEntity passwordResponse = new ResponseEntity(userDetailsOutDto,HttpStatus.ACCEPTED);
+		ResponseEntity passwordResponse = new ResponseEntity(userDetailsOutDto, HttpStatus.ACCEPTED);
 		return passwordResponse;
-}
+	}
 
 	@GetMapping("/user/{userId}")
-	public ResponseEntity<UserDetailsOutDto> getUserById(@PathVariable ("userId") long userId){
+	public ResponseEntity<UserDetailsOutDto> getUserById(@PathVariable("userId") long userId) {
 		UserDetailsOutDto userDetailsOutDto = userservice.getUserById(userId);
 		return ResponseEntity.ok(userDetailsOutDto);
 	}

@@ -1,15 +1,25 @@
 package com.grievance.Grievance.serviceImplementation;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.grievance.Grievance.Enum.TicketStatus;
 import com.grievance.Grievance.InDto.TicketInDto;
+import com.grievance.Grievance.InDto.TicketUpdateDto;
 import com.grievance.Grievance.OutDto.TicketOutDto;
+import com.grievance.Grievance.entity.Comment;
 import com.grievance.Grievance.entity.Ticket;
+import com.grievance.Grievance.exception.ResourceNotFoundException;
+import com.grievance.Grievance.repository.CommentRepository;
 import com.grievance.Grievance.repository.TicketRepository;
 import com.grievance.Grievance.service.TicketService;
 
@@ -18,31 +28,35 @@ public class TicketServiceImpl implements TicketService {
 
 	@Autowired
 	private ModelMapper modelMapper;
-	
+
 	@Autowired
 	private TicketRepository ticketRepository;
+
+	@Autowired
+	private CommentRepository commentRepository;
 
 	@Override
 	public TicketOutDto createTicket(TicketInDto ticketInDto) {
 		// TODO Auto-generated method stub
-		System.out.println(ticketInDto.getComments());
-		
-		ticketInDto.setTicketStatus(TicketStatus.Open);
-		System.out.println("status:" +ticketInDto.getDescription());
+
 		Ticket ticket = this.modelMapper.map(ticketInDto, Ticket.class);
-		System.out.println();
+		ticket.setTicketStatus(TicketStatus.Open);
 		Ticket savedTicket = ticketRepository.save(ticket);
 		TicketOutDto ticketOutDto = this.modelMapper.map(savedTicket, TicketOutDto.class);
 		return ticketOutDto;
 	}
 
 	@Override
-	public List<TicketOutDto> getAllTickets() {
+	public List<TicketOutDto> getAllTickets(Integer pageNumber, Integer pageSize, TicketStatus ticketStatus) {
 		// TODO Auto-generated method stub
-		List<Ticket> tickets = ticketRepository.findAll();
+
+		Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("ticketStatus"));
+		// GetAllByDepartment
+
+		Page<Ticket> ticketsPage = ticketRepository.findAll(pageable);
 		List<TicketOutDto> list = new ArrayList<TicketOutDto>();
-		for(Ticket ticket :tickets) {
-			list.add(this.modelMapper.map(ticket, TicketOutDto.class));		
+		for (Ticket ticket : ticketsPage) {
+			list.add(this.modelMapper.map(ticket, TicketOutDto.class));
 		}
 		return list;
 	}
@@ -56,11 +70,26 @@ public class TicketServiceImpl implements TicketService {
 	}
 
 	@Override
-	public TicketOutDto updateTicket(TicketInDto ticketInDto, long ticketId) {
+	public TicketOutDto updateTicket(TicketUpdateDto ticketUpdateDto, long ticketId) {
 		// TODO Auto-generated method stub
-		Ticket ticket = ticketRepository.findById(ticketId).get();
-		 ticket.setTicketStatus(ticketInDto.getTicketStatus());	
-		return null;
+		Ticket ticket = ticketRepository.findById(ticketId)
+				.orElseThrow(() -> new ResourceNotFoundException("", "a", ""));
+
+		ticket.setTicketStatus(ticketUpdateDto.getTicketStatus());
+
+		Comment comment = new Comment();
+		comment.setContent(ticketUpdateDto.getContent());
+		comment.setLastUpdatedAt(new Date());
+		comment.setTicket(ticket);
+		commentRepository.save(comment);
+		ticket.getComments().add(comment);
+		List<Comment> commentList = new ArrayList<Comment>();
+		commentList.add(comment);
+		ticket.setComments(commentList);
+
+		Ticket savedTicket = ticketRepository.save(ticket);
+		TicketOutDto ticketOutDto = modelMapper.map(savedTicket, TicketOutDto.class);
+		return ticketOutDto;
 	}
 
 	@Override
@@ -68,6 +97,4 @@ public class TicketServiceImpl implements TicketService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-
 }

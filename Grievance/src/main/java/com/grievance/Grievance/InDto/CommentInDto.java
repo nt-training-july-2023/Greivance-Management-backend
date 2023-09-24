@@ -5,28 +5,16 @@ import java.sql.Date;
 import com.grievance.Grievance.entity.Ticket;
 
 public class CommentInDto {
-	
-	 private Integer commentId;
 
-	  /**
-	   * content.
-	   */
-	  private String content;
+	private Integer commentId;
 
-	  /**
-	   * Creation time.
-	   */
-	  private Date createdAt;
+	private String content;
 
-	  /**
-	   * employee name.
-	   */
-	  private String name;
+	private Date createdAt;
 
-	  /**
-	   * ticket.
-	   */
-	  private Ticket ticket;
+	private String name;
+
+	private Ticket ticket;
 
 	public Integer getCommentId() {
 		return commentId;
@@ -81,6 +69,5 @@ public class CommentInDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 
 }

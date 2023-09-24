@@ -1,8 +1,9 @@
 package com.grievance.Grievance.OutDto;
+
 import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.grievance.Grievance.Enum.UserType;
-import com.grievance.Grievance.entity.Comment;
 
 public class UserDetailsOutDto {
 
@@ -10,24 +11,14 @@ public class UserDetailsOutDto {
 	private String name;
 	private UserType userType;
 	private String email;
-	private Boolean isLoggedIn; 
-	
+	private Boolean isLoggedIn;
 
-	private String department; 
-	
-//	@JsonBackReference
-//	  private DepartmentOutDto department;
-//
-//	  /**
-//	   * Tickets Out Dto.
-//	   */
-//	  @JsonManagedReference(value = "emp")
-//	  private List<TicketOutDto> ticket;
+	private String department;
 
 	@JsonManagedReference(value = "user")
 	private List<TicketOutDto> tickets;
-	
-    private List<CommentOutDto> comments;
+
+	private List<CommentOutDto> comments;
 
 	public long getId() {
 		return Id;
@@ -92,6 +83,5 @@ public class UserDetailsOutDto {
 	public void setComments(List<CommentOutDto> comments) {
 		this.comments = comments;
 	}
-	
-    
+
 }

@@ -22,47 +22,36 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.grievance.Grievance.Enum.UserType;
 
 @Entity
-public class UserDetails{
+public class UserDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long userId;
-	
+
 	@NotEmpty(message = "name is required")
 	private String name;
-	
+
 	@Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$")
 	@NotEmpty(message = "Email is required")
 	private String email;
-	
+
 	@NotEmpty(message = "Password is required")
 	@Size(min = 8, message = "Password should be at least 8 characters")
 	private String password;
-	
+
 	@Enumerated(EnumType.STRING)
 	private UserType usertype;
-	
+
 	private Boolean isLoggedIn;
-	
+
 	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "deptId")
 	private Department department;
-	
-//	@ManyToOne
-//	  @JoinColumn(name = "department_id")
-//	  @JsonBackReference
-//	  private Department department;
 
 	@JsonManagedReference(value = "user")
-	@OneToMany(mappedBy = "userDetails",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Ticket> tickets; 
-	
-//	@OneToMany(
-//		      cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
-//		  @JsonManagedReference(value = "emp")
-//		  private List<Ticket> ticket;
-
+	@OneToMany(mappedBy = "userDetails", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Ticket> tickets;
 
 	public long getUserId() {
 		return userId;
@@ -147,5 +136,5 @@ public class UserDetails{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 }

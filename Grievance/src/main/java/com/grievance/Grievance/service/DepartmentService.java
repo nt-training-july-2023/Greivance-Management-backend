@@ -1,7 +1,6 @@
 package com.grievance.Grievance.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.grievance.Grievance.InDto.DepartmentInDto;
 import com.grievance.Grievance.OutDto.DepartmentOutDto;

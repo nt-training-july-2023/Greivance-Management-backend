@@ -3,9 +3,9 @@ package com.grievance.Grievance.InDto;
 import javax.validation.constraints.NotEmpty;
 
 public class DepartmentInDto {
-	
-	 @NotEmpty(message = "Department name can not be empty")
-	  private String deptName;
+
+	@NotEmpty(message = "Department name can not be empty")
+	private String deptName;
 
 	public String getDeptName() {
 		return deptName;
@@ -29,6 +29,5 @@ public class DepartmentInDto {
 	public String toString() {
 		return "DepartmentInDto [deptName=" + deptName + "]";
 	}
-	
 
 }

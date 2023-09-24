@@ -9,11 +9,11 @@ public class ChangePasswordInDto {
 	@NotEmpty(message = "Password is required")
 	@Size(min = 8, message = "Password should be at least 8 characters")
 	private String oldPassword;
-	
+
 	@NotEmpty(message = "Password is required")
 	@Size(min = 8, message = "Password should be at least 8 characters")
 	private String newPassword;
-	
+
 	@Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$")
 	@NotEmpty(message = "Email is required")
 	private String email;
@@ -41,6 +41,5 @@ public class ChangePasswordInDto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+
 }

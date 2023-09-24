@@ -1,4 +1,5 @@
 package com.grievance.Grievance.InDto;
+
 import java.util.List;
 
 import javax.persistence.EnumType;
@@ -8,33 +9,31 @@ import javax.validation.constraints.NotNull;
 
 import com.grievance.Grievance.Enum.TicketStatus;
 import com.grievance.Grievance.Enum.TicketType;
-import com.grievance.Grievance.OutDto.CommentOutDto;
-import com.grievance.Grievance.OutDto.UserDetailsOutDto;
 import com.grievance.Grievance.entity.Comment;
 import com.grievance.Grievance.entity.Department;
 import com.grievance.Grievance.entity.UserDetails;
 
 public class TicketInDto {
-	
+
 	@Enumerated(EnumType.STRING)
 	private TicketType ticketType;
-	
+
 	@NotEmpty(message = "Title is required")
 	private String ticketTitle;
-	
+
 	@NotEmpty(message = "Must add description")
 	private String description;
-	
+
 	@Enumerated(EnumType.STRING)
 	private TicketStatus ticketStatus;
-	
+
 	@NotNull
 	private Department department;
-	
+
 	@NotNull
 	private UserDetails userDetails;
-	
-    private List<Comment> comments;
+
+	private List<Comment> comments;
 
 	/**
 	 * @return the ticketType
@@ -125,5 +124,5 @@ public class TicketInDto {
 
 	public void setTicketStatus(TicketStatus ticketStatus) {
 		this.ticketStatus = ticketStatus;
-	}	
+	}
 }

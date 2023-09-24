@@ -1,7 +1,5 @@
 package com.grievance.Grievance.Enum;
 
 public enum TicketStatus {
-	Open,
-	Being_Addressed,
-	Resolved
+	Open, Being_Addressed, Resolved
 }

@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -20,44 +19,41 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.core.sym.Name;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.grievance.Grievance.Enum.TicketStatus;
 import com.grievance.Grievance.Enum.TicketType;
 
 @Entity
-public class Ticket{
-	
+public class Ticket {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long ticketId;
-	
+
 	@NotEmpty
 	private String ticketTitle;
-	
+
 	@NotEmpty
 	private String description;
-	
+
 	@Enumerated(EnumType.STRING)
 	private TicketType ticketType;
-	
+
 	@Enumerated(EnumType.STRING)
 	private TicketStatus ticketStatus;
-	
+
 	@CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Date createdAt;
-	
-	@UpdateTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updatedAt")
-    private Date updatedAt;
-	
-	
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Kolkata")
+	private Date createdAt;
+
+	@CreationTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Kolkata")
+	private Date updatedAt;
+
 	@JsonBackReference(value = "dep")
 	@ManyToOne
 	@JoinColumn(name = "deptId")
@@ -68,8 +64,9 @@ public class Ticket{
 	@JoinColumn(name = "userId")
 	private UserDetails userDetails;
 
+	// changes
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ticket", fetch = FetchType.LAZY)
-    private List<Comment> comments;
+	private List<Comment> comments;
 
 	/**
 	 * @return the ticketId
@@ -128,34 +125,6 @@ public class Ticket{
 	}
 
 	/**
-	 * @return the createdAt
-	 */
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	/**
-	 * @param createdAt the createdAt to set
-	 */
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	/**
-	 * @return the updatedAt
-	 */
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	/**
-	 * @param updatedAt the updatedAt to set
-	 */
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	/**
 	 * @return the department
 	 */
 	public Department getDepartment() {
@@ -196,7 +165,6 @@ public class Ticket{
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
-	
 
 	public String getDescription() {
 		return description;
@@ -207,9 +175,37 @@ public class Ticket{
 	}
 
 	/**
+	 * @return the createdAt
+	 */
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	/**
+	 * @param createdAt the createdAt to set
+	 */
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	/**
+	 * @return the updatedAt
+	 */
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	/**
+	 * @param updatedAt the updatedAt to set
+	 */
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	/**
 	 * @param ticketId
 	 * @param ticketTitle
-	 * @param decription
+	 * @param description
 	 * @param ticketType
 	 * @param ticketStatus
 	 * @param createdAt
@@ -218,12 +214,13 @@ public class Ticket{
 	 * @param userDetails
 	 * @param comments
 	 */
-	public Ticket(long ticketId, @NotEmpty String ticketTitle,TicketType ticketType,
+	public Ticket(long ticketId, @NotEmpty String ticketTitle, @NotEmpty String description, TicketType ticketType,
 			TicketStatus ticketStatus, Date createdAt, Date updatedAt, Department department, UserDetails userDetails,
 			List<Comment> comments) {
 		super();
 		this.ticketId = ticketId;
 		this.ticketTitle = ticketTitle;
+		this.description = description;
 		this.ticketType = ticketType;
 		this.ticketStatus = ticketStatus;
 		this.createdAt = createdAt;
@@ -240,6 +237,5 @@ public class Ticket{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
+
 }

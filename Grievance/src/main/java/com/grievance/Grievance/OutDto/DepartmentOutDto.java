@@ -3,18 +3,16 @@ package com.grievance.Grievance.OutDto;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.grievance.Grievance.entity.Ticket;
 
 public class DepartmentOutDto {
 
 	private long deptId;
 	private String deptName;
-	
+
 	@JsonManagedReference
 	private List<UserDetailsOutDto> userDetails;
-	
+
 	@JsonManagedReference(value = "dep")
-//	private List<Ticket> tickets;
 	private List<TicketOutDto> tickets;
 
 	public long getDeptId() {
@@ -49,7 +47,8 @@ public class DepartmentOutDto {
 		this.tickets = tickets;
 	}
 
-	public DepartmentOutDto(long deptId, String deptName, List<UserDetailsOutDto> userDetails, List<TicketOutDto> tickets) {
+	public DepartmentOutDto(long deptId, String deptName, List<UserDetailsOutDto> userDetails,
+			List<TicketOutDto> tickets) {
 		super();
 		this.deptId = deptId;
 		this.deptName = deptName;
@@ -64,8 +63,7 @@ public class DepartmentOutDto {
 
 	@Override
 	public String toString() {
-		return "DepartmentOutDto [deptName=" + deptName + "]";
+		return "DepartmentOutDto [deptId=" + deptId + "";
 	}
-	
-	
+
 }
