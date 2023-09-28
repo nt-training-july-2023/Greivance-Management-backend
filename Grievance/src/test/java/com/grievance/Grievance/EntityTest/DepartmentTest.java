@@ -59,11 +59,7 @@ public class DepartmentTest {
 	     
 	        Department department = new Department();
 	        department.setDeptName("HR");
-
-
 	        String toStringResult = department.toString();
-
-
 	        assertEquals("HR", toStringResult);
 	    }
 }

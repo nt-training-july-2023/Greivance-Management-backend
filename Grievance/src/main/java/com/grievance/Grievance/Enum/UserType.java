@@ -1,7 +1,18 @@
 package com.grievance.Grievance.Enum;
 
+/**
+ * Enumeration representing the type of user.
+ * <p>
+ * This enum defines user types: Admin and Member. 
+ */
 public enum UserType {
+	/**
+	 * The user is an administrator.
+	 */
+	Admin,
 
-	Admin, Member
-
+	/**
+	 * The user is a regular member.
+	 */
+	Member
 }

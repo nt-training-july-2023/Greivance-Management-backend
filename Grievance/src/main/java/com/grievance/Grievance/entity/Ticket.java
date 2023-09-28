@@ -24,199 +24,269 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.grievance.Grievance.Enum.TicketStatus;
 import com.grievance.Grievance.Enum.TicketType;
-
+/**
+ * Represents a ticket in the system.
+ */
 @Entity
 public class Ticket {
-
+	/**
+	 * The unique identifier for this ticket.
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long ticketId;
 
+	/**
+	 * The title of the ticket.
+	 */
 	@NotEmpty
 	private String ticketTitle;
 
+	/**
+	 * The description of the ticket.
+	 */
 	@NotEmpty
 	private String description;
-
+	/**
+	 * The description of the ticket.
+	 */
 	@Enumerated(EnumType.STRING)
 	private TicketType ticketType;
-
-	@Enumerated(EnumType.STRING)
+	/**
+	 * The status of the ticket.
+	 */
 	private TicketStatus ticketStatus;
 
+	/**
+	 * The date and time when the ticket was created.
+	 */
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Kolkata")
-	private Date createdAt;
-
+	private java.util.Date createdAt;
+	/**
+	 * The date and time when the ticket was last updated.
+	 */
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Kolkata")
-	private Date updatedAt;
-
+	private java.util.Date updatedAt;
+	/**
+	 * The department to which the ticket is assigned.
+	 */
 	@JsonBackReference(value = "dep")
 	@ManyToOne
 	@JoinColumn(name = "deptId")
 	private Department department;
-
+	/**
+	 * The user details associated with this ticket.
+	 */
 	@JsonBackReference(value = "user")
 	@ManyToOne
 	@JoinColumn(name = "userId")
 	private UserDetails userDetails;
 
-	// changes
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ticket", fetch = FetchType.LAZY)
+	/**
+	 * The list of comments associated with this ticket.
+	 */
+	@OneToMany(mappedBy = "ticket")
 	private List<Comment> comments;
 
 	/**
-	 * @return the ticketId
+	 * Gets the unique identifier for this ticket.
+	 *
+	 * @return The ticket ID.
 	 */
 	public long getTicketId() {
 		return ticketId;
 	}
 
 	/**
-	 * @param ticketId the ticketId to set
+	 * Sets the unique identifier for this ticket.
+	 *
+	 * @param ticketId The ticket ID to set.
 	 */
 	public void setTicketId(long ticketId) {
 		this.ticketId = ticketId;
 	}
 
 	/**
-	 * @return the ticketTitle
+	 * Gets the title of the ticket.
+	 *
+	 * @return The ticket title.
 	 */
 	public String getTicketTitle() {
 		return ticketTitle;
 	}
 
 	/**
-	 * @param ticketTitle the ticketTitle to set
+	 * Sets the title of the ticket.
+	 *
+	 * @param ticketTitle The ticket title to set.
 	 */
 	public void setTicketTitle(String ticketTitle) {
 		this.ticketTitle = ticketTitle;
 	}
 
 	/**
-	 * @return the ticketType
+	 * Gets the type of the ticket.
+	 *
+	 * @return The ticket type.
 	 */
 	public TicketType getTicketType() {
 		return ticketType;
 	}
 
 	/**
-	 * @param ticketType the ticketType to set
+	 * Sets the type of the ticket.
+	 *
+	 * @param ticketType The ticket type to set.
 	 */
 	public void setTicketType(TicketType ticketType) {
 		this.ticketType = ticketType;
 	}
 
 	/**
-	 * @return the ticketStatus
+	 * Gets the status of the ticket.
+	 *
+	 * @return The ticket status.
 	 */
 	public TicketStatus getTicketStatus() {
 		return ticketStatus;
 	}
 
 	/**
-	 * @param ticketStatus the ticketStatus to set
+	 * Sets the status of the ticket.
+	 *
+	 * @param ticketStatus The ticket status to set.
 	 */
 	public void setTicketStatus(TicketStatus ticketStatus) {
 		this.ticketStatus = ticketStatus;
 	}
 
 	/**
-	 * @return the department
+	 * Gets the department associated with the ticket.
+	 *
+	 * @return The department.
 	 */
 	public Department getDepartment() {
 		return department;
 	}
 
 	/**
-	 * @param department the department to set
+	 * Sets the department associated with the ticket.
+	 *
+	 * @param department The department to set.
 	 */
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
 
 	/**
-	 * @return the userDetails
+	 * Gets the user details associated with the ticket.
+	 *
+	 * @return The user details.
 	 */
 	public UserDetails getUserDetails() {
 		return userDetails;
 	}
 
 	/**
-	 * @param userDetails the userDetails to set
+	 * Sets the user details associated with the ticket.
+	 *
+	 * @param userDetails The user details to set.
 	 */
 	public void setUserDetails(UserDetails userDetails) {
 		this.userDetails = userDetails;
 	}
 
 	/**
-	 * @return the comments
+	 * Gets the list of comments associated with the ticket.
+	 *
+	 * @return The list of comments.
 	 */
 	public List<Comment> getComments() {
 		return comments;
 	}
-
 	/**
-	 * @param comments the comments to set
+	 * Sets the list of comments associated with the ticket.
+	 *
+	 * @param comments The list of comments to set.
 	 */
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
-
+	/**
+	 * Gets the description of the ticket.
+	 *
+	 * @return The ticket description.
+	 */
 	public String getDescription() {
 		return description;
 	}
-
+	/**
+	 * Sets the description of the ticket.
+	 *
+	 * @param description The ticket description to set.
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
 	/**
-	 * @return the createdAt
+	 * Gets the date and time when the ticket was created.
+	 *
+	 * @return The creation date and time.
 	 */
-	public Date getCreatedAt() {
+	public java.util.Date getCreatedAt() {
 		return createdAt;
 	}
 
 	/**
-	 * @param createdAt the createdAt to set
+	 * Sets the date and time when the ticket was created.
+	 *
+	 * @param createdAt The creation date and time to set.
 	 */
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
 
 	/**
-	 * @return the updatedAt
+	 * Gets the date and time when the ticket was last updated.
+	 *
+	 * @return The last update date and time.
 	 */
-	public Date getUpdatedAt() {
+	public java.util.Date getUpdatedAt() {
 		return updatedAt;
 	}
 
 	/**
-	 * @param updatedAt the updatedAt to set
+	 * Sets the date and time when the ticket was last updated.
+	 *
+	 * @param updatedAt The last update date and time to set.
 	 */
+
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 
 	/**
-	 * @param ticketId
-	 * @param ticketTitle
-	 * @param description
-	 * @param ticketType
-	 * @param ticketStatus
-	 * @param createdAt
-	 * @param updatedAt
-	 * @param department
-	 * @param userDetails
-	 * @param comments
+	 * Constructs a new Ticket object with the specified parameters.
+	 *
+	 * @param ticketId     The unique identifier for this ticket.
+	 * @param ticketTitle  The title of the ticket.
+	 * @param description  The description of the ticket.
+	 * @param ticketType   The type of the ticket.
+	 * @param ticketStatus The status of the ticket.
+	 * @param createdAt    The date and time when the ticket was created.
+	 * @param updatedAt    The date and time when the ticket was last updated.
+	 * @param department   The department associated with the ticket.
+	 * @param userDetails  The user details associated with the ticket.
+	 * @param comments     The list of comments associated with the ticket.
 	 */
 	public Ticket(long ticketId, @NotEmpty String ticketTitle, @NotEmpty String description, TicketType ticketType,
-			TicketStatus ticketStatus, Date createdAt, Date updatedAt, Department department, UserDetails userDetails,
-			List<Comment> comments) {
+			TicketStatus ticketStatus, java.util.Date createdAt, java.util.Date updatedAt, Department department,
+			UserDetails userDetails, List<Comment> comments) {
 		super();
 		this.ticketId = ticketId;
 		this.ticketTitle = ticketTitle;
@@ -231,11 +301,18 @@ public class Ticket {
 	}
 
 	/**
-	 * 
+	 * Create a new instance of the Ticket class.
 	 */
 	public Ticket() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		return "Ticket [ticketId=" + ticketId + ", ticketTitle=" + ticketTitle + ", description=" + description
+				+ ", ticketType=" + ticketType + ", ticketStatus=" + ticketStatus + ", createdAt=" + createdAt
+				+ ", updatedAt=" + updatedAt + ", department=" + department + ", userDetails=" + userDetails
+				+ ", comments=" + comments + "]";
 	}
 
 }

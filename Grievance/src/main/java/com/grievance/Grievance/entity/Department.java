@@ -13,82 +13,110 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+/**
+ * Represents a department in the organization.
+ */
 @Entity
 public class Department {
 
+	/**
+	 * The unique identifier for this department.
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long deptId;
-
+	/**
+	 * The name of the department (unique).
+	 */
 	@Column(name = "deptName", unique = true)
 	private String deptName;
-
+	/**
+	 * The list of tickets associated with this department.
+	 */
 	@JsonManagedReference(value = "dep")
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "department", fetch = FetchType.LAZY)
 	private List<Ticket> tickets;
-
+	/**
+	 * The list of user details associated with this department.
+	 */
 	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "department", fetch = FetchType.LAZY)
 	private List<UserDetails> userDetails;
 
 	/**
-	 * @return the deptId
+	 * Get the unique identifier for this department.
+	 *
+	 * @return The department's identifier.
 	 */
 	public long getDeptId() {
 		return deptId;
 	}
 
 	/**
-	 * @param deptId the deptId to set
+	 * Set the unique identifier for this department.
+	 *
+	 * @param deptId The department's identifier.
 	 */
 	public void setDeptId(long deptId) {
 		this.deptId = deptId;
 	}
 
 	/**
-	 * @return the deptName
+	 * Get the name of the department.
+	 *
+	 * @return The department's name.
 	 */
 	public String getDeptName() {
 		return deptName;
 	}
 
 	/**
-	 * @param deptName the deptName to set
+	 * Set the name of the department.
+	 *
+	 * @param deptName The department's name.
 	 */
 	public void setDeptName(String deptName) {
 		this.deptName = deptName;
 	}
 
 	/**
-	 * @return the tickets
+	 * Get the list of tickets associated with this department.
+	 *
+	 * @return The list of tickets.
 	 */
 	public List<Ticket> getTickets() {
 		return tickets;
 	}
 
 	/**
-	 * @param tickets the tickets to set
+	 * Set the list of tickets associated with this department.
+	 *
+	 * @param tickets The list of tickets.
 	 */
 	public void setTickets(List<Ticket> tickets) {
 		this.tickets = tickets;
 	}
 
 	/**
-	 * @return the userDetails
+	 * Get the list of user details associated with this department.
+	 *
+	 * @return The list of user details.
 	 */
 	public List<UserDetails> getUserDetails() {
 		return userDetails;
 	}
 
 	/**
-	 * @param userDetails the userDetails to set
+	 * Set the list of user details associated with this department.
+	 *
+	 * @param userDetails The list of user details.
 	 */
 	public void setUserDetails(List<UserDetails> userDetails) {
 		this.userDetails = userDetails;
 	}
 
 	/**
-	 * 
+	 * Create a new instance of the Department class.
 	 */
 	public Department() {
 		super();

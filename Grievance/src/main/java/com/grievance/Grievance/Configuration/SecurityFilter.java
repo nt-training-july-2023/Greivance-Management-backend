@@ -16,6 +16,10 @@ import org.springframework.stereotype.Component;
 
 import com.grievance.Grievance.Enum.UserType;
 import com.grievance.Grievance.repository.UserRepository;
+/**
+ * A custom security filter for controlling access to specific URLs based on
+ * user authentication.
+ */
 
 @Component
 public class SecurityFilter implements javax.servlet.Filter {
@@ -26,15 +30,26 @@ public class SecurityFilter implements javax.servlet.Filter {
 	private static List<String> adminUrls = new ArrayList<String>();
 
 	static {
-		adminUrls.add("/department/");
-		adminUrls.add("/user/");
+		adminUrls.add("/grievance/department");
+		adminUrls.add("/grievance/user");
+		adminUrls.add("/grievance/users");
 	}
-
+	/**
+	 * Constructs a new SecurityFilter instance.
+	 *
+	 * @param userRepository2 The user repository for checking user authentication.
+	 */
 	public SecurityFilter(UserRepository userRepository2) {
 		this.userRepository = userRepository2;
 	}
-
+	/**
+	 * Checks if a URL belongs to the admin specific URLs.
+	 *
+	 * @param currentUrl The current URL to check.
+	 * @return True if the URL belongs to admin URLs, otherwise false.
+	 */
 	public Boolean checkAdminUrl(String currentUrl) {
+		System.out.println("current url"+currentUrl);
 		if (adminUrls.contains(currentUrl)) {
 			return true;
 		}

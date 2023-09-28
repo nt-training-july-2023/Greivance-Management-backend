@@ -1,6 +1,9 @@
 package com.grievance.Grievance.ServiceImpl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import java.util.ArrayList;
@@ -13,9 +16,17 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+
+import com.grievance.Grievance.Enum.UserType;
 import com.grievance.Grievance.InDto.DepartmentInDto;
 import com.grievance.Grievance.OutDto.DepartmentOutDto;
+import com.grievance.Grievance.OutDto.UserDetailsOutDto;
 import com.grievance.Grievance.entity.Department;
+import com.grievance.Grievance.entity.Ticket;
+import com.grievance.Grievance.entity.UserDetails;
 import com.grievance.Grievance.repository.DepartmentRepository;
 import com.grievance.Grievance.service.DepartmentService;
 import com.grievance.Grievance.serviceImplementation.DepartmentServiceImpl;
@@ -60,15 +71,21 @@ public class DepartmentServiceImplTest {
 		department2.setDeptId(2);
 		department2.setDeptName("Engineer");
 		
-     	List<Department> departments = new ArrayList<Department>();
-     	departments.add(department1);
-     	departments.add(department2);
-     	
-     	when(departmentRepository.findAll()).thenReturn(departments);
-     	List<DepartmentOutDto> result = departmentService.getAllDepartments();
-     	assertNotNull(result);
-     	verify(departmentRepository).findAll();
-     	
+		
+		        List<Department> departments = new ArrayList<>();
+		        
+		        departments.add(department1);
+		        departments.add(department2);
+
+		        Page<Department> departmentPage = new PageImpl<>(departments);
+
+		        when(departmentRepository.findAll(any(Pageable.class))).thenReturn(departmentPage);
+
+		        List<DepartmentOutDto> departmentOutDtos =departmentService.getAllDepartments(0, 10);
+
+		        assertEquals(2, departmentOutDtos.size());
+		        verify(departmentRepository, times(1)).findAll();
+		        
 	}
 	
 	

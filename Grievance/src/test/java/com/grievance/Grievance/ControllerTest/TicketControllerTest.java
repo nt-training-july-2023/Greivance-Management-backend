@@ -65,7 +65,7 @@ public class TicketControllerTest {
 	    ticketInDto.setTicketType(TicketType.valueOf("Grievance"));
 	    ticketInDto.setDescription("abcd");
 	    ticketInDto.setUserDetails(new UserDetails());
-//	    ticketInDto.setComments(new ArrayList<CommentOutDto>());
+	
 	    
 	    TicketOutDto ticketOutDto = new TicketOutDto();
 	    ticketOutDto.setComments(new ArrayList<Comment>());

@@ -6,7 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.grievance.Grievance.repository.UserRepository;
-
+/**
+ * Configuration class for registering custom filters.
+ */
 @Configuration
 public class FilterConfiguration {
 
@@ -17,7 +19,11 @@ public class FilterConfiguration {
 		super();
 		this.userRepository = userRepository;
 	}
-
+	  /**
+     * Bean definition for registering the SecurityFilter with URL patterns.
+     *
+     * @return A FilterRegistrationBean for SecurityFilter.
+     */
 	@Bean
 	FilterRegistrationBean<SecurityFilter> registrationBeanAdmin() {
 		FilterRegistrationBean<SecurityFilter> registrationBean = new FilterRegistrationBean<SecurityFilter>();

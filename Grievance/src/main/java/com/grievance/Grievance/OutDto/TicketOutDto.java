@@ -7,197 +7,223 @@ import com.grievance.Grievance.Enum.TicketStatus;
 import com.grievance.Grievance.Enum.TicketType;
 import com.grievance.Grievance.entity.Comment;
 
+/**
+ * Represents the output data for the Ticket.
+ */
 public class TicketOutDto {
 
+	 /**
+     * The unique identifier for the ticket.
+     */
 	private long ticketId;
 
+	   /**
+     * The type of the ticket (e.g., Grievance, Feedback).
+     */
 	private TicketType ticketType;
 
+	  /**
+     * The status of the ticket (e.g., Open, Being_Addressed, Resolved).
+     */
 	private TicketStatus ticketStatus;
 
+	 /**
+     * The title of the ticket.
+     */
 	private String ticketTitle;
 
+	  /**
+     * The description of the ticket.
+     */
 	private String description;
 
+	 /**
+     * The date and time when the ticket was created.
+     */
 	private java.util.Date createdAt;
 
+	 /**
+     * The date and time when the ticket was last updated.
+     */
 	private java.util.Date updatedAt;
 
+    /**
+     * The department associated with the ticket.
+     */
 	@JsonBackReference(value = "dep")
 	private DepartmentOutDto department;
-
+	 /**
+     * The user details associated with the ticket.
+     */
 	@JsonBackReference(value = "user")
 	private UserDetailsOutDto userDetails;
-
+	/**
+     * The list of comments associated with the ticket.
+     */
 	private List<Comment> comments;
 
-	/**
-	 * @return the ticketId
-	 */
+
+    /**
+     * Returns the unique identifier for the ticket.
+     */
 	public long getTicketId() {
 		return ticketId;
 	}
 
 	/**
-	 * @param ticketId the ticketId to set
+	 * Sets the unique identifier for this ticket.
+	 *
+	 * @param ticketId The ticket ID to set.
 	 */
 	public void setTicketId(long ticketId) {
 		this.ticketId = ticketId;
 	}
-
 	/**
-	 * @return the ticketType
+	 * Gets the type of the ticket.
+	 *
+	 * @return The ticket type.
 	 */
 	public TicketType getTicketType() {
 		return ticketType;
 	}
-
 	/**
-	 * @param ticketType the ticketType to set
+	 * Sets the type of the ticket.
+	 *
+	 * @param ticketType The ticket type to set.
 	 */
 	public void setTicketType(TicketType ticketType) {
 		this.ticketType = ticketType;
 	}
-
 	/**
-	 * @return the ticketStatus
+	 * Gets the status of the ticket.
+	 *
+	 * @return The ticket status.
 	 */
 	public TicketStatus getTicketStatus() {
 		return ticketStatus;
 	}
 
 	/**
-	 * @param ticketStatus the ticketStatus to set
+	 * Sets the status of the ticket.
+	 *
+	 * @param ticketStatus The ticket status to set.
 	 */
 	public void setTicketStatus(TicketStatus ticketStatus) {
 		this.ticketStatus = ticketStatus;
 	}
-
 	/**
-	 * @return the ticketTitle
+	 * Gets the title of the ticket.
+	 *
+	 * @return The ticket title.
 	 */
 	public String getTicketTitle() {
 		return ticketTitle;
 	}
-
 	/**
-	 * @param ticketTitle the ticketTitle to set
+	 * Sets the title of the ticket.
+	 *
+	 * @param ticketTitle The ticket title to set.
 	 */
 	public void setTicketTitle(String ticketTitle) {
 		this.ticketTitle = ticketTitle;
 	}
-
 	/**
-	 * @return the description
+	 * Gets the description of the ticket.
+	 *
+	 * @return The ticket description.
 	 */
 	public String getDescription() {
 		return description;
 	}
-
 	/**
-	 * @param description the description to set
+	 * Sets the description of the ticket.
+	 *
+	 * @param description The ticket description to set.
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 	/**
-	 * @return the department
+	 * Gets the department associated with the ticket.
+	 *
+	 * @return The department.
 	 */
 	public DepartmentOutDto getDepartment() {
 		return department;
 	}
-
 	/**
-	 * @param department the department to set
+	 * Sets the department associated with the ticket.
+	 *
+	 * @param department The department to set.
 	 */
 	public void setDepartment(DepartmentOutDto department) {
 		this.department = department;
 	}
-
 	/**
-	 * @return the userDetails
+	 * Gets the user details associated with the ticket.
+	 *
+	 * @return The user details.
 	 */
 	public UserDetailsOutDto getUserDetails() {
 		return userDetails;
 	}
 
 	/**
-	 * @param userDetails the userDetails to set
+	 * Sets the user details associated with the ticket.
+	 *
+	 * @param userDetails The user details to set.
 	 */
 	public void setUserDetails(UserDetailsOutDto userDetails) {
 		this.userDetails = userDetails;
 	}
-
 	/**
-	 * @return the comments
+	 * Gets the list of comments associated with the ticket.
+	 *
+	 * @return The list of comments.
 	 */
 	public List<Comment> getComments() {
 		return comments;
 	}
-
 	/**
-	 * @param comments the comments to set
+	 * Sets the list of comments associated with the ticket.
+	 *
+	 * @param comments The list of comments to set.
 	 */
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
-
 	/**
-	 * @return the createdAt
+	 * Gets the date and time when the ticket was created.
+	 *
+	 * @return The creation date and time.
 	 */
 	public java.util.Date getCreatedAt() {
 		return createdAt;
 	}
-
 	/**
-	 * @param createdAt the createdAt to set
+	 * Sets the date and time when the ticket was created.
+	 *
+	 * @param createdAt The creation date and time to set.
 	 */
 	public void setCreatedAt(java.util.Date createdAt) {
 		this.createdAt = createdAt;
 	}
-
 	/**
-	 * @return the updatedAt
+	 * Gets the date and time when the ticket was last updated.
+	 *
+	 * @return The last update date and time.
 	 */
 	public java.util.Date getUpdatedAt() {
 		return updatedAt;
 	}
-
 	/**
-	 * @param updatedAt the updatedAt to set
+	 * Sets the date and time when the ticket was last updated.
+	 *
+	 * @param updatedAt The last update date and time to set.
 	 */
 	public void setUpdatedAt(java.util.Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-
-//	/**
-//	 * @param ticketId
-//	 * @param ticketType
-//	 * @param ticketStatus
-//	 * @param ticketTitle
-//	 * @param description
-//	 * @param createdAt
-//	 * @param updatedAt
-//	 * @param department
-//	 * @param userDetails
-//	 * @param comments
-//	 */
-//	public TicketOutDto(long ticketId, TicketType ticketType, TicketStatus ticketStatus, String ticketTitle,
-//			String description, java.util.Date createdAt, java.util.Date updatedAt, DepartmentOutDto department,
-//			UserDetailsOutDto userDetails, List<Comment> comments) {
-//		super();
-//		this.ticketId = ticketId;
-//		this.ticketType = ticketType;
-//		this.ticketStatus = ticketStatus;
-//		this.ticketTitle = ticketTitle;
-//		this.description = description;
-//		this.createdAt = createdAt;
-//		this.updatedAt = updatedAt;
-//		this.department = department;
-//		this.userDetails = userDetails;
-//		this.comments = comments;
-//	}
 
 	@Override
 	public String toString() {
