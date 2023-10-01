@@ -88,7 +88,6 @@ public class SecurityFilter implements javax.servlet.Filter {
 
 			if (email == null || password == null) {
 				((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid User");
-
 			} else if (userRepository.existsByEmailAndPasswordAndUsertype(email, password, UserType.Admin)
 					&& checkAdminUrl(currentUrl)) {
 				System.out.println("Inside admin");

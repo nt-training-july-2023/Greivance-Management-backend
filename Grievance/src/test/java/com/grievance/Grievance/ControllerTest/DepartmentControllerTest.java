@@ -1,11 +1,14 @@
 package com.grievance.Grievance.ControllerTest;
 
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.cfg.annotations.ArrayBinder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,6 +21,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grievance.Grievance.InDto.DepartmentInDto;
@@ -79,5 +83,14 @@ public class DepartmentControllerTest {
 		departmentOutDto.setDeptName("IT");
 		departmentOutDto.setUserDetails(new ArrayList<UserDetailsOutDto>());
 		departmentOutDto.setTickets(new ArrayList<TicketOutDto>());
+		
+//		List<DepartmentOutDto> list = new Arra
+		
+		
+		
+//		when(departmentService.getAllDepartments(anyInt(), anyInt())).thenReturn(List<DepartmentOutDto>);
+		
+	
+		
 	}
 }

@@ -38,6 +38,11 @@ public class UserDetailsOutDto {
 	 */
 	private String department;
 
+	
+	
+	
+	
+	private long deptId;
 	/**
 	 * The list of tickets associated with the user.
 	 */
@@ -193,6 +198,27 @@ public class UserDetailsOutDto {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "UserDetailsOutDto [Id=" + Id + ", name=" + name + ", userType=" + userType + ", email=" + email
+				+ ", isLoggedIn=" + isLoggedIn + ", password=" + password + ", department=" + department + ", tickets="
+				+ tickets + ", comments=" + comments + "]";
+	}
+
+	/**
+	 * @return the deptId
+	 */
+	public long getDeptId() {
+		return deptId;
+	}
+
+	/**
+	 * @param deptId the deptId to set
+	 */
+	public void setDeptId(long deptId) {
+		this.deptId = deptId;
 	}
 
 }

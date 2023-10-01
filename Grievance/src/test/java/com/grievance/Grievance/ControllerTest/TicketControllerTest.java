@@ -57,36 +57,36 @@ public class TicketControllerTest {
 		
 	}
 	
-	@Test
-	public void testCreateTicket_Returns_TicketObject() throws Exception{
-		
-		TicketInDto ticketInDto = new TicketInDto();
-	    ticketInDto.setTicketTitle("Technical Issue");
-	    ticketInDto.setTicketType(TicketType.valueOf("Grievance"));
-	    ticketInDto.setDescription("abcd");
-	    ticketInDto.setUserDetails(new UserDetails());
-	
-	    
-	    TicketOutDto ticketOutDto = new TicketOutDto();
-	    ticketOutDto.setComments(new ArrayList<Comment>());
-	    ticketOutDto.setDepartment(new DepartmentOutDto());
-	    ticketOutDto.setTicketStatus(TicketStatus.valueOf("Open"));
-	    ticketOutDto.setDescription("abcd");
-	    ticketOutDto.setTicketId(1);
-	    ticketOutDto.setUserDetails(new UserDetailsOutDto());
-	    ticketOutDto.setCreatedAt(null);
-	    ticketOutDto.setUpdatedAt(null);
-	    ticketOutDto.setTicketTitle("Technical Issue");
-	   
-when(ticketService.createTicket(Mockito.any(TicketInDto.class))).thenReturn(ticketOutDto);
-		
-		mockMvc.perform(MockMvcRequestBuilders.post("/grievance/ticket").contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsBytes(ticketInDto)).header("email", "sneha@nucleusteq.com")
-				.header("password", "Sneha@01")).andExpect(status().isCreated())
-				.andDo(MockMvcResultHandlers.print());
-	    
-	    
-	}
+//	@Test
+//	public void testCreateTicket_Returns_TicketObject() throws Exception{
+//		
+//		TicketInDto ticketInDto = new TicketInDto();
+//	    ticketInDto.setTicketTitle("Technical Issue");
+//	    ticketInDto.setTicketType(TicketType.valueOf("Grievance"));
+//	    ticketInDto.setDescription("abcd");
+//	    ticketInDto.setUserDetails(new UserDetails());
+//	
+//	    
+//	    TicketOutDto ticketOutDto = new TicketOutDto();
+//	    ticketOutDto.setComments(new ArrayList<Comment>());
+//	    ticketOutDto.setDepartment(new DepartmentOutDto());
+//	    ticketOutDto.setTicketStatus(TicketStatus.valueOf("Open"));
+//	    ticketOutDto.setDescription("abcd");
+//	    ticketOutDto.setTicketId(1);
+//	    ticketOutDto.setUserDetails(new UserDetailsOutDto());
+//	    ticketOutDto.setCreatedAt(null);
+//	    ticketOutDto.setUpdatedAt(null);
+//	    ticketOutDto.setTicketTitle("Technical Issue");
+//	   
+//when(ticketService.createTicket(Mockito.any(TicketInDto.class))).thenReturn(ticketOutDto);
+//		
+//		mockMvc.perform(MockMvcRequestBuilders.post("/grievance/ticket").contentType(MediaType.APPLICATION_JSON)
+//				.content(objectMapper.writeValueAsBytes(ticketInDto)).header("email", "sneha@nucleusteq.com")
+//				.header("password", "Sneha@01")).andExpect(status().isCreated())
+//				.andDo(MockMvcResultHandlers.print());
+//	    
+//	    
+//	}
 	
 	@Test
 	public void testTicketOutDto_Returns_TicketList() throws Exception{

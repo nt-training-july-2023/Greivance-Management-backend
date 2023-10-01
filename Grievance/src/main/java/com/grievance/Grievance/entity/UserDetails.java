@@ -40,6 +40,9 @@ public class UserDetails {
 	 */
 	@NotEmpty(message = "name is required")
 	private String name;
+	
+	@OneToMany(mappedBy = "userDetails")
+	private List<Comment> comments;
 
 	/**
 	 * The email address of the user.
@@ -256,6 +259,13 @@ public class UserDetails {
 	public UserDetails() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "UserDetails [userId=" + userId + ", name=" + name + ", email=" + email + ", password=" + password
+				+ ", usertype=" + usertype + ", isLoggedIn=" + isLoggedIn + ", department=" + department + ", tickets="
+				+ tickets + "]";
 	}
 
 }

@@ -13,9 +13,25 @@ public class TicketUpdateDto {
      * The updated content of the ticket.
      */
 	private String content;
+	private long userId;
 
 
-    /**
+   
+	/**
+	 * @return the userId
+	 */
+	public long getUserId() {
+		return userId;
+	}
+
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+
+	/**
      * Gets the updated status of the ticket.
      *
      * @return The ticket status.

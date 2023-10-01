@@ -123,6 +123,20 @@ public class Department {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * @param deptId
+	 * @param deptName
+	 * @param tickets
+	 * @param userDetails
+	 */
+	public Department(long deptId, String deptName, List<Ticket> tickets, List<UserDetails> userDetails) {
+		super();
+		this.deptId = deptId;
+		this.deptName = deptName;
+		this.tickets = tickets;
+		this.userDetails = userDetails;
+	}
+
 	@Override
 	public String toString() {
 		return "deptId=" + deptId + ", deptName=" + deptName + "";

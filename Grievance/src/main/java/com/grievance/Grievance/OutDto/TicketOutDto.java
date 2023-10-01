@@ -1,5 +1,6 @@
 package com.grievance.Grievance.OutDto;
 
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -61,9 +62,31 @@ public class TicketOutDto {
      * The list of comments associated with the ticket.
      */
 	private List<Comment> comments;
+	
+	private String deptName;
+	
+	private String name;
+	
+	private long userId;
+	
+	private long deptId;
+	
+	
+	/**
+	 * @return the deptName
+	 */
+	public String getDeptName() {
+		return deptName;
+	}
 
+	/**
+	 * @param deptName the deptName to set
+	 */
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
 
-    /**
+	/**
      * Returns the unique identifier for the ticket.
      */
 	public long getTicketId() {
@@ -229,5 +252,50 @@ public class TicketOutDto {
 	public String toString() {
 		return "department=" + department + "]";
 	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the userId
+	 */
+	public long getUserId() {
+		return userId;
+	}
+
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+
+	/**
+	 * @return the deptId
+	 */
+	public long getDeptId() {
+		return deptId;
+	}
+
+	/**
+	 * @param deptId the deptId to set
+	 */
+	public void setDeptId(long deptId) {
+		this.deptId = deptId;
+	}
+
+	
+	
 
 }

@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -36,6 +37,14 @@ public class Comment {
 	 */
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastUpdatedAt;
+	
+	
+	private String memberName;
+	
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name = "userId")
+	private UserDetails userDetails;
 
 	/**
 	 * The ticket to which this comment is associated.
@@ -118,27 +127,44 @@ public class Comment {
 	}
 
 	/**
-	 * Constructs a new Comment object with the specified parameters.
-	 *
-	 * @param commentId     The unique identifier for this comment.
-	 * @param content       The content of the comment.
-	 * @param lastUpdatedAt The date and time when the comment was last updated.
-	 * @param ticket        The ticket to which this comment is associated.
-	 */
-	public Comment(long commentId, String content, Date lastUpdatedAt, Ticket ticket) {
-		super();
-		this.commentId = commentId;
-		this.content = content;
-		this.lastUpdatedAt = lastUpdatedAt;
-		this.ticket = ticket;
-	}
-
-	/**
 	 * Create a new instance of the Comment class.
 	 */
 	public Comment() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	/**
+	 * @return the memberName
+	 */
+	public String getMemberName() {
+		return memberName;
+	}
+
+	/**
+	 * @param memberName the memberName to set
+	 */
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
+	/**
+	 * @param commentId
+	 * @param content
+	 * @param lastUpdatedAt
+	 * @param memberName
+	 * @param ticket
+	 */
+	public Comment(long commentId, String content, Date lastUpdatedAt, String memberName, Ticket ticket) {
+		super();
+		this.commentId = commentId;
+		this.content = content;
+		this.lastUpdatedAt = lastUpdatedAt;
+		this.memberName = memberName;
+		this.ticket = ticket;
+	}
+
+
+	
 
 }

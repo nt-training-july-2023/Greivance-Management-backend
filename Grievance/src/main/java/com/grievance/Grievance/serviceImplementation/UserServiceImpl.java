@@ -64,18 +64,31 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public UserDetailsOutDto userLogin(LoginInDto loginInDto) {
+		
 		// TODO Auto-generated method stub
 		String email = loginInDto.getEmail();
 		String password = loginInDto.getPassword();
 		UserDetails userDetailsSaved = userRepository.findByEmail(email);
+		
 		if (Objects.isNull(userDetailsSaved)) {
+			
 			throw new AuthenticationException("User not found with email: " + email);
 		}
-		if (!userDetailsSaved.getPassword().equals(password)) {
+				if (!userDetailsSaved.getPassword().equals(password)) {
+			
 			throw new AuthenticationException("Invalid password");
 		}
+		
 		userRepository.save(userDetailsSaved);
-		UserDetailsOutDto userDetailsOutDto = this.modelMapper.map(userDetailsSaved, UserDetailsOutDto.class);
+		UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
+		userDetailsOutDto.setId(userDetailsSaved.getUserId());
+		userDetailsOutDto.setIsLoggedIn(userDetailsSaved.getIsLoggedIn());
+		userDetailsOutDto.setUserType(userDetailsSaved.getUsertype());
+		userDetailsOutDto.setEmail(userDetailsSaved.getEmail());
+		userDetailsOutDto.setPassword(userDetailsSaved.getPassword());
+		userDetailsOutDto.setDeptId(userDetailsSaved.getDepartment().getDeptId());
+		userDetailsOutDto.setName(userDetailsSaved.getName());
+		
 		return userDetailsOutDto;
 	}
 
@@ -140,7 +153,12 @@ public class UserServiceImpl implements UserService {
 		Page<UserDetails> userPage = userRepository.findAll(pageable);
 		List<UserDetailsOutDto> list = new ArrayList<UserDetailsOutDto>();
 		for (UserDetails userDetails : userPage) {
-			list.add(this.modelMapper.map(userDetails, UserDetailsOutDto.class));
+			UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
+			userDetailsOutDto.setId(userDetails.getUserId());
+			userDetailsOutDto.setEmail(userDetails.getEmail());
+			userDetailsOutDto.setName(userDetails.getName());
+			userDetailsOutDto.setDepartment(userDetails.getDepartment().getDeptName());
+			list.add(userDetailsOutDto);	
 		}
 		return list;
 	}

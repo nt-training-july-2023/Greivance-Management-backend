@@ -3,13 +3,11 @@ package com.grievance.Grievance.serviceImplementation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.grievance.Grievance.InDto.DepartmentInDto;
@@ -42,13 +40,13 @@ public class DepartmentServiceImpl implements DepartmentService {
 	@Override
 	public DepartmentOutDto createDepartment(DepartmentInDto departmentInDto) {
 		// TODO Auto-generated method stub
-		Department department = this.modelMapper.map(departmentInDto, Department.class);
+		Department department = modelMapper.map(departmentInDto, Department.class);
 		Department department2 = departmentRepository.findBydeptName(departmentInDto.getDeptName());
-		if(Objects.isNull(department2)) {
+		if (Objects.nonNull(department2)) {
 			throw new DuplicateEntryException("Department Already Exist");
 		}
 		Department savedDepartment = departmentRepository.save(department);
-		DepartmentOutDto departmentOutDto = this.modelMapper.map(savedDepartment, DepartmentOutDto.class);
+		DepartmentOutDto departmentOutDto = modelMapper.map(savedDepartment, DepartmentOutDto.class);
 		return departmentOutDto;
 	}
 
@@ -59,15 +57,20 @@ public class DepartmentServiceImpl implements DepartmentService {
 	 */
 	@Override
 	public List<DepartmentOutDto> getAllDepartments(Integer pageNumber,Integer pageSize) {
-		// TODO Auto-generated method stub
-		Pageable pageable = PageRequest.of(pageNumber, pageSize);
+		PageRequest pageable = PageRequest.of(pageNumber, pageSize);
 		Page<Department> departmentsPage = departmentRepository.findAll(pageable);
 		List<DepartmentOutDto> list = new ArrayList<DepartmentOutDto>();
 		for (Department department : departmentsPage) {
-			list.add(this.modelMapper.map(department, DepartmentOutDto.class));
+			DepartmentOutDto departmentOutDto = new DepartmentOutDto();
+			departmentOutDto.setDeptId(department.getDeptId());
+			departmentOutDto.setDeptName(department.getDeptName());
+			list.add(departmentOutDto);
 		}
+		
+
 		return list;
 	}
+
 
 	/**
 	 * Retrieves a department by its unique identifier.
@@ -79,7 +82,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 	public DepartmentOutDto getDepartmentById(long deptId) {
 		// TODO Auto-generated method stub
 		Department department = departmentRepository.findById(deptId).get();
-		if(department==null) {
+		if (department == null) {
 			throw new RecordNotFoundException("Department with given Id not found");
 		}
 		DepartmentOutDto departmentOutDto = this.modelMapper.map(department, DepartmentOutDto.class);
@@ -93,9 +96,9 @@ public class DepartmentServiceImpl implements DepartmentService {
 	 */
 	@Override
 	public void deleteDepartment(long deptId) {
-		// TODO Auto-generated method stub
 		departmentRepository.deleteById(deptId);
 		return;
 
 	}
+
 }

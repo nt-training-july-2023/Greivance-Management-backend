@@ -50,13 +50,5 @@ public interface TicketService {
 	 */
 	public TicketOutDto updateTicket(TicketUpdateDto ticketUpdateDto, long ticketId);
 
-	/**
-	 * Retrieves a list of tickets for a specific department based on the
-	 * department's unique id (deptId).
-	 *
-	 * @param deptId The unique id of department.
-	 * @return A list of ticketOutDtos
-	 */
-	public List<TicketOutDto> getAllTicketsByDepartment(long deptId);
 
 }

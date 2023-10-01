@@ -41,7 +41,9 @@ public class UserController {
 	 */
 	@PostMapping("/user")
 	public ResponseEntity<UserDetailsOutDto> createUser(@Validated @RequestBody UserDetailsInDto userDetailsInDto) {
+		System.out.println(userDetailsInDto.getUserType());
 		UserDetailsOutDto userDetailsOutDto = userservice.createUser(userDetailsInDto);
+		System.out.println(userDetailsInDto.getUserType());
 		ResponseEntity userResponse = new ResponseEntity(userDetailsOutDto, HttpStatus.CREATED);
 		return userResponse;
 	}
@@ -55,8 +57,11 @@ public class UserController {
 	 */
 	@PostMapping("/login")
 	public ResponseEntity<UserDetailsOutDto> userLogin(@Validated @RequestBody LoginInDto loginInDto) {
+		System.out.println("hyy1");
 		UserDetailsOutDto userDetailsOutDto = userservice.userLogin(loginInDto);
-		ResponseEntity loginResponse = new ResponseEntity(userDetailsOutDto, HttpStatus.OK);
+		System.out.println("hyy2");
+		ResponseEntity loginResponse = new ResponseEntity(userDetailsOutDto, HttpStatus.ACCEPTED);
+		System.out.println("hyy3");
 		return loginResponse;
 	}
 
