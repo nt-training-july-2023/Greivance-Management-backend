@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -37,10 +36,16 @@ public class Comment {
 	 */
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastUpdatedAt;
-	
-	
+
+	/**
+	 *  name of Member commented.
+	 */
 	private String memberName;
-	
+
+	/**
+	 * Many-to-one relationship mapping to associate this entity with a UserDetails entity.
+	 * This field represents the user details associated with this entity.
+	 */
 	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name = "userId")
@@ -131,7 +136,6 @@ public class Comment {
 	 */
 	public Comment() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -163,8 +167,4 @@ public class Comment {
 		this.memberName = memberName;
 		this.ticket = ticket;
 	}
-
-
-	
-
 }

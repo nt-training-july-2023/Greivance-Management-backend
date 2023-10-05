@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,9 +27,20 @@ import com.grievance.Grievance.service.DepartmentService;
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
 
+	/**
+	 * Logger initialization.
+	 */
+	private static final Logger LOGGER = LogManager.getLogger(DepartmentServiceImpl.class);
+
+	/**
+	 * Auto wired ModelMapper.
+	 */
 	@Autowired
 	private ModelMapper modelMapper;
 
+	/**
+	 * Auto wired Department Repository.
+	 */
 	@Autowired
 	private DepartmentRepository departmentRepository;
 
@@ -39,10 +52,10 @@ public class DepartmentServiceImpl implements DepartmentService {
 	 */
 	@Override
 	public DepartmentOutDto createDepartment(DepartmentInDto departmentInDto) {
-		// TODO Auto-generated method stub
 		Department department = modelMapper.map(departmentInDto, Department.class);
 		Department department2 = departmentRepository.findBydeptName(departmentInDto.getDeptName());
 		if (Objects.nonNull(department2)) {
+			LOGGER.error("Department Already Exist");
 			throw new DuplicateEntryException("Department Already Exist");
 		}
 		Department savedDepartment = departmentRepository.save(department);
@@ -56,7 +69,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 	 * @return A list of DTOs representing all departments.
 	 */
 	@Override
-	public List<DepartmentOutDto> getAllDepartments(Integer pageNumber,Integer pageSize) {
+	public List<DepartmentOutDto> getAllDepartments(Integer pageNumber, Integer pageSize) {
 		PageRequest pageable = PageRequest.of(pageNumber, pageSize);
 		Page<Department> departmentsPage = departmentRepository.findAll(pageable);
 		List<DepartmentOutDto> list = new ArrayList<DepartmentOutDto>();
@@ -66,11 +79,9 @@ public class DepartmentServiceImpl implements DepartmentService {
 			departmentOutDto.setDeptName(department.getDeptName());
 			list.add(departmentOutDto);
 		}
-		
 
 		return list;
 	}
-
 
 	/**
 	 * Retrieves a department by its unique identifier.
@@ -80,9 +91,9 @@ public class DepartmentServiceImpl implements DepartmentService {
 	 */
 	@Override
 	public DepartmentOutDto getDepartmentById(long deptId) {
-		// TODO Auto-generated method stub
 		Department department = departmentRepository.findById(deptId).get();
 		if (department == null) {
+			LOGGER.error("Department with given Id not found");
 			throw new RecordNotFoundException("Department with given Id not found");
 		}
 		DepartmentOutDto departmentOutDto = this.modelMapper.map(department, DepartmentOutDto.class);

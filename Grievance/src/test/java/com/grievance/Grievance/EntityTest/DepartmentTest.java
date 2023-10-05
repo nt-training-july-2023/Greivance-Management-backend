@@ -14,7 +14,7 @@ public class DepartmentTest {
 
 	@Test
 	public void testDeptName() {
-		
+
 		Department department = new Department();
 		department.setDeptId(1);
 		department.setDeptName("IT");
@@ -22,9 +22,10 @@ public class DepartmentTest {
 		department.setUserDetails(new ArrayList<UserDetails>());
 		assertEquals("IT", department.getDeptName());
 	}
+
 	@Test
 	public void testDeptId() {
-		
+
 		Department department = new Department();
 		department.setDeptId(1);
 		department.setDeptName("IT");
@@ -32,9 +33,10 @@ public class DepartmentTest {
 		department.setUserDetails(new ArrayList<UserDetails>());
 		assertEquals(1, department.getDeptId());
 	}
+
 	@Test
 	public void testTickets() {
-		
+
 		Department department = new Department();
 		department.setDeptId(1);
 		department.setDeptName("IT");
@@ -42,10 +44,10 @@ public class DepartmentTest {
 		department.setUserDetails(new ArrayList<UserDetails>());
 		assertEquals(new ArrayList<Ticket>(), department.getTickets());
 	}
-	
+
 	@Test
 	public void testUsers() {
-		
+
 		Department department = new Department();
 		department.setDeptId(1);
 		department.setDeptName("IT");
@@ -53,15 +55,4 @@ public class DepartmentTest {
 		department.setUserDetails(new ArrayList<UserDetails>());
 		assertEquals(new ArrayList<UserDetails>(), department.getUserDetails());
 	}
-	
-//	 @Test
-//	    public void testToString() {
-//	     
-//	        Department department = new Department();
-//	        department .setDeptId(1);
-//	        department.setDeptName("HR");
-//	        String toStringResult = department.toString();
-//	        assertEquals("HR", toStringResult);
-//	        assertEquals(1, toStringResult);
-//	    }
 }

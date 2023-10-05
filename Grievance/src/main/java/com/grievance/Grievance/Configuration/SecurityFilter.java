@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import com.grievance.Grievance.Enum.UserType;
 import com.grievance.Grievance.repository.UserRepository;
+
 /**
  * A custom security filter for controlling access to specific URLs based on
  * user authentication.
@@ -24,9 +25,15 @@ import com.grievance.Grievance.repository.UserRepository;
 @Component
 public class SecurityFilter implements javax.servlet.Filter {
 
+	/**
+	 *  Auto wired UserRepository.
+	 */
 	@Autowired
 	private UserRepository userRepository;
 
+	/**
+	 * List of URLs that are accessible only to administrators.
+	 */
 	private static List<String> adminUrls = new ArrayList<String>();
 
 	static {
@@ -34,6 +41,7 @@ public class SecurityFilter implements javax.servlet.Filter {
 		adminUrls.add("/grievance/user");
 		adminUrls.add("/grievance/users");
 	}
+
 	/**
 	 * Constructs a new SecurityFilter instance.
 	 *
@@ -42,6 +50,7 @@ public class SecurityFilter implements javax.servlet.Filter {
 	public SecurityFilter(UserRepository userRepository2) {
 		this.userRepository = userRepository2;
 	}
+
 	/**
 	 * Checks if a URL belongs to the admin specific URLs.
 	 *
@@ -49,7 +58,7 @@ public class SecurityFilter implements javax.servlet.Filter {
 	 * @return True if the URL belongs to admin URLs, otherwise false.
 	 */
 	public Boolean checkAdminUrl(String currentUrl) {
-		System.out.println("current url"+currentUrl);
+		System.out.println("current url" + currentUrl);
 		if (adminUrls.contains(currentUrl)) {
 			return true;
 		}
@@ -57,7 +66,7 @@ public class SecurityFilter implements javax.servlet.Filter {
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+	public final void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 
@@ -72,14 +81,16 @@ public class SecurityFilter implements javax.servlet.Filter {
 
 		else if (httpServletRequest.getMethod().equals("OPTIONS")) {
 			httpServletResponse.setHeader("Access-Control-Allow-Origin", "*");
-			httpServletResponse.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+			httpServletResponse
+			.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
 			httpServletResponse.setHeader("Access-Control-Allow-Headers",
 					"Authorization, Content-Type, email, password");
 			httpServletResponse.setContentType("application/json");
 			httpServletResponse.setStatus(HttpServletResponse.SC_OK);
 		} else if (httpServletRequest.getMethod().equals("OPTIONS")) {
 			httpServletResponse.setHeader("Access-Control-Allow-Origin", "*");
-			httpServletResponse.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+			httpServletResponse
+			.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
 			httpServletResponse.setHeader("Access-Control-Allow-Headers",
 					"Authorization, Content-Type, email, password");
 			httpServletResponse.setContentType("application/json");
@@ -87,15 +98,19 @@ public class SecurityFilter implements javax.servlet.Filter {
 		} else {
 
 			if (email == null || password == null) {
-				((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid User");
-			} else if (userRepository.existsByEmailAndPasswordAndUsertype(email, password, UserType.Admin)
+				((HttpServletResponse) response)
+				.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid User");
+			} else if (userRepository
+					.existsByEmailAndPasswordAndUsertype(email, password, UserType.Admin)
 					&& checkAdminUrl(currentUrl)) {
 				System.out.println("Inside admin");
 				chain.doFilter(request, response);
-			} else if (userRepository.existsByEmailAndPassword(email, password) && !(checkAdminUrl(currentUrl))) {
+			} else if (userRepository
+					.existsByEmailAndPassword(email, password) && !(checkAdminUrl(currentUrl))) {
 				chain.doFilter(request, response);
 			} else {
-				((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized User");
+				((HttpServletResponse) response)
+				.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized User");
 			}
 		}
 	}

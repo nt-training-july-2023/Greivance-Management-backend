@@ -3,11 +3,9 @@ package com.grievance.Grievance.entity;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -307,6 +305,7 @@ public class Ticket {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	@Override
 	public String toString() {
 		return "Ticket [ticketId=" + ticketId + ", ticketTitle=" + ticketTitle + ", description=" + description
@@ -314,5 +313,4 @@ public class Ticket {
 				+ ", updatedAt=" + updatedAt + ", department=" + department + ", userDetails=" + userDetails
 				+ ", comments=" + comments + "]";
 	}
-
 }

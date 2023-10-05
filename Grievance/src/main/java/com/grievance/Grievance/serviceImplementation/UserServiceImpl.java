@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
@@ -18,7 +20,6 @@ import com.grievance.Grievance.InDto.UserDetailsInDto;
 import com.grievance.Grievance.OutDto.UserDetailsOutDto;
 import com.grievance.Grievance.entity.UserDetails;
 import com.grievance.Grievance.exception.AuthenticationException;
-import com.grievance.Grievance.exception.RecordNotFoundException;
 import com.grievance.Grievance.repository.UserRepository;
 import com.grievance.Grievance.service.UserService;
 
@@ -29,9 +30,20 @@ import com.grievance.Grievance.service.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 
+	/**
+	 * Logger initialization.
+	 */
+	private static final Logger LOGGER = LogManager.getLogger(UserServiceImpl.class);
+
+	/**
+	 * Auto wired ModelMapper Object.
+	 */
 	@Autowired
 	private ModelMapper modelMapper;
 
+	/**
+	 * Auto wired UserRepository.
+	 */
 	@Autowired
 	private UserRepository userRepository;
 
@@ -43,15 +55,14 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public UserDetailsOutDto createUser(UserDetailsInDto userDetailsInDto) {
-		// TODO Auto-generated method stub
 		UserDetails userDetails = this.modelMapper.map(userDetailsInDto, UserDetails.class);
 		UserDetails userDetails2 = userRepository.findByEmail(userDetailsInDto.getEmail());
 		if (Objects.nonNull(userDetails2)) {
+			LOGGER.error("Email Already Exist");
 			throw new DuplicateKeyException("Email Already Exist");
 		}
 		UserDetails savedUser = userRepository.save(userDetails);
 		UserDetailsOutDto userDetailsOutDto = this.modelMapper.map(savedUser, UserDetailsOutDto.class);
-//		savedUser.setIsLoggedIn(false);
 		return userDetailsOutDto;
 	}
 
@@ -64,21 +75,20 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public UserDetailsOutDto userLogin(LoginInDto loginInDto) {
-		
-		// TODO Auto-generated method stub
+
 		String email = loginInDto.getEmail();
 		String password = loginInDto.getPassword();
 		UserDetails userDetailsSaved = userRepository.findByEmail(email);
-		
+
 		if (Objects.isNull(userDetailsSaved)) {
-			
+			LOGGER.error("User not found with email: " + email);
 			throw new AuthenticationException("User not found with email: " + email);
 		}
-				if (!userDetailsSaved.getPassword().equals(password)) {
-			
+		if (!userDetailsSaved.getPassword().equals(password)) {
+			LOGGER.error("Invalid password");
 			throw new AuthenticationException("Invalid password");
 		}
-		
+
 		userRepository.save(userDetailsSaved);
 		UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
 		userDetailsOutDto.setId(userDetailsSaved.getUserId());
@@ -88,7 +98,7 @@ public class UserServiceImpl implements UserService {
 		userDetailsOutDto.setPassword(userDetailsSaved.getPassword());
 		userDetailsOutDto.setDeptId(userDetailsSaved.getDepartment().getDeptId());
 		userDetailsOutDto.setName(userDetailsSaved.getName());
-		
+
 		return userDetailsOutDto;
 	}
 
@@ -101,15 +111,16 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public UserDetailsOutDto changePassword(ChangePasswordInDto changePasswordInDto) {
-		// TODO Auto-generated method stub
 		String oldemail = changePasswordInDto.getEmail();
 		String oldpassword = changePasswordInDto.getOldPassword();
 
 		UserDetails savedUserDetails = userRepository.findByEmail(oldemail);
 		if (Objects.isNull(savedUserDetails)) {
+			LOGGER.error("User not found with email: " + oldemail);
 			throw new AuthenticationException("User not found with email: " + oldemail);
 		}
 		if (!savedUserDetails.getPassword().equals(oldpassword)) {
+			LOGGER.error("Invalid password");
 			throw new AuthenticationException("Invalid password");
 		} else if (savedUserDetails.getPassword().equals(oldpassword)) {
 			savedUserDetails.setPassword(changePasswordInDto.getNewPassword());
@@ -122,24 +133,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	/**
-	 * Retrieves a user by their unique identifier.
-	 *
-	 * @param userId The unique identifier of the user to retrieve.
-	 * @return The DTO representing the retrieved user.
-	 */
-	@Override
-	public UserDetailsOutDto getUserById(long userId) {
-		// TODO Auto-generated method stub
-		UserDetails userDetails = userRepository.findById(userId)
-				.orElseThrow(() -> new RecordNotFoundException("User with given Id not found"));
-//		if (userDetails.isEmpty()) {
-//			throw new RecordNotFoundException("User with given Id not found");
-//		}
-		UserDetailsOutDto userDetailsOutDto = this.modelMapper.map(userDetails, UserDetailsOutDto.class);
-		return userDetailsOutDto;
-	}
-
-	/**
 	 * Retrieves a list of users with pagination.
 	 *
 	 * @param pageNumber The page number.
@@ -148,7 +141,6 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public List<UserDetailsOutDto> getAllUsers(Integer pageNumber, Integer pageSize) {
-		// TODO Auto-generated method stub
 		Pageable pageable = PageRequest.of(pageNumber, pageSize);
 		Page<UserDetails> userPage = userRepository.findAll(pageable);
 		List<UserDetailsOutDto> list = new ArrayList<UserDetailsOutDto>();
@@ -158,7 +150,7 @@ public class UserServiceImpl implements UserService {
 			userDetailsOutDto.setEmail(userDetails.getEmail());
 			userDetailsOutDto.setName(userDetails.getName());
 			userDetailsOutDto.setDepartment(userDetails.getDepartment().getDeptName());
-			list.add(userDetailsOutDto);	
+			list.add(userDetailsOutDto);
 		}
 		return list;
 	}
@@ -170,11 +162,7 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public void deleteUser(long userId) {
-		// TODO Auto-generated method stub
-		UserDetails userDetails = userRepository.findById(userId).get();
-		if (Objects.isNull(userDetails)) {
-			throw new RecordNotFoundException("User with given Id not found");
-		}
+		userRepository.findById(userId).get();
 		userRepository.deleteById(userId);
 		return;
 	}

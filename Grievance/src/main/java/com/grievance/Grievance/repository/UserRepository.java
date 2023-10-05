@@ -16,7 +16,7 @@ public interface UserRepository extends JpaRepository<UserDetails, Long> {
 	 *
 	 * @param email The email address to search for.
 	 * @return The user details associated with the specified email.
-	 *         
+	 *
 	 */
 	UserDetails findByEmail(String email);
 
@@ -35,7 +35,8 @@ public interface UserRepository extends JpaRepository<UserDetails, Long> {
 	 *
 	 * @param email    The email address to check.
 	 * @param password The password to check.
-	 * @param userType The user type to check.
+	 * @param userType To check the type of the user.
+	 *
 	 * @return True if a user with the specified email, password, and user type
 	 *         exists, otherwise false.
 	 */

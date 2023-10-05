@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.modelmapper.ModelMapper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,7 +14,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.grievance.Grievance.Enum.TicketStatus;
-import com.grievance.Grievance.Enum.TicketType;
 import com.grievance.Grievance.Enum.UserType;
 import com.grievance.Grievance.InDto.TicketInDto;
 import com.grievance.Grievance.InDto.TicketUpdateDto;
@@ -38,16 +38,32 @@ import com.grievance.Grievance.service.TicketService;
 @Service
 public class TicketServiceImpl implements TicketService {
 
+	/**
+	 * Logger initialization.
+	 */
+	private static final Logger LOGGER = LogManager.getLogger(TicketServiceImpl.class);
 
+	/*
+	 * Auto wired TicketRepository.
+	 */
 	@Autowired
 	private TicketRepository ticketRepository;
-	
+
+	/**
+	 * Auto wired DepartmentRepository.
+	 */
 	@Autowired
 	private DepartmentRepository departmentRepository;
 
+	/**
+	 * Auto wired CommentRepository.
+	 */
 	@Autowired
 	private CommentRepository commentRepository;
 
+	/**
+	 * Auto wired UserRepository.
+	 */
 	@Autowired
 	private UserRepository userRepository;
 
@@ -59,10 +75,10 @@ public class TicketServiceImpl implements TicketService {
 	 */
 	@Override
 	public TicketOutDto createTicket(TicketInDto ticketInDto) {
-	
+
 		Department department = departmentRepository.findById(ticketInDto.getDepartment().getDeptId()).get();
 		UserDetails userDetails = userRepository.findById(ticketInDto.getUserDetails().getUserId()).get();
-	
+
 		Ticket ticket = new Ticket();
 		ticket.setTicketTitle(ticketInDto.getTicketTitle());
 		ticket.setTicketType(ticketInDto.getTicketType());
@@ -70,10 +86,10 @@ public class TicketServiceImpl implements TicketService {
 		ticket.setUserDetails(userDetails);
 		ticket.setDepartment(department);
 		ticket.setTicketStatus(TicketStatus.Open);
-		
+
 		ticketRepository.save(ticket);
-		
-		TicketOutDto ticketOutDto = new TicketOutDto();	
+
+		TicketOutDto ticketOutDto = new TicketOutDto();
 		ticketOutDto.setTicketId(ticket.getTicketId());
 		ticketOutDto.setDeptName(ticket.getDepartment().getDeptName());
 		ticketOutDto.setName(ticket.getUserDetails().getName());
@@ -83,20 +99,18 @@ public class TicketServiceImpl implements TicketService {
 		ticketOutDto.setTicketType(ticket.getTicketType());
 		ticketOutDto.setUpdatedAt(ticket.getUpdatedAt());
 		ticketOutDto.setCreatedAt(ticket.getCreatedAt());
-		
+
 		return ticketOutDto;
 	}
 
 	/**
 	 * Retrieves a list of tickets with pagination and filtering options.
-	 * 
-	 * Ticket status -All, open ,Being_Addressed , Resolved. TicketFilter - All, My
+	 * Ticket status All, open ,Being_Addressed , Resolved. TicketFilter - All, My
 	 * tickets , MyDepartment.(TicketWise and StatusWise)
 	 *
 	 * @param pageNumber   The page number.
 	 * @param pageSize     The number of tickets per page.
 	 * @param email        The user's email for filtering.
-	 * @param ticketStatus The ticket status for filtering.
 	 * @return A list of DTOs representing tickets.
 	 */
 
@@ -113,10 +127,7 @@ public class TicketServiceImpl implements TicketService {
 		// For Administrator
 
 		if (userDetails.getUsertype() == UserType.Admin) {
-			// Administrator
-			
-			// If Filter is Ticket wise.
-
+			// Administrator(Ticket Wise Filter)
 			if (filter.equals("All")) {
 				if (type.equals("My Tickets")) {
 					tickets = ticketRepository.findByUserDetails(userDetails, pageable);
@@ -127,13 +138,14 @@ public class TicketServiceImpl implements TicketService {
 				}
 			} else {
 				// If Filter is status wise.
-
 				// Fetching the value of filter.
 				TicketStatus ticketStatus = TicketStatus.valueOf(filter);
 				if (type.equals("My Ticket")) {
-					tickets = ticketRepository.findByUserDetailsAndTicketStatus(userDetails, ticketStatus, pageable);
+					tickets = ticketRepository
+				   .findByUserDetailsAndTicketStatus(userDetails, ticketStatus, pageable);
 				} else if (type.equals("My Department")) {
-					tickets = ticketRepository.findByDepartmentAndTicketStatus(department, ticketStatus, pageable);
+					tickets = ticketRepository
+							.findByDepartmentAndTicketStatus(department, ticketStatus, pageable);
 				} else {
 					tickets = ticketRepository.findByTicketStatus(ticketStatus, pageable);
 				}
@@ -143,11 +155,9 @@ public class TicketServiceImpl implements TicketService {
 
 			for (Ticket ticket : tickets) {
 				TicketOutDto ticketOutDto = new TicketOutDto();
-				
+
 				DepartmentOutDto departmentOutDto = new DepartmentOutDto();
 				UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
-
-//				userDetails, department
 
 				ticketOutDto.setTicketId(ticket.getTicketId());
 				ticketOutDto.setName(ticket.getUserDetails().getName());
@@ -162,9 +172,8 @@ public class TicketServiceImpl implements TicketService {
 				outDtosList.add(ticketOutDto);
 			}
 			return outDtosList;
-			
-		}
 
+		}
 		// Member
 		else {
 			// Filter Ticket wise
@@ -173,7 +182,8 @@ public class TicketServiceImpl implements TicketService {
 				if (type.equals("My Tickets")) {
 					tickets = ticketRepository.findByUserDetails(userDetails, pageable);
 				} else if (type.equals("All")) {
-					tickets = ticketRepository.findByUserDetailsOrDepartment(userDetails, department, pageable);
+					tickets = ticketRepository
+				    .findByUserDetailsOrDepartment(userDetails, department, pageable);
 				} else {
 					tickets = ticketRepository.findByDepartment(department, pageable);
 				}
@@ -182,15 +192,17 @@ public class TicketServiceImpl implements TicketService {
 			else {
 				TicketStatus ticketStatus = TicketStatus.valueOf(filter);
 				if (type.equals("My Tickets")) {
-					tickets = ticketRepository.findByUserDetailsAndTicketStatus(userDetails, ticketStatus, pageable);
+					tickets = ticketRepository
+				    .findByUserDetailsAndTicketStatus(userDetails, ticketStatus, pageable);
 				} else if (type.equals("All")) {
-					tickets = ticketRepository.findByTicketStatusAndDepartmentOrUserDetails(department, userDetails,
-							ticketStatus, pageable);
+					tickets = ticketRepository
+				    .findByTicketStatusAndDepartmentOrUserDetails(department, userDetails,
+					 ticketStatus, pageable);
 				} else {
-					tickets = ticketRepository.findByDepartmentAndTicketStatus(department, ticketStatus, pageable);
+					tickets = ticketRepository
+				    .findByDepartmentAndTicketStatus(department, ticketStatus, pageable);
 				}
 			}
-
 			List<TicketOutDto> outDtosList = new ArrayList<TicketOutDto>();
 
 			for (Ticket ticket : tickets) {
@@ -200,7 +212,7 @@ public class TicketServiceImpl implements TicketService {
 
 				ticketOutDto.setTicketId(ticket.getTicketId());
 				ticketOutDto.setName(ticket.getUserDetails().getName());
-				ticketOutDto.setDeptName(ticket.getDepartment().getDeptName());				
+				ticketOutDto.setDeptName(ticket.getDepartment().getDeptName());
 				ticketOutDto.setTicketTitle(ticket.getTicketTitle());
 				ticketOutDto.setTicketType(ticket.getTicketType());
 				ticketOutDto.setTicketStatus(ticket.getTicketStatus());
@@ -222,9 +234,9 @@ public class TicketServiceImpl implements TicketService {
 	 */
 	@Override
 	public TicketOutDto getTicketById(long ticketId) {
-		// TODO Auto-generated method stub
 		Ticket ticket = ticketRepository.findById(ticketId).get();
 		if (ticket == null) {
+			LOGGER.error("Ticket with given Id not found");
 			throw new RecordNotFoundException("Ticket with given Id not found");
 		}
 		TicketOutDto ticketOutDto = new TicketOutDto();
@@ -240,8 +252,7 @@ public class TicketServiceImpl implements TicketService {
 		ticketOutDto.setComments(ticket.getComments());
 		ticketOutDto.setDeptId(ticket.getDepartment().getDeptId());
 		ticketOutDto.setUserId(ticket.getUserDetails().getUserId());
-		
-		
+
 		return ticketOutDto;
 	}
 
@@ -254,42 +265,42 @@ public class TicketServiceImpl implements TicketService {
 	 */
 	@Override
 	public TicketOutDto updateTicket(TicketUpdateDto ticketUpdateDto, long ticketId) {
-		System.out.println(ticketUpdateDto.getContent());
 		UserDetails userDetails = userRepository.findById(ticketUpdateDto.getUserId()).get();
 		if (ticketUpdateDto.getTicketStatus().toString().equals("Resolved")) {
 			if (ticketUpdateDto.getContent().toString().equals("")) {
 				return null;
 			}
 		}
-		Ticket ticket = ticketRepository.findById(ticketId).get();
-
-		if (ticket == null) {
-			throw new RecordNotFoundException("Ticket with given Id not found");
-		}
-		ticket.setTicketStatus(ticketUpdateDto.getTicketStatus());
+		Ticket existingTicket = ticketRepository.findById(ticketId)
+				.orElseThrow(() -> new RecordNotFoundException("Ticket with given Id not found"));
+		LOGGER.error("Ticket with given Id not found");
+		existingTicket.setTicketStatus(ticketUpdateDto.getTicketStatus());
 		Comment comment = new Comment();
 		comment.setContent(ticketUpdateDto.getContent());
 		comment.setLastUpdatedAt(new Date());
-		comment.setTicket(ticket);
+		comment.setTicket(existingTicket);
 		comment.setMemberName(userDetails.getName());
 		commentRepository.save(comment);
-		ticket.getComments().add(comment);
+
+		existingTicket.getComments().add(comment);
 		List<Comment> commentList = new ArrayList<Comment>();
 		commentList.add(comment);
-		ticket.setComments(commentList);
-        ticketRepository.save(ticket);
+		existingTicket.setComments(commentList);
+		existingTicket.setUpdatedAt(new Date());
+		ticketRepository.save(existingTicket);
 		TicketOutDto ticketOutDto = new TicketOutDto();
 		ticketOutDto.setName(userDetails.getName());
 		ticketOutDto.setDeptName(userDetails.getDepartment().getDeptName());
-		ticketOutDto.setTicketType(ticket.getTicketType());
-		ticketOutDto.setTicketStatus(ticket.getTicketStatus());
-		ticketOutDto.setTicketTitle(ticket.getTicketTitle());
-		ticketOutDto.setDescription(ticket.getDescription());
-		ticketOutDto.setCreatedAt(ticket.getCreatedAt());
-		ticketOutDto.setUpdatedAt(ticket.getUpdatedAt());
+		ticketOutDto.setTicketType(existingTicket.getTicketType());
+		ticketOutDto.setTicketStatus(existingTicket.getTicketStatus());
+		ticketOutDto.setTicketTitle(existingTicket.getTicketTitle());
+		ticketOutDto.setDescription(existingTicket.getDescription());
+		ticketOutDto.setCreatedAt(existingTicket.getCreatedAt());
+		ticketOutDto.setUpdatedAt(existingTicket.getUpdatedAt());
+		ticketOutDto.setDeptId(existingTicket.getDepartment().getDeptId());
+		ticketOutDto.setUserId(existingTicket.getUserDetails().getUserId());
 		ticketOutDto.setComments(commentList);
 		return ticketOutDto;
 	}
-
 
 }

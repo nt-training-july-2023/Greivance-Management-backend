@@ -59,27 +59,4 @@ public class LoginInDto {
 		this.password = password;
 	}
 
-	/**
-	 * Constructs a new {@code LoginInDto} instance with the specified email and
-	 * password.
-	 *
-	 * @param email    The user's email address.
-	 * @param password The user's password.
-	 */
-	public LoginInDto(
-			@NotEmpty(message = "Email is required") @Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$") String email,
-			@NotEmpty(message = "length should be in limit ") @Size(min = 8, message = "Password should be at least 8 characters") String password) {
-		super();
-		this.email = email;
-		this.password = password;
-	}
-
-	/**
-	 * Constructs a new, empty {@code LoginInDto} instance.
-	 */
-	public LoginInDto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 }

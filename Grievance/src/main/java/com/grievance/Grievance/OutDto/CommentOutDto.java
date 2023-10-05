@@ -83,18 +83,18 @@ public class CommentOutDto {
 	}
 
 	/**
-	 * Gets the last updated timestamp of the comment.
+	 * Gets the last updated time stamp of the comment.
 	 *
-	 * @return The last updated timestamp.
+	 * @return The last updated time stamp.
 	 */
 	public Date getUpdatedAt() {
 		return updatedAt;
 	}
 
 	/**
-	 * Sets the last updated timestamp of the comment.
+	 * Sets the last updated time stamp of the comment.
 	 *
-	 * @param updatedAt The last updated timestamp.
+	 * @param updatedAt The last updated time stamp.
 	 */
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;

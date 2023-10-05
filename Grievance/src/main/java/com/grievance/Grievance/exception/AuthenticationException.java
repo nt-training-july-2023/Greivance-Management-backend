@@ -5,11 +5,11 @@ package com.grievance.Grievance.exception;
  */
 @SuppressWarnings("serial")
 public class AuthenticationException extends RuntimeException {
-	 /**
-     * Constructs a new AuthenticationException with a message.
-     *
-     * @param message  describes the authentication error.
-     */
+	/**
+	 * Constructs a new AuthenticationException with a message.
+	 *
+	 * @param message describes the authentication error.
+	 */
 	public AuthenticationException(String message) {
 		super(message);
 	}

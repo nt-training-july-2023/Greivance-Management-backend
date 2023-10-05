@@ -2,18 +2,15 @@ package com.grievance.Grievance.ServiceImpl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -23,19 +20,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 
-import com.grievance.Grievance.Enum.UserType;
 import com.grievance.Grievance.InDto.DepartmentInDto;
 import com.grievance.Grievance.OutDto.DepartmentOutDto;
-import com.grievance.Grievance.OutDto.UserDetailsOutDto;
 import com.grievance.Grievance.entity.Department;
-import com.grievance.Grievance.entity.Ticket;
-import com.grievance.Grievance.entity.UserDetails;
 import com.grievance.Grievance.exception.DuplicateEntryException;
-import com.grievance.Grievance.exception.RecordNotFoundException;
 import com.grievance.Grievance.repository.DepartmentRepository;
-import com.grievance.Grievance.service.DepartmentService;
 import com.grievance.Grievance.serviceImplementation.DepartmentServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
@@ -72,9 +62,7 @@ public class DepartmentServiceImplTest {
 		when(departmentRepository.save(department)).thenReturn(department);
 		when(modelMapper.map(department, DepartmentOutDto.class)).thenReturn(departmentOutDto);
 		assertEquals(departmentOutDto, departmentService.createDepartment(departmentInDto));
-		
-
-		
+	
 		}
 	
 	@Test

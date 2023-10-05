@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.grievance.Grievance.InDto.DepartmentInDto;
 import com.grievance.Grievance.OutDto.DepartmentOutDto;
 import com.grievance.Grievance.service.DepartmentService;
+
 /**
  * Controller class for managing Department-related operations.
  */
@@ -27,8 +28,12 @@ import com.grievance.Grievance.service.DepartmentService;
 @CrossOrigin("*")
 public class DepartmentController {
 
+	/**
+	 * Auto wired DepartmentRepository.
+	 */
 	@Autowired
 	private DepartmentService departmentService;
+
 	/**
 	 * Create a new department.
 	 *
@@ -41,6 +46,7 @@ public class DepartmentController {
 		ResponseEntity createdResponse = new ResponseEntity(departmentOutDto, HttpStatus.CREATED);
 		return createdResponse;
 	}
+
 	/**
 	 * Get a list of all departments.
 	 *
@@ -49,11 +55,13 @@ public class DepartmentController {
 	 * @return ResponseEntity containing a list of DepartmentOutDto objects.
 	 */
 	@GetMapping("/departments")
-	public ResponseEntity<List<DepartmentOutDto>> getAllDepartment(@RequestParam(value = "pageNumber", defaultValue = "0", required = false) Integer pageNumber,
+	public ResponseEntity<List<DepartmentOutDto>> getAllDepartment(
+			@RequestParam(value = "pageNumber", defaultValue = "0", required = false) Integer pageNumber,
 			@RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer pageSize) {
-		List<DepartmentOutDto> departmentOutDtoslist = departmentService.getAllDepartments(pageNumber,pageSize);
+		List<DepartmentOutDto> departmentOutDtoslist = departmentService.getAllDepartments(pageNumber, pageSize);
 		return ResponseEntity.ok(departmentOutDtoslist);
 	}
+
 	/**
 	 * Get a department by its ID.
 	 *
@@ -66,6 +74,7 @@ public class DepartmentController {
 		DepartmentOutDto departmentOutDto = departmentService.getDepartmentById(deptId);
 		return ResponseEntity.ok(departmentOutDto);
 	}
+
 	/**
 	 * Delete a department by its ID.
 	 *

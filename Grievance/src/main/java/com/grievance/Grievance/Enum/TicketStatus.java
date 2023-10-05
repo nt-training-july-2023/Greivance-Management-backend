@@ -2,10 +2,10 @@ package com.grievance.Grievance.Enum;
 
 /**
  * Enumeration representing the status of a ticket.
- * 
+ *
  * This enum defines three status values: Open, Being_Addressed, and
- * Resolved. 
- * 
+ * Resolved.
+ *
  */
 public enum TicketStatus {
 

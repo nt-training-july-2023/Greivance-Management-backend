@@ -1,6 +1,5 @@
 package com.grievance.Grievance.OutDto;
 
-import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -13,65 +12,76 @@ import com.grievance.Grievance.entity.Comment;
  */
 public class TicketOutDto {
 
-	 /**
-     * The unique identifier for the ticket.
-     */
+	/**
+	 * The unique identifier for the ticket.
+	 */
 	private long ticketId;
 
-	   /**
-     * The type of the ticket (e.g., Grievance, Feedback).
-     */
+	/**
+	 * The type of the ticket (e.g., Grievance, Feedback).
+	 */
 	private TicketType ticketType;
 
-	  /**
-     * The status of the ticket (e.g., Open, Being_Addressed, Resolved).
-     */
+	/**
+	 * The status of the ticket (e.g., Open, Being_Addressed, Resolved).
+	 */
 	private TicketStatus ticketStatus;
 
-	 /**
-     * The title of the ticket.
-     */
+	/**
+	 * The title of the ticket.
+	 */
 	private String ticketTitle;
 
-	  /**
-     * The description of the ticket.
-     */
+	/**
+	 * The description of the ticket.
+	 */
 	private String description;
 
-	 /**
-     * The date and time when the ticket was created.
-     */
+	/**
+	 * The date and time when the ticket was created.
+	 */
 	private java.util.Date createdAt;
 
-	 /**
-     * The date and time when the ticket was last updated.
-     */
+	/**
+	 * The date and time when the ticket was last updated.
+	 */
 	private java.util.Date updatedAt;
 
-    /**
-     * The department associated with the ticket.
-     */
+	/**
+	 * The department associated with the ticket.
+	 */
 	@JsonBackReference(value = "dep")
 	private DepartmentOutDto department;
-	 /**
-     * The user details associated with the ticket.
-     */
+	/**
+	 * The user details associated with the ticket.
+	 */
 	@JsonBackReference(value = "user")
 	private UserDetailsOutDto userDetails;
 	/**
-     * The list of comments associated with the ticket.
-     */
+	 * The list of comments associated with the ticket.
+	 */
 	private List<Comment> comments;
-	
+
+	/**
+	 * deptName department in which ticket assigned to.
+	 */
 	private String deptName;
-	
+
+	/**
+	 *  name of the user.
+	 */
 	private String name;
-	
+
+	/**
+	 * userId Id of the user.
+	 */
 	private long userId;
-	
+
+	/**
+	 * deptId Id of department.
+	 */
 	private long deptId;
-	
-	
+
 	/**
 	 * @return the deptName
 	 */
@@ -87,8 +97,10 @@ public class TicketOutDto {
 	}
 
 	/**
-     * Returns the unique identifier for the ticket.
-     */
+	 * 
+	 * Returns the unique identifier for the ticket.
+	 * @return tickeId.
+	 */
 	public long getTicketId() {
 		return ticketId;
 	}
@@ -101,6 +113,7 @@ public class TicketOutDto {
 	public void setTicketId(long ticketId) {
 		this.ticketId = ticketId;
 	}
+
 	/**
 	 * Gets the type of the ticket.
 	 *
@@ -109,6 +122,7 @@ public class TicketOutDto {
 	public TicketType getTicketType() {
 		return ticketType;
 	}
+
 	/**
 	 * Sets the type of the ticket.
 	 *
@@ -117,6 +131,7 @@ public class TicketOutDto {
 	public void setTicketType(TicketType ticketType) {
 		this.ticketType = ticketType;
 	}
+
 	/**
 	 * Gets the status of the ticket.
 	 *
@@ -134,6 +149,7 @@ public class TicketOutDto {
 	public void setTicketStatus(TicketStatus ticketStatus) {
 		this.ticketStatus = ticketStatus;
 	}
+
 	/**
 	 * Gets the title of the ticket.
 	 *
@@ -142,6 +158,7 @@ public class TicketOutDto {
 	public String getTicketTitle() {
 		return ticketTitle;
 	}
+
 	/**
 	 * Sets the title of the ticket.
 	 *
@@ -150,6 +167,7 @@ public class TicketOutDto {
 	public void setTicketTitle(String ticketTitle) {
 		this.ticketTitle = ticketTitle;
 	}
+
 	/**
 	 * Gets the description of the ticket.
 	 *
@@ -158,6 +176,7 @@ public class TicketOutDto {
 	public String getDescription() {
 		return description;
 	}
+
 	/**
 	 * Sets the description of the ticket.
 	 *
@@ -166,6 +185,7 @@ public class TicketOutDto {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	/**
 	 * Gets the department associated with the ticket.
 	 *
@@ -174,6 +194,7 @@ public class TicketOutDto {
 	public DepartmentOutDto getDepartment() {
 		return department;
 	}
+
 	/**
 	 * Sets the department associated with the ticket.
 	 *
@@ -182,6 +203,7 @@ public class TicketOutDto {
 	public void setDepartment(DepartmentOutDto department) {
 		this.department = department;
 	}
+
 	/**
 	 * Gets the user details associated with the ticket.
 	 *
@@ -199,6 +221,7 @@ public class TicketOutDto {
 	public void setUserDetails(UserDetailsOutDto userDetails) {
 		this.userDetails = userDetails;
 	}
+
 	/**
 	 * Gets the list of comments associated with the ticket.
 	 *
@@ -207,6 +230,7 @@ public class TicketOutDto {
 	public List<Comment> getComments() {
 		return comments;
 	}
+
 	/**
 	 * Sets the list of comments associated with the ticket.
 	 *
@@ -215,6 +239,7 @@ public class TicketOutDto {
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
+
 	/**
 	 * Gets the date and time when the ticket was created.
 	 *
@@ -223,6 +248,7 @@ public class TicketOutDto {
 	public java.util.Date getCreatedAt() {
 		return createdAt;
 	}
+
 	/**
 	 * Sets the date and time when the ticket was created.
 	 *
@@ -231,6 +257,7 @@ public class TicketOutDto {
 	public void setCreatedAt(java.util.Date createdAt) {
 		this.createdAt = createdAt;
 	}
+
 	/**
 	 * Gets the date and time when the ticket was last updated.
 	 *
@@ -239,6 +266,7 @@ public class TicketOutDto {
 	public java.util.Date getUpdatedAt() {
 		return updatedAt;
 	}
+
 	/**
 	 * Sets the date and time when the ticket was last updated.
 	 *
@@ -294,8 +322,5 @@ public class TicketOutDto {
 	public void setDeptId(long deptId) {
 		this.deptId = deptId;
 	}
-
-	
-	
 
 }

@@ -3,7 +3,6 @@ package com.grievance.Grievance.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -40,7 +39,11 @@ public class UserDetails {
 	 */
 	@NotEmpty(message = "name is required")
 	private String name;
-	
+
+	/**
+	 * One-to-many relationship mapping to associate this entity with a list of Comment entities.
+	 * This field represents the list of comments associated with this entity.
+	 */
 	@OneToMany(mappedBy = "userDetails")
 	private List<Comment> comments;
 
@@ -149,8 +152,7 @@ public class UserDetails {
 
 	/**
 	 * Gets the password of the user.
-	 *
-	 * @return The user's password.
+	 * @param password
 	 */
 	public void setPassword(String password) {
 		this.password = password;
@@ -231,7 +233,7 @@ public class UserDetails {
 
 	/**
 	 * Constructs a new UserDetails object with the provided information.
-	 * 
+	 *
 	 * @param userId     The unique identifier of the user.
 	 * @param name       The name of the user.
 	 * @param email      The email address of the user.
@@ -242,7 +244,8 @@ public class UserDetails {
 	 * @param tickets    The list of tickets associated with the user.
 	 */
 	public UserDetails(long userId, @NotEmpty(message = "name is required") String name,
-			@Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$") @NotEmpty(message = "Email is required") String email,
+			@Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$")
+	        @NotEmpty(message = "Email is required") String email,
 			@NotEmpty(message = "Password is required") String password, UserType usertype, Boolean isLoggedIn,
 			Department department, List<Ticket> tickets) {
 		super();
@@ -256,16 +259,26 @@ public class UserDetails {
 		this.tickets = tickets;
 	}
 
+	/**
+	 * Default constructor for creating a new.
+     * UserDetails instance.
+	 * Initializes the object with default values.
+	 */
 	public UserDetails() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	/**
+	 * Returns a string representation of the UserDetails object.
+	 *
+	 * @return A string containing the details of the UserDetails object.
+	 */
 	@Override
 	public String toString() {
-		return "UserDetails [userId=" + userId + ", name=" + name + ", email=" + email + ", password=" + password
-				+ ", usertype=" + usertype + ", isLoggedIn=" + isLoggedIn + ", department=" + department + ", tickets="
-				+ tickets + "]";
+		return "UserDetails [userId=" + userId + ", name=" + name +
+				", email=" + email + ", password=" + password +
+				", usertype=" + usertype + ", isLoggedIn=" + isLoggedIn +
+				", department=" + department + ", tickets=" + tickets + "]";
 	}
 
 }

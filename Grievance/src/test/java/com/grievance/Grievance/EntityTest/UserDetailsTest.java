@@ -6,13 +6,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.grievance.Grievance.Enum.UserType;
-import com.grievance.Grievance.entity.Comment;
 import com.grievance.Grievance.entity.Department;
 import com.grievance.Grievance.entity.Ticket;
 import com.grievance.Grievance.entity.UserDetails;

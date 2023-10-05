@@ -1,0 +1,656 @@
+2023-10-04 00:09:26,726 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] Starting GrievanceApplicationTests using Java 17.0.7 on Sneha with PID 5852 (started by sneha in C:\Users\sneha\OneDrive\Desktop\Grievance_Management_backEnd\Grievance) 
+2023-10-04 00:09:26,742 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] No active profile set, falling back to 1 default profile: "default" 
+2023-10-04 00:09:28,008 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2023-10-04 00:09:28,146 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 122 ms. Found 4 JPA repository interfaces. 
+2023-10-04 00:09:29,246 [INFO] org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default] 
+2023-10-04 00:09:29,421 [INFO] org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.15.Final 
+2023-10-04 00:09:29,549 [INFO] org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2023-10-04 00:09:29,916 [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting... 
+2023-10-04 00:09:30,414 [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed. 
+2023-10-04 00:09:30,473 [INFO] org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect 
+2023-10-04 00:09:31,923 [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2023-10-04 00:09:31,935 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2023-10-04 00:09:33,356 [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2023-10-04 00:09:34,544 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] Started GrievanceApplicationTests in 8.382 seconds (JVM running for 12.818) 
+2023-10-04 00:09:34,701 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:09:34,701 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:09:34,702 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:09:34,979 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:09:34,980 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:09:34,981 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 1 ms 
+2023-10-04 00:09:35,106 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:09:35,107 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:09:35,108 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:09:35,160 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:09:35,160 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:09:35,161 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 1 ms 
+2023-10-04 00:09:35,188 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:09:35,189 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:09:35,190 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 1 ms 
+2023-10-04 00:09:35,285 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:09:35,285 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:09:35,286 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:09:35,354 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:09:35,357 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:09:35,358 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:09:35,395 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:09:35,395 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:09:35,395 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:09:35,428 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:09:35,428 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:09:35,428 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:09:35,475 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:09:35,475 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:09:35,475 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:09:35,509 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:09:35,509 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:09:35,509 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:09:35,533 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:09:35,534 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:09:35,534 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:09:35,561 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:09:35,561 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:09:35,561 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:09:35,611 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default' 
+2023-10-04 00:09:35,613 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated... 
+2023-10-04 00:09:35,625 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed. 
+2023-10-04 00:10:29,697 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] Starting GrievanceApplicationTests using Java 17.0.7 on Sneha with PID 13488 (started by sneha in C:\Users\sneha\OneDrive\Desktop\Grievance_Management_backEnd\Grievance) 
+2023-10-04 00:10:29,699 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] No active profile set, falling back to 1 default profile: "default" 
+2023-10-04 00:10:31,556 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2023-10-04 00:10:31,709 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 127 ms. Found 4 JPA repository interfaces. 
+2023-10-04 00:10:33,062 [INFO] org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default] 
+2023-10-04 00:10:33,203 [INFO] org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.15.Final 
+2023-10-04 00:10:33,309 [INFO] org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2023-10-04 00:10:33,684 [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting... 
+2023-10-04 00:10:34,313 [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed. 
+2023-10-04 00:10:34,435 [INFO] org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect 
+2023-10-04 00:10:36,625 [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2023-10-04 00:10:36,656 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2023-10-04 00:10:38,530 [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2023-10-04 00:10:40,126 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] Started GrievanceApplicationTests in 11.311 seconds (JVM running for 18.287) 
+2023-10-04 00:10:40,318 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:10:40,319 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:10:40,320 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 1 ms 
+2023-10-04 00:10:40,698 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:10:40,699 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:10:40,699 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:10:40,898 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:10:40,898 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:10:40,899 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 1 ms 
+2023-10-04 00:10:40,962 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:10:40,963 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:10:40,963 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:10:40,999 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:10:40,999 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:10:40,999 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:10:41,120 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:10:41,120 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:10:41,121 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:10:41,217 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:10:41,217 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:10:41,218 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:10:41,255 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:10:41,256 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:10:41,256 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:10:41,292 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:10:41,292 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:10:41,293 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:10:41,345 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:10:41,345 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:10:41,345 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:10:41,386 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:10:41,386 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:10:41,386 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:10:41,416 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:10:41,416 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:10:41,417 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 1 ms 
+2023-10-04 00:10:41,449 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:10:41,449 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:10:41,450 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 1 ms 
+2023-10-04 00:10:42,394 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default' 
+2023-10-04 00:10:42,401 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated... 
+2023-10-04 00:10:42,414 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed. 
+2023-10-04 00:16:09,981 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] Starting GrievanceApplicationTests using Java 17.0.7 on Sneha with PID 25484 (started by sneha in C:\Users\sneha\OneDrive\Desktop\Grievance_Management_backEnd\Grievance) 
+2023-10-04 00:16:09,983 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] No active profile set, falling back to 1 default profile: "default" 
+2023-10-04 00:16:11,745 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2023-10-04 00:16:11,890 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 118 ms. Found 4 JPA repository interfaces. 
+2023-10-04 00:16:13,216 [INFO] org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default] 
+2023-10-04 00:16:13,378 [INFO] org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.15.Final 
+2023-10-04 00:16:13,486 [INFO] org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2023-10-04 00:16:13,901 [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting... 
+2023-10-04 00:16:14,575 [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed. 
+2023-10-04 00:16:14,731 [INFO] org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect 
+2023-10-04 00:16:16,962 [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2023-10-04 00:16:16,985 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2023-10-04 00:16:18,684 [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2023-10-04 00:16:20,022 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] Started GrievanceApplicationTests in 10.928 seconds (JVM running for 17.49) 
+2023-10-04 00:16:20,189 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:16:20,190 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:16:20,192 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 1 ms 
+2023-10-04 00:16:20,618 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:16:20,620 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:16:20,620 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:16:20,802 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:16:20,802 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:16:20,803 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:16:20,864 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:16:20,865 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:16:20,866 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 1 ms 
+2023-10-04 00:16:20,893 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:16:20,893 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:16:20,893 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:16:21,015 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:16:21,015 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:16:21,015 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:16:21,084 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:16:21,084 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:16:21,085 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 1 ms 
+2023-10-04 00:16:21,114 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:16:21,114 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:16:21,114 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:16:21,151 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:16:21,151 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:16:21,152 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:16:21,231 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:16:21,231 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:16:21,231 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:16:21,267 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:16:21,267 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:16:21,268 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 1 ms 
+2023-10-04 00:16:21,296 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:16:21,296 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:16:21,296 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:16:21,327 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 00:16:21,328 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 00:16:21,328 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 00:16:22,138 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default' 
+2023-10-04 00:16:22,144 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated... 
+2023-10-04 00:16:22,153 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed. 
+2023-10-04 00:17:53,002 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] Starting GrievanceApplicationTests using Java 1.8.0_202 on Sneha with PID 24584 (started by sneha in C:\Users\sneha\OneDrive\Desktop\Grievance_Management_backEnd\Grievance) 
+2023-10-04 00:17:53,004 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] No active profile set, falling back to 1 default profile: "default" 
+2023-10-04 00:17:54,947 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2023-10-04 00:17:55,187 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 204 ms. Found 4 JPA repository interfaces. 
+2023-10-04 00:17:56,891 [INFO] org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default] 
+2023-10-04 00:17:57,098 [INFO] org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.15.Final 
+2023-10-04 00:17:57,246 [INFO] org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2023-10-04 00:17:57,975 [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting... 
+2023-10-04 00:17:59,629 [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed. 
+2023-10-04 00:17:59,812 [INFO] org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect 
+2023-10-04 00:18:02,403 [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2023-10-04 00:18:02,446 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2023-10-04 00:18:04,767 [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2023-10-04 00:18:06,064 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] Started GrievanceApplicationTests in 14.106 seconds (JVM running for 22.12) 
+2023-10-04 00:18:06,686 [ERROR] com.grievance.Grievance.serviceImplementation.DepartmentServiceImpl [main] Department Already Exist 
+2023-10-04 00:18:07,063 [ERROR] com.grievance.Grievance.serviceImplementation.TicketServiceImpl [main] Ticket with given Id not found 
+2023-10-04 00:18:07,129 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [main] User not found with email: nonexistent@example.com 
+2023-10-04 00:18:07,143 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [main] Invalid password 
+2023-10-04 00:18:07,199 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default' 
+2023-10-04 00:18:07,205 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated... 
+2023-10-04 00:18:07,236 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed. 
+2023-10-04 10:43:09,574 [INFO] com.grievance.Grievance.GrievanceApplication [restartedMain] Starting GrievanceApplication using Java 17.0.7 on Sneha with PID 17460 (C:\Users\sneha\OneDrive\Desktop\Grievance_Management_backEnd\Grievance\target\classes started by sneha in C:\Users\sneha\OneDrive\Desktop\Grievance_Management_backEnd\Grievance) 
+2023-10-04 10:43:09,577 [INFO] com.grievance.Grievance.GrievanceApplication [restartedMain] No active profile set, falling back to 1 default profile: "default" 
+2023-10-04 10:43:09,691 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2023-10-04 10:43:09,691 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2023-10-04 10:43:11,498 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2023-10-04 10:43:11,778 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 171 ms. Found 4 JPA repository interfaces. 
+2023-10-04 10:43:13,769 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http) 
+2023-10-04 10:43:13,799 [INFO] org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat] 
+2023-10-04 10:43:13,801 [INFO] org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.78] 
+2023-10-04 10:43:14,039 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext 
+2023-10-04 10:43:14,039 [INFO] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 4346 ms 
+2023-10-04 10:43:14,607 [INFO] org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default] 
+2023-10-04 10:43:14,745 [INFO] org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.6.15.Final 
+2023-10-04 10:43:15,275 [INFO] org.hibernate.annotations.common.Version [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2023-10-04 10:43:15,517 [INFO] com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting... 
+2023-10-04 10:43:16,049 [INFO] com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed. 
+2023-10-04 10:43:16,131 [INFO] org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect 
+2023-10-04 10:43:18,551 [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2023-10-04 10:43:18,578 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2023-10-04 10:43:19,721 [INFO] org.springframework.boot.web.servlet.RegistrationBean [restartedMain] Filter securityFilter was not registered (possibly already registered?) 
+2023-10-04 10:43:20,427 [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2023-10-04 10:43:21,360 [INFO] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729 
+2023-10-04 10:43:21,462 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path '' 
+2023-10-04 10:43:21,496 [INFO] com.grievance.Grievance.GrievanceApplication [restartedMain] Started GrievanceApplication in 13.014 seconds (JVM running for 13.953) 
+2023-10-04 10:55:35,560 [WARN] com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m19s232ms721µs600ns). 
+2023-10-04 10:58:02,619 [WARN] com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m57s47ms550µs800ns). 
+2023-10-04 11:00:01,641 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2023-10-04 11:00:01,641 [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet' 
+2023-10-04 11:00:01,641 [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 0 ms 
+2023-10-04 11:14:34,584 [ERROR] com.grievance.Grievance.serviceImplementation.TicketServiceImpl [http-nio-8080-exec-10] Ticket with given Id not found 
+2023-10-04 11:18:00,502 [ERROR] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet] [http-nio-8080-exec-10] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.util.NoSuchElementException: No value present] with root cause 
+java.util.NoSuchElementException: No value present
+	at java.base/java.util.Optional.get(Optional.java:143)
+	at com.grievance.Grievance.serviceImplementation.TicketServiceImpl.createTicket(TicketServiceImpl.java:67)
+	at com.grievance.Grievance.controller.TicketController.createTicket(TicketController.java:44)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at com.grievance.Grievance.Configuration.SecurityFilter.doFilter(SecurityFilter.java:102)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-10-04 11:18:24,670 [ERROR] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet] [http-nio-8080-exec-2] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.util.NoSuchElementException: No value present] with root cause 
+java.util.NoSuchElementException: No value present
+	at java.base/java.util.Optional.get(Optional.java:143)
+	at com.grievance.Grievance.serviceImplementation.TicketServiceImpl.createTicket(TicketServiceImpl.java:67)
+	at com.grievance.Grievance.controller.TicketController.createTicket(TicketController.java:44)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at com.grievance.Grievance.Configuration.SecurityFilter.doFilter(SecurityFilter.java:102)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-10-04 11:19:43,071 [WARN] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver [http-nio-8080-exec-6] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot coerce empty String ("") to `com.grievance.Grievance.Enum.TicketType` value (but could if coercion was enabled using `CoercionConfig`); nested exception is com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot coerce empty String ("") to `com.grievance.Grievance.Enum.TicketType` value (but could if coercion was enabled using `CoercionConfig`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 60] (through reference chain: com.grievance.Grievance.InDto.TicketInDto["ticketType"])] 
+2023-10-04 11:26:29,415 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-8] Invalid password 
+2023-10-04 11:26:29,420 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-8] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 11:26:31,331 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-9] Invalid password 
+2023-10-04 11:26:31,332 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-9] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 11:26:31,553 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-10] Invalid password 
+2023-10-04 11:26:31,554 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-10] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 11:37:04,182 [WARN] com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m1s49ms252µs). 
+2023-10-04 11:40:03,285 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-1] Invalid password 
+2023-10-04 11:40:03,285 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-1] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 11:40:13,873 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-2] Invalid password 
+2023-10-04 11:40:13,873 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-2] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 11:40:27,841 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-3] Invalid password 
+2023-10-04 11:40:27,843 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 11:40:37,634 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-4] Invalid password 
+2023-10-04 11:40:37,634 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-4] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:03:43,020 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-9] Invalid password 
+2023-10-04 12:03:43,024 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-9] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:04:06,001 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-3] Invalid password 
+2023-10-04 12:04:06,001 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:04:38,670 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-4] Invalid password 
+2023-10-04 12:04:38,670 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-4] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:06:03,653 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-2] Invalid password 
+2023-10-04 12:06:03,658 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-2] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:06:18,600 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-3] Invalid password 
+2023-10-04 12:06:18,603 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:06:46,834 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-4] Invalid password 
+2023-10-04 12:06:46,834 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-4] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:06:56,770 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-5] Invalid password 
+2023-10-04 12:06:56,770 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-5] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:07:10,496 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-6] Invalid password 
+2023-10-04 12:07:10,502 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-6] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:08:09,364 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-7] Invalid password 
+2023-10-04 12:08:09,372 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-7] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:11:14,558 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-9] Invalid password 
+2023-10-04 12:11:14,558 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-9] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:11:34,406 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-10] Invalid password 
+2023-10-04 12:11:34,406 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-10] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:11:43,764 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-1] Invalid password 
+2023-10-04 12:11:43,766 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-1] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:11:53,457 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-2] Invalid password 
+2023-10-04 12:11:53,459 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-2] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:12:01,823 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-3] Invalid password 
+2023-10-04 12:12:01,823 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:12:09,012 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-4] Invalid password 
+2023-10-04 12:12:09,012 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-4] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:12:30,855 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-5] Invalid password 
+2023-10-04 12:12:30,858 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-5] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:12:55,344 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-6] Invalid password 
+2023-10-04 12:12:55,344 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-6] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:13:07,484 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-7] Invalid password 
+2023-10-04 12:13:07,488 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-7] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:13:33,331 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-8] Invalid password 
+2023-10-04 12:13:33,337 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-8] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:14:16,326 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-9] Invalid password 
+2023-10-04 12:14:16,326 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-9] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:14:43,045 [WARN] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver [http-nio-8080-exec-10] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.grievance.Grievance.OutDto.UserDetailsOutDto> com.grievance.Grievance.controller.UserController.userLogin(com.grievance.Grievance.InDto.LoginInDto): [Field error in object 'loginInDto' on field 'password': rejected value [ZGZn]; codes [Size.loginInDto.password,Size.password,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [loginInDto.password,password]; arguments []; default message [password],2147483647,8]; default message [Password should be at least 8 characters]] ] 
+2023-10-04 12:16:10,949 [WARN] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver [http-nio-8080-exec-1] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.grievance.Grievance.OutDto.UserDetailsOutDto> com.grievance.Grievance.controller.UserController.userLogin(com.grievance.Grievance.InDto.LoginInDto): [Field error in object 'loginInDto' on field 'password': rejected value [ZGZn]; codes [Size.loginInDto.password,Size.password,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [loginInDto.password,password]; arguments []; default message [password],2147483647,8]; default message [Password should be at least 8 characters]] ] 
+2023-10-04 12:19:50,908 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-2] Invalid password 
+2023-10-04 12:19:50,912 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-2] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:20:42,266 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-3] Invalid password 
+2023-10-04 12:20:42,267 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:20:48,940 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-4] Invalid password 
+2023-10-04 12:20:48,940 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-4] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:21:04,890 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-5] Invalid password 
+2023-10-04 12:21:04,890 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-5] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:33:13,347 [WARN] com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m8s384ms384µs400ns). 
+2023-10-04 12:33:14,906 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-7] Invalid password 
+2023-10-04 12:33:14,908 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-7] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:33:26,665 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-8] Invalid password 
+2023-10-04 12:33:26,673 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-8] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:35:33,342 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-1] Invalid password 
+2023-10-04 12:35:33,344 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-1] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:36:29,225 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-2] Invalid password 
+2023-10-04 12:36:29,225 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-2] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:36:38,205 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-3] Invalid password 
+2023-10-04 12:36:38,212 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:36:50,296 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-4] Invalid password 
+2023-10-04 12:36:50,296 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-4] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:37:19,179 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-5] Invalid password 
+2023-10-04 12:37:19,181 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-5] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:37:36,578 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-6] Invalid password 
+2023-10-04 12:37:36,583 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-6] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:40:02,805 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-8] Invalid password 
+2023-10-04 12:40:02,808 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-8] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:43:29,848 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-10] Invalid password 
+2023-10-04 12:43:29,858 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-10] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:43:41,783 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-1] Invalid password 
+2023-10-04 12:43:41,785 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-1] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:43:49,698 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-2] Invalid password 
+2023-10-04 12:43:49,699 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-2] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:43:58,996 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-3] Invalid password 
+2023-10-04 12:43:58,996 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:46:31,297 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-5] Invalid password 
+2023-10-04 12:46:31,306 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-5] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:47:01,911 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-6] Invalid password 
+2023-10-04 12:47:01,915 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-6] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 12:47:14,380 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-7] Invalid password 
+2023-10-04 12:47:14,380 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-7] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 13:22:45,624 [WARN] com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m1s648ms52µs800ns). 
+2023-10-04 13:27:55,139 [WARN] com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m9s458ms217µs500ns). 
+2023-10-04 13:28:57,843 [WARN] com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m2s703ms891µs800ns). 
+2023-10-04 14:18:20,583 [WARN] com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=46m49s653ms709µs400ns). 
+2023-10-04 14:36:35,445 [INFO] com.grievance.Grievance.GrievanceApplication [restartedMain] Starting GrievanceApplication using Java 17.0.7 on Sneha with PID 20972 (C:\Users\sneha\OneDrive\Desktop\Grievance_Management_backEnd\Grievance\target\classes started by sneha in C:\Users\sneha\OneDrive\Desktop\Grievance_Management_backEnd\Grievance) 
+2023-10-04 14:36:35,447 [INFO] com.grievance.Grievance.GrievanceApplication [restartedMain] No active profile set, falling back to 1 default profile: "default" 
+2023-10-04 14:36:35,561 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2023-10-04 14:36:35,561 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2023-10-04 14:36:37,067 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2023-10-04 14:36:37,203 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 122 ms. Found 4 JPA repository interfaces. 
+2023-10-04 14:36:38,649 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http) 
+2023-10-04 14:36:38,673 [INFO] org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat] 
+2023-10-04 14:36:38,674 [INFO] org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.78] 
+2023-10-04 14:36:38,900 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext 
+2023-10-04 14:36:38,901 [INFO] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 3339 ms 
+2023-10-04 14:36:39,295 [INFO] org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default] 
+2023-10-04 14:36:39,401 [INFO] org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.6.15.Final 
+2023-10-04 14:36:39,786 [INFO] org.hibernate.annotations.common.Version [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2023-10-04 14:36:40,001 [INFO] com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting... 
+2023-10-04 14:36:40,416 [INFO] com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed. 
+2023-10-04 14:36:40,504 [INFO] org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect 
+2023-10-04 14:36:42,543 [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2023-10-04 14:36:42,561 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2023-10-04 14:36:43,224 [INFO] org.springframework.boot.web.servlet.RegistrationBean [restartedMain] Filter securityFilter was not registered (possibly already registered?) 
+2023-10-04 14:36:43,661 [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2023-10-04 14:36:44,267 [INFO] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729 
+2023-10-04 14:36:44,342 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path '' 
+2023-10-04 14:36:44,372 [INFO] com.grievance.Grievance.GrievanceApplication [restartedMain] Started GrievanceApplication in 9.678 seconds (JVM running for 14.47) 
+2023-10-04 14:38:20,627 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2023-10-04 14:38:20,628 [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet' 
+2023-10-04 14:38:20,632 [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 3 ms 
+2023-10-04 15:25:19,087 [ERROR] com.grievance.Grievance.serviceImplementation.TicketServiceImpl [http-nio-8080-exec-8] Ticket with given Id not found 
+2023-10-04 15:27:03,515 [ERROR] com.grievance.Grievance.serviceImplementation.TicketServiceImpl [http-nio-8080-exec-1] Ticket with given Id not found 
+2023-10-04 15:27:05,891 [ERROR] com.grievance.Grievance.serviceImplementation.TicketServiceImpl [http-nio-8080-exec-2] Ticket with given Id not found 
+2023-10-04 15:27:06,690 [ERROR] com.grievance.Grievance.serviceImplementation.TicketServiceImpl [http-nio-8080-exec-3] Ticket with given Id not found 
+2023-10-04 15:27:17,884 [ERROR] com.grievance.Grievance.serviceImplementation.TicketServiceImpl [http-nio-8080-exec-5] Ticket with given Id not found 
+2023-10-04 15:27:18,033 [ERROR] com.grievance.Grievance.serviceImplementation.TicketServiceImpl [http-nio-8080-exec-6] Ticket with given Id not found 
+2023-10-04 15:27:18,241 [ERROR] com.grievance.Grievance.serviceImplementation.TicketServiceImpl [http-nio-8080-exec-7] Ticket with given Id not found 
+2023-10-04 15:27:18,929 [ERROR] com.grievance.Grievance.serviceImplementation.TicketServiceImpl [http-nio-8080-exec-8] Ticket with given Id not found 
+2023-10-04 15:27:19,079 [ERROR] com.grievance.Grievance.serviceImplementation.TicketServiceImpl [http-nio-8080-exec-9] Ticket with given Id not found 
+2023-10-04 15:27:19,209 [ERROR] com.grievance.Grievance.serviceImplementation.TicketServiceImpl [http-nio-8080-exec-10] Ticket with given Id not found 
+2023-10-04 15:27:19,353 [ERROR] com.grievance.Grievance.serviceImplementation.TicketServiceImpl [http-nio-8080-exec-1] Ticket with given Id not found 
+2023-10-04 15:27:19,463 [ERROR] com.grievance.Grievance.serviceImplementation.TicketServiceImpl [http-nio-8080-exec-2] Ticket with given Id not found 
+2023-10-04 15:27:19,677 [ERROR] com.grievance.Grievance.serviceImplementation.TicketServiceImpl [http-nio-8080-exec-3] Ticket with given Id not found 
+2023-10-04 15:53:27,965 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-3] Invalid password 
+2023-10-04 15:53:27,973 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 15:53:42,597 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-4] Invalid password 
+2023-10-04 15:53:42,597 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-4] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 15:58:34,447 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-6] Invalid password 
+2023-10-04 15:58:34,447 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-6] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 16:15:22,633 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-1] Invalid password 
+2023-10-04 16:15:22,633 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-1] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 16:15:33,260 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-2] Invalid password 
+2023-10-04 16:15:33,263 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-2] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 16:15:42,592 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-3] Invalid password 
+2023-10-04 16:15:42,592 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 17:18:50,786 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-3] Invalid password 
+2023-10-04 17:18:50,790 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 17:25:01,138 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-4] Invalid password 
+2023-10-04 17:25:01,140 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-4] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 17:25:01,839 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-5] Invalid password 
+2023-10-04 17:25:01,847 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-5] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 17:33:21,638 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-1] Invalid password 
+2023-10-04 17:33:21,638 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-1] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 17:34:29,242 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [http-nio-8080-exec-9] Invalid password 
+2023-10-04 17:34:29,242 [WARN] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8080-exec-9] Resolved [com.grievance.Grievance.exception.AuthenticationException: Invalid password] 
+2023-10-04 17:46:04,251 [WARN] com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m21s26ms607µs700ns). 
+2023-10-04 18:09:36,842 [WARN] com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=19m2s518ms321µs800ns). 
+2023-10-04 22:08:31,796 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] Starting GrievanceApplicationTests using Java 17.0.7 on Sneha with PID 18436 (started by sneha in C:\Users\sneha\OneDrive\Desktop\Grievance_Management_backEnd\Grievance) 
+2023-10-04 22:08:31,799 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] No active profile set, falling back to 1 default profile: "default" 
+2023-10-04 22:08:33,143 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2023-10-04 22:08:33,307 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 136 ms. Found 4 JPA repository interfaces. 
+2023-10-04 22:08:34,565 [INFO] org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default] 
+2023-10-04 22:08:34,663 [INFO] org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.15.Final 
+2023-10-04 22:08:34,745 [INFO] org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2023-10-04 22:08:35,002 [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting... 
+2023-10-04 22:08:35,348 [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed. 
+2023-10-04 22:08:35,406 [INFO] org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect 
+2023-10-04 22:08:36,889 [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2023-10-04 22:08:36,906 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2023-10-04 22:08:38,518 [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2023-10-04 22:08:39,778 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] Started GrievanceApplicationTests in 8.782 seconds (JVM running for 13.64) 
+2023-10-04 22:08:39,975 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:08:39,975 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:08:39,976 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:08:40,310 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:08:40,311 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:08:40,312 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:08:40,495 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:08:40,496 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:08:40,496 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:08:40,562 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:08:40,562 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:08:40,563 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:08:40,603 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:08:40,603 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:08:40,604 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 1 ms 
+2023-10-04 22:08:40,696 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:08:40,696 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:08:40,697 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:08:40,754 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:08:40,754 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:08:40,755 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 1 ms 
+2023-10-04 22:08:40,785 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:08:40,786 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:08:40,786 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:08:40,836 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:08:40,836 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:08:40,836 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:08:40,885 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:08:40,885 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:08:40,886 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 1 ms 
+2023-10-04 22:08:40,919 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:08:40,920 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:08:40,920 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:08:40,945 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:08:40,946 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:08:40,947 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 1 ms 
+2023-10-04 22:08:40,975 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:08:40,976 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:08:40,976 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:08:41,034 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default' 
+2023-10-04 22:08:41,037 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated... 
+2023-10-04 22:08:41,049 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed. 
+2023-10-04 22:09:03,745 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] Starting GrievanceApplicationTests using Java 17.0.7 on Sneha with PID 25280 (started by sneha in C:\Users\sneha\OneDrive\Desktop\Grievance_Management_backEnd\Grievance) 
+2023-10-04 22:09:03,747 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] No active profile set, falling back to 1 default profile: "default" 
+2023-10-04 22:09:05,444 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2023-10-04 22:09:05,609 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 140 ms. Found 4 JPA repository interfaces. 
+2023-10-04 22:09:07,012 [INFO] org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default] 
+2023-10-04 22:09:07,181 [INFO] org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.15.Final 
+2023-10-04 22:09:07,290 [INFO] org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2023-10-04 22:09:07,692 [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting... 
+2023-10-04 22:09:08,324 [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed. 
+2023-10-04 22:09:08,459 [INFO] org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect 
+2023-10-04 22:09:10,684 [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2023-10-04 22:09:10,713 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2023-10-04 22:09:12,871 [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2023-10-04 22:09:14,717 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] Started GrievanceApplicationTests in 11.809 seconds (JVM running for 18.915) 
+2023-10-04 22:09:14,959 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:09:14,960 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:09:14,961 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:09:15,357 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:09:15,358 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:09:15,361 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 1 ms 
+2023-10-04 22:09:15,598 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:09:15,599 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:09:15,600 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 1 ms 
+2023-10-04 22:09:15,670 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:09:15,670 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:09:15,670 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:09:15,704 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:09:15,704 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:09:15,705 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:09:15,840 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:09:15,840 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:09:15,841 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:09:15,922 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:09:15,923 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:09:15,923 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:09:15,955 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:09:15,956 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:09:15,957 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:09:16,005 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:09:16,006 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:09:16,007 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:09:16,077 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:09:16,077 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:09:16,078 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 1 ms 
+2023-10-04 22:09:16,124 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:09:16,125 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:09:16,125 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:09:16,153 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:09:16,154 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:09:16,154 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:09:16,182 [INFO] org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet '' 
+2023-10-04 22:09:16,182 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Initializing Servlet '' 
+2023-10-04 22:09:16,182 [INFO] org.springframework.test.web.servlet.TestDispatcherServlet [main] Completed initialization in 0 ms 
+2023-10-04 22:09:17,401 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default' 
+2023-10-04 22:09:17,406 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated... 
+2023-10-04 22:09:17,419 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed. 
+2023-10-04 22:11:08,237 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] Starting GrievanceApplicationTests using Java 1.8.0_202 on Sneha with PID 19260 (started by sneha in C:\Users\sneha\OneDrive\Desktop\Grievance_Management_backEnd\Grievance) 
+2023-10-04 22:11:08,237 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] No active profile set, falling back to 1 default profile: "default" 
+2023-10-04 22:11:10,720 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2023-10-04 22:11:11,038 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 270 ms. Found 4 JPA repository interfaces. 
+2023-10-04 22:11:12,812 [INFO] org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default] 
+2023-10-04 22:11:13,018 [INFO] org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.15.Final 
+2023-10-04 22:11:13,193 [INFO] org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2023-10-04 22:11:13,938 [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting... 
+2023-10-04 22:11:15,634 [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed. 
+2023-10-04 22:11:15,829 [INFO] org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect 
+2023-10-04 22:11:18,371 [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2023-10-04 22:11:18,403 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2023-10-04 22:11:20,851 [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2023-10-04 22:11:22,254 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] Started GrievanceApplicationTests in 15.125 seconds (JVM running for 24.418) 
+2023-10-04 22:11:22,933 [ERROR] com.grievance.Grievance.serviceImplementation.DepartmentServiceImpl [main] Department Already Exist 
+2023-10-04 22:11:23,329 [ERROR] com.grievance.Grievance.serviceImplementation.TicketServiceImpl [main] Ticket with given Id not found 
+2023-10-04 22:11:23,408 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [main] User not found with email: nonexistent@example.com 
+2023-10-04 22:11:23,414 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [main] Invalid password 
+2023-10-04 22:11:23,493 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default' 
+2023-10-04 22:11:23,493 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated... 
+2023-10-04 22:11:23,526 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed. 
+2023-10-04 22:13:45,250 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] Starting GrievanceApplicationTests using Java 1.8.0_202 on Sneha with PID 2452 (started by sneha in C:\Users\sneha\OneDrive\Desktop\Grievance_Management_backEnd\Grievance) 
+2023-10-04 22:13:45,250 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] No active profile set, falling back to 1 default profile: "default" 
+2023-10-04 22:13:47,113 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2023-10-04 22:13:47,367 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 237 ms. Found 4 JPA repository interfaces. 
+2023-10-04 22:13:49,165 [INFO] org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default] 
+2023-10-04 22:13:49,386 [INFO] org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.15.Final 
+2023-10-04 22:13:49,527 [INFO] org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2023-10-04 22:13:50,192 [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting... 
+2023-10-04 22:13:51,834 [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed. 
+2023-10-04 22:13:52,056 [INFO] org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect 
+2023-10-04 22:13:54,680 [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2023-10-04 22:13:54,712 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2023-10-04 22:13:57,112 [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2023-10-04 22:13:58,422 [INFO] com.grievance.Grievance.GrievanceApplicationTests [main] Started GrievanceApplicationTests in 14.13 seconds (JVM running for 21.975) 
+2023-10-04 22:13:59,071 [ERROR] com.grievance.Grievance.serviceImplementation.DepartmentServiceImpl [main] Department Already Exist 
+2023-10-04 22:13:59,469 [ERROR] com.grievance.Grievance.serviceImplementation.TicketServiceImpl [main] Ticket with given Id not found 
+2023-10-04 22:13:59,535 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [main] User not found with email: nonexistent@example.com 
+2023-10-04 22:13:59,552 [ERROR] com.grievance.Grievance.serviceImplementation.UserServiceImpl [main] Invalid password 
+2023-10-04 22:13:59,615 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default' 
+2023-10-04 22:13:59,631 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated... 
+2023-10-04 22:13:59,676 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed. 

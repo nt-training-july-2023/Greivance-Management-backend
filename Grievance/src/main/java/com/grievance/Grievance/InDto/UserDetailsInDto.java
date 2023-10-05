@@ -112,7 +112,7 @@ public class UserDetailsInDto {
 	}
 
 	/**
-	 * Sets the user's email (username).
+	 * Sets the user's email (user name).
 	 *
 	 * @param email The user's email.
 	 */

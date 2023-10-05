@@ -48,9 +48,15 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<String> handleDuplicateEntry(Exception exception) {
 		return new ResponseEntity<String>(exception.getMessage(), HttpStatus.BAD_REQUEST);
 	}
-	
+
+	/**
+	 * Exception handler method for handling the RecordNotFoundException.
+	 *
+	 * @param exception The RecordNotFoundException that was thrown.
+	 * @return A ResponseEntity containing the error message and HTTP status code NOT_FOUND.
+	 */
 	@ExceptionHandler(RecordNotFoundException.class)
-	public ResponseEntity<String> handleRecordNotfoundException(Exception exception){
-		return new ResponseEntity<String>(exception.getMessage(),HttpStatus.NOT_FOUND);
+	public ResponseEntity<String> handleRecordNotfoundException(Exception exception) {
+	    return new ResponseEntity<String>(exception.getMessage(), HttpStatus.NOT_FOUND);
 	}
 }

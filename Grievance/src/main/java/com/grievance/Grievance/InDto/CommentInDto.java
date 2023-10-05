@@ -5,7 +5,7 @@ import java.sql.Date;
 import com.grievance.Grievance.entity.Ticket;
 
 public class CommentInDto {
-	
+
 	 private Integer commentId;
 
 	  /**
@@ -68,18 +68,8 @@ public class CommentInDto {
 		this.ticket = ticket;
 	}
 
-	public CommentInDto(Integer commentId, String content, Date createdAt, String name, Ticket ticket) {
-		super();
-		this.commentId = commentId;
-		this.content = content;
-		this.createdAt = createdAt;
-		this.name = name;
-		this.ticket = ticket;
-	}
-
 	public CommentInDto() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 

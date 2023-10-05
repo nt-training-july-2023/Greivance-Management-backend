@@ -122,7 +122,6 @@ public class DepartmentOutDto {
 	 */
 	public DepartmentOutDto() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

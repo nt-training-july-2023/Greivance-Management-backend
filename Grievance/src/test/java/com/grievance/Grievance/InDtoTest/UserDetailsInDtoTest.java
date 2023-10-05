@@ -2,10 +2,8 @@ package com.grievance.Grievance.InDtoTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import com.grievance.Grievance.Enum.UserType;
 import com.grievance.Grievance.InDto.UserDetailsInDto;
 import com.grievance.Grievance.entity.Department;
@@ -18,7 +16,7 @@ public class UserDetailsInDtoTest {
 	public void setUp() {
 
 		userDetailsInDto = new UserDetailsInDto();
-		
+
 		Department department = new Department();
 		userDetailsInDto.setDepartment(department);
 		userDetailsInDto.setEmail("sneha@nucleusteq.com");

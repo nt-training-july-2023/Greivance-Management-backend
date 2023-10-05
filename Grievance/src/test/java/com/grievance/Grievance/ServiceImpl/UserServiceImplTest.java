@@ -4,14 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.nio.file.attribute.UserPrincipalLookupService;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,26 +17,25 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 
 import com.grievance.Grievance.Enum.UserType;
 import com.grievance.Grievance.InDto.ChangePasswordInDto;
 import com.grievance.Grievance.InDto.LoginInDto;
 import com.grievance.Grievance.InDto.UserDetailsInDto;
+import com.grievance.Grievance.OutDto.TicketOutDto;
 import com.grievance.Grievance.OutDto.UserDetailsOutDto;
-import com.grievance.Grievance.entity.Comment;
 import com.grievance.Grievance.entity.Department;
 import com.grievance.Grievance.entity.Ticket;
 import com.grievance.Grievance.entity.UserDetails;
 import com.grievance.Grievance.exception.AuthenticationException;
 import com.grievance.Grievance.exception.DuplicateEntryException;
-import com.grievance.Grievance.exception.RecordNotFoundException;
 import com.grievance.Grievance.repository.DepartmentRepository;
-import com.grievance.Grievance.repository.TicketRepository;
 import com.grievance.Grievance.repository.UserRepository;
 import com.grievance.Grievance.serviceImplementation.UserServiceImpl;
 
@@ -70,29 +67,28 @@ public class UserServiceImplTest {
 	@Test
 	public void testLoginUser_Success() {
 		LoginInDto loginInDto = new LoginInDto();
-        loginInDto.setEmail("user@example.com");
-        loginInDto.setPassword("password123");
+		loginInDto.setEmail("user@example.com");
+		loginInDto.setPassword("password123");
 
-        UserDetails userDetails = new UserDetails();
-        userDetails.setUserId(1L);
-        userDetails.setEmail("user@example.com");
-        userDetails.setPassword("password123");
-        userDetails.setName("John Doe");
-        userDetails.setIsLoggedIn(false);
-        userDetails.setUsertype(UserType.Member);
-        userDetails.setDepartment(new Department());
+		UserDetails userDetails = new UserDetails();
+		userDetails.setUserId(1L);
+		userDetails.setEmail("user@example.com");
+		userDetails.setPassword("password123");
+		userDetails.setName("John Doe");
+		userDetails.setIsLoggedIn(false);
+		userDetails.setUsertype(UserType.Member);
+		userDetails.setDepartment(new Department());
 
-        when(userRepository.findByEmail("user@example.com")).thenReturn(userDetails);
-        UserDetailsOutDto userDetailsOutDto = userservice.userLogin(loginInDto);
-        
-        assertNotNull(userDetailsOutDto);
-        assertEquals(1L, userDetailsOutDto.getId());
-        assertFalse(userDetailsOutDto.getIsLoggedIn());
-        assertEquals(UserType.Member, userDetailsOutDto.getUserType());
-        assertEquals("user@example.com", userDetailsOutDto.getEmail());
-        assertEquals("John Doe", userDetailsOutDto.getName());
-        assertEquals(0L, userDetailsOutDto.getDeptId());
+		when(userRepository.findByEmail("user@example.com")).thenReturn(userDetails);
+		UserDetailsOutDto userDetailsOutDto = userservice.userLogin(loginInDto);
 
+		assertNotNull(userDetailsOutDto);
+		assertEquals(1L, userDetailsOutDto.getId());
+		assertFalse(userDetailsOutDto.getIsLoggedIn());
+		assertEquals(UserType.Member, userDetailsOutDto.getUserType());
+		assertEquals("user@example.com", userDetailsOutDto.getEmail());
+		assertEquals("John Doe", userDetailsOutDto.getName());
+		assertEquals(0L, userDetailsOutDto.getDeptId());
 
 	}
 
@@ -119,37 +115,38 @@ public class UserServiceImplTest {
 		});
 	}
 
-//	@Test
-//	public void testCreateUser_Success() {
-//		UserDetails userDetails = new UserDetails();
-//		userDetails.setEmail("sneha@nucleusteq.com");
-//		userDetails.setUserId(1);
-//		userDetails.setDepartment(new Department());
-//		userDetails.setName("Sneha Bhate");
-//		userDetails.setPassword("correctPasswrod");
-//		userDetails.setIsLoggedIn(true);
-//		userDetails.setUsertype(UserType.Admin);
-//
-//		UserDetailsInDto userDetailsInDto = new UserDetailsInDto();
-//		userDetailsInDto.setEmail("sneha@nucleusteq.com");
-//		userDetailsInDto.setDepartment(new Department());
-//		userDetailsInDto.setName("Sneha Bhate");
-//		userDetailsInDto.setPassword("correctPasswrod");
-//		userDetailsInDto.setUserType(UserType.Admin);
-//
-//		UserDetails user = new UserDetails();
-//		user.setEmail("snehabhate@nucleusteq");
-//
-//		when(modelMapper.map(userDetailsInDto, UserDetails.class)).thenReturn(userDetails);
-//		when(userRepository.findByEmail("sneha@nucleusteq.com")).thenReturn(user);
-//		when(userRepository.save(any(UserDetails.class))).thenReturn(userDetails);
-//		UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
-//		when(modelMapper.map(userDetails, UserDetailsOutDto.class)).thenReturn(userDetailsOutDto);
-//		assertNotNull(userDetailsOutDto);
-//		assertEquals(userDetailsOutDto, userservice.createUser(userDetailsInDto));
-//	}
+	@Test
+	public void testCreateUser_Success() {
 
-	// when already email exist.
+		UserDetails userDetails = new UserDetails();
+		userDetails.setEmail("sneha@nucleusteq.com");
+		userDetails.setUserId(1);
+		userDetails.setDepartment(new Department());
+		userDetails.setName("Sneha Bhate");
+		userDetails.setPassword("correctPasswrod");
+		userDetails.setIsLoggedIn(false);
+		userDetails.setUsertype(UserType.Admin);
+
+		Department department = new Department();
+
+		UserDetailsInDto userDetailsInDto = new UserDetailsInDto();
+		userDetailsInDto.setEmail("sneha01@nucleusteq.com");
+		userDetailsInDto.setDepartment(new Department());
+		userDetailsInDto.setName("Sneha Bhate");
+		userDetailsInDto.setPassword("correctPasswrod");
+		userDetailsInDto.setUserType(UserType.Admin);
+		userDetailsInDto.setDepartment(department);
+
+		UserDetails userDetails2 = new UserDetails();
+		userDetails2.setEmail("abcd@nucleusteq.com");
+
+		when(modelMapper.map(userDetailsInDto, UserDetails.class)).thenReturn(userDetails);
+		when(userRepository.save(any(UserDetails.class))).thenReturn(userDetails);
+		UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
+		when(modelMapper.map(userDetails, UserDetailsOutDto.class)).thenReturn(userDetailsOutDto);
+		assertNotNull(userDetailsOutDto);
+		assertEquals(userDetailsOutDto, userservice.createUser(userDetailsInDto));
+	}
 
 	@Test
 	public void testCreateUser_DuplicateEmail() throws DuplicateEntryException {
@@ -164,63 +161,145 @@ public class UserServiceImplTest {
 
 	}
 
-//	@Test
-//	public void testChangePassword_Success() {
-//
-//		ChangePasswordInDto changePasswordInDto = new ChangePasswordInDto();
-//        changePasswordInDto.setEmail("user@example.com");
-//        changePasswordInDto.setOldPassword("oldPassword");
-//        changePasswordInDto.setNewPassword("newPassword");
-//
-//        UserDetails userDetails = new UserDetails();
-//        userDetails.setEmail("user@example.com");
-//        userDetails.setPassword("oldPassword");
-//        userDetails.setIsLoggedIn(true);
-//
-//        when(userRepository.findByEmail("user@example.com")).thenReturn(userDetails);
-//        UserDetailsOutDto userDetailsOutDto = userservice.changePassword(changePasswordInDto);
-//
-//        assertNotNull(userDetailsOutDto);
-//        assertEquals("user@example.com", userDetailsOutDto.getEmail());
-//        assertTrue(userDetailsOutDto.getIsLoggedIn());
-//	}
+	@Test
+	public void testChangePasswordSuccess() {
+		ChangePasswordInDto changePasswordInDto = new ChangePasswordInDto();
+		changePasswordInDto.setEmail("test@nucleusteq.com");
+		changePasswordInDto.setOldPassword("oldPassword");
+		changePasswordInDto.setNewPassword("newPassword");
 
-//    @Test
-//    public void testGetAllUsers() {
-//    	UserDetails user1 =  new UserDetails();
-//    	user1.setName("sneha");
-//    	user1.setDepartment(new Department());
-//    	user1.setEmail("sneha@nucleusteq");
-//    	user1.setIsLoggedIn(true);
-//    	user1.setPassword("Sneha@01");
-//    	user1.setTickets(new ArrayList<Ticket>());
-//    	user1.setUserId(9);
-//    	user1.setUsertype(UserType.Member);
-//    	
-//    	UserDetails user2 =  new UserDetails();
-//    	user2.setName("palak");
-//    	user2.setDepartment(new Department());
-//    	user2.setEmail("palak@nucleusteq");
-//    	user2.setIsLoggedIn(true);
-//    	user2.setPassword("Palak@01");
-//    	user2.setTickets(new ArrayList<Ticket>());
-//    	user2.setUserId(9);
-//    	user2.setUsertype(UserType.Member);
-//    	
-//        List<UserDetails> userDetailsList = new ArrayList<>();
-//        
-//        userDetailsList.add(user1);
-//        userDetailsList.add(user2);
-//
-//        Page<UserDetails> userPage = new PageImpl<>(userDetailsList);
-//
-//        when(userRepository.findAll(any(Pageable.class))).thenReturn(userPage);
-//
-//        List<UserDetailsOutDto> userOutDtoList = userservice.getAllUsers(0, 10);
-//
-//        assertEquals(2, userOutDtoList.size());
-//        verify(userRepository, times(1)).findAll();
-//
-//       
-//    }
+		Department department = new Department();
+		department.setDeptId(1);
+		department.setDeptName("HR");
+
+		UserDetails savedUserDetails = new UserDetails();
+		savedUserDetails.setEmail(changePasswordInDto.getEmail());
+		savedUserDetails.setPassword(changePasswordInDto.getOldPassword());
+		savedUserDetails.setDepartment(department);
+		savedUserDetails.setIsLoggedIn(true);
+		savedUserDetails.setName("Sneha");
+		savedUserDetails.setTickets(new ArrayList<Ticket>());
+		savedUserDetails.setUserId(1);
+		savedUserDetails.setUsertype(UserType.Member);
+
+		when(userRepository.findByEmail(changePasswordInDto.getEmail())).thenReturn(savedUserDetails);
+		System.out.println(savedUserDetails);
+		when(userRepository.save(savedUserDetails)).thenReturn(savedUserDetails);
+		UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
+		when(modelMapper.map(savedUserDetails, UserDetailsOutDto.class)).thenReturn(userDetailsOutDto);
+		UserDetailsOutDto result = userservice.changePassword(changePasswordInDto);
+		System.out.println(result);
+		assertNotNull(result);
+
+		assertEquals(changePasswordInDto.getNewPassword(), savedUserDetails.getPassword());
+		assertEquals(true, savedUserDetails.getIsLoggedIn());
+		assertEquals(changePasswordInDto.getEmail(), savedUserDetails.getEmail());
+	}
+
+	@Test
+	public void testChangePasswordUserNotFound() {
+		ChangePasswordInDto changePasswordInDto = new ChangePasswordInDto();
+		changePasswordInDto.setEmail("nonexistent@example.com");
+		changePasswordInDto.setOldPassword("oldPassword");
+		changePasswordInDto.setNewPassword("newPassword");
+
+		when(userRepository.findByEmail(changePasswordInDto.getEmail())).thenReturn(null);
+
+		assertThrows(AuthenticationException.class, () -> userservice.changePassword(changePasswordInDto));
+	}
+
+	@Test
+	public void testChangePasswordIncorrectOldPassword() {
+		ChangePasswordInDto changePasswordInDto = new ChangePasswordInDto();
+		changePasswordInDto.setEmail("test@example.com");
+		changePasswordInDto.setOldPassword("wrongPassword");
+		changePasswordInDto.setNewPassword("newPassword");
+
+		UserDetails savedUserDetails = new UserDetails();
+		savedUserDetails.setEmail(changePasswordInDto.getEmail());
+		savedUserDetails.setPassword("oldPassword");
+
+		when(userRepository.findByEmail(changePasswordInDto.getEmail())).thenReturn(savedUserDetails);
+
+		assertThrows(AuthenticationException.class, () -> userservice.changePassword(changePasswordInDto));
+	}
+
+	@Test
+	public void testGetAllUsers() {
+
+		int pageNumber = 0;
+		int pageSize = 10;
+
+		PageRequest pageable = PageRequest.of(pageNumber, pageSize);
+
+		UserDetails user1 = new UserDetails();
+		user1.setName("sneha");
+		user1.setDepartment(new Department());
+		user1.setEmail("sneha@nucleusteq");
+		user1.setIsLoggedIn(true);
+		user1.setPassword("Sneha@01");
+		user1.setTickets(new ArrayList<Ticket>());
+		user1.setUserId(9);
+		user1.setUsertype(UserType.Member);
+		user1.setTickets(new ArrayList<Ticket>());
+
+		UserDetails user2 = new UserDetails();
+		user2.setName("palak");
+		user2.setDepartment(new Department());
+		user2.setEmail("palak@nucleusteq");
+		user2.setIsLoggedIn(true);
+		user2.setPassword("Palak@01");
+		user2.setTickets(new ArrayList<Ticket>());
+		user2.setUserId(9);
+		user2.setUsertype(UserType.Member);
+		user2.setTickets(new ArrayList<Ticket>());
+
+		List<UserDetails> userList = Arrays.asList(user1, user2);
+		Page<UserDetails> userPage = new PageImpl<>(userList, pageable, userList.size());
+
+		List<UserDetails> userDetailsList = new ArrayList<>();
+		userDetailsList.add(user1);
+		userDetailsList.add(user2);
+
+		UserDetailsOutDto userDetailsOutDto1 = new UserDetailsOutDto();
+		userDetailsOutDto1.setName("sneha");
+		userDetailsOutDto1.setDepartment(user1.getDepartment().getDeptName());
+		userDetailsOutDto1.setEmail("sneha@nucleusteq");
+		userDetailsOutDto1.setIsLoggedIn(true);
+		userDetailsOutDto1.setPassword("Sneha@01");
+		userDetailsOutDto1.setTickets(new ArrayList<TicketOutDto>());
+		userDetailsOutDto1.setId(9);
+		userDetailsOutDto1.setUserType(UserType.Member);
+		userDetailsOutDto1.setTickets(new ArrayList<TicketOutDto>());
+		userDetailsOutDto1.setDeptId(user1.getDepartment().getDeptId());
+
+		UserDetailsOutDto userDetailsOutDto2 = new UserDetailsOutDto();
+		userDetailsOutDto2.setName("palak");
+		userDetailsOutDto2.setDepartment(user1.getDepartment().getDeptName());
+		userDetailsOutDto2.setEmail("palak@nucleusteq");
+		userDetailsOutDto2.setIsLoggedIn(true);
+		userDetailsOutDto2.setPassword("Palak@01");
+		userDetailsOutDto2.setTickets(new ArrayList<TicketOutDto>());
+		userDetailsOutDto2.setId(9);
+		userDetailsOutDto2.setUserType(UserType.Member);
+		userDetailsOutDto2.setTickets(new ArrayList<TicketOutDto>());
+		userDetailsOutDto2.setDeptId(user1.getDepartment().getDeptId());
+
+		when(userRepository.findAll(pageable)).thenReturn(userPage);
+		List<UserDetailsOutDto> userDetailsOutDtos = userservice.getAllUsers(pageNumber, pageSize);
+
+		assertNotNull(userDetailsOutDtos);
+		assertEquals(2, userDetailsOutDtos.size());
+		verify(userRepository).findAll(pageable);
+	}
+
+	@Test
+	public void testDeleteUser() {
+		long userId = 1;
+		UserDetails userDetails = new UserDetails();
+		userDetails.setUserId(userId);
+		when(userRepository.findById(userId)).thenReturn(Optional.of(userDetails));
+		userservice.deleteUser(userId);
+		verify(userRepository, Mockito.times(1)).deleteById(userId);
+	}
 }

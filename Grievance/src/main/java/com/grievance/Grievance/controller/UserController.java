@@ -30,8 +30,11 @@ import com.grievance.Grievance.service.UserService;
 @CrossOrigin("*")
 public class UserController {
 
+	/**
+	 * Autowired UserService.
+	 */
 	@Autowired
-	UserService userservice;
+	private UserService userservice;
 
 	/**
 	 * Create a new user.
@@ -57,11 +60,11 @@ public class UserController {
 	 */
 	@PostMapping("/login")
 	public ResponseEntity<UserDetailsOutDto> userLogin(@Validated @RequestBody LoginInDto loginInDto) {
-		System.out.println("hyy1");
+
 		UserDetailsOutDto userDetailsOutDto = userservice.userLogin(loginInDto);
-		System.out.println("hyy2");
+
 		ResponseEntity loginResponse = new ResponseEntity(userDetailsOutDto, HttpStatus.ACCEPTED);
-		System.out.println("hyy3");
+
 		return loginResponse;
 	}
 
@@ -78,19 +81,6 @@ public class UserController {
 		UserDetailsOutDto userDetailsOutDto = userservice.changePassword(changePasswordInDto);
 		ResponseEntity passwordResponse = new ResponseEntity(userDetailsOutDto, HttpStatus.ACCEPTED);
 		return passwordResponse;
-	}
-
-	/**
-	 * Get a user by their ID.
-	 *
-	 * @param userId The ID of the user to retrieve.
-	 * @return ResponseEntity containing the UserDetailsOutDto of the requested
-	 *         user.
-	 */
-	@GetMapping("/user/{userId}")
-	public ResponseEntity<UserDetailsOutDto> getUserById(@PathVariable("userId") long userId) {
-		UserDetailsOutDto userDetailsOutDto = userservice.getUserById(userId);
-		return ResponseEntity.ok(userDetailsOutDto);
 	}
 
 	/**

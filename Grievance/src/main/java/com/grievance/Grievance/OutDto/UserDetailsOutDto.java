@@ -31,6 +31,9 @@ public class UserDetailsOutDto {
 	 */
 	private Boolean isLoggedIn;
 
+	/**
+	 * password password of user.
+	 */
 	private String password;
 
 	/**
@@ -38,10 +41,9 @@ public class UserDetailsOutDto {
 	 */
 	private String department;
 
-	
-	
-	
-	
+	/**
+	 * deptId Id of department.
+	 */
 	private long deptId;
 	/**
 	 * The list of tickets associated with the user.
@@ -49,6 +51,9 @@ public class UserDetailsOutDto {
 	@JsonManagedReference(value = "user")
 	private List<TicketOutDto> tickets;
 
+	/**
+	 * comments list of Comments.
+	 */
 	private List<CommentOutDto> comments;
 
 	/**
@@ -63,7 +68,7 @@ public class UserDetailsOutDto {
 	/**
 	 * Sets the unique identifier for the user.
 	 *
-	 * @param userId The user's unique identifier.
+	 * @param id The user's unique identifier.
 	 */
 	public void setId(long id) {
 		Id = id;
@@ -83,7 +88,6 @@ public class UserDetailsOutDto {
 	 *
 	 * @param name The user's name.
 	 */
-
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -100,7 +104,7 @@ public class UserDetailsOutDto {
 	/**
 	 * Sets the type of the user (e.g., Admin or Member).
 	 *
-	 * @param usertype The user's type.
+	 * @param UserType userType.
 	 */
 	public void setUserType(UserType userType) {
 		this.userType = userType;
@@ -200,13 +204,6 @@ public class UserDetailsOutDto {
 		this.password = password;
 	}
 
-	@Override
-	public String toString() {
-		return "UserDetailsOutDto [Id=" + Id + ", name=" + name + ", userType=" + userType + ", email=" + email
-				+ ", isLoggedIn=" + isLoggedIn + ", password=" + password + ", department=" + department + ", tickets="
-				+ tickets + ", comments=" + comments + "]";
-	}
-
 	/**
 	 * @return the deptId
 	 */
@@ -219,6 +216,13 @@ public class UserDetailsOutDto {
 	 */
 	public void setDeptId(long deptId) {
 		this.deptId = deptId;
+	}
+
+	@Override
+	public String toString() {
+		return "UserDetailsOutDto [Id=" + Id + ", name=" + name + ", userType=" + userType + ", email=" + email
+	+ ", isLoggedIn=" + isLoggedIn + ", password=" + password + ", department="
+    + department + ", "+"tickets="+ tickets + ", comments=" + comments + "]";
 	}
 
 }

@@ -11,19 +11,21 @@ import com.grievance.Grievance.OutDto.DepartmentOutDto;
  */
 public interface DepartmentService {
 	/**
-	 * Creates a new department
+	 * Creates a new department.
 	 *
 	 * @param departmentInDto The DTO containing department details to create.
-	 * @return DepartmentOutDto
+	 * @return DepartmentOutDto.
 	 */
-	public DepartmentOutDto createDepartment(DepartmentInDto departmentInDto);
+	 DepartmentOutDto createDepartment(DepartmentInDto departmentInDto);
 
 	/**
 	 * Retrieves a list of all departments in the system.
 	 *
-	 * @return A list of departmentOutDtos
+	 * @param pageNumber
+	 * @param pageSize
+	 * @return A list of departmentOutDtos.
 	 */
-	public List<DepartmentOutDto> getAllDepartments(Integer pageNumber,Integer pageSize);
+	 List<DepartmentOutDto> getAllDepartments(Integer pageNumber, Integer pageSize);
 
 	/**
 	 * Retrieves a department by its unique identifier (deptId).
@@ -31,13 +33,13 @@ public interface DepartmentService {
 	 * @param deptId The unique identifier of the department to retrieve.
 	 * @return The departmentOutDto
 	 */
-	public DepartmentOutDto getDepartmentById(long deptId);
+	 DepartmentOutDto getDepartmentById(long deptId);
 
 	/**
 	 * Deletes a department by its unique id (deptId).
 	 *
 	 * @param deptId The unique id of the department to delete.
 	 */
-	public void deleteDepartment(long deptId);
+	 void deleteDepartment(long deptId);
 
 }
