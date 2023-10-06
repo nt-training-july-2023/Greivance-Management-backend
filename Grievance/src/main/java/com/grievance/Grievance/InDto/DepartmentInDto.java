@@ -2,6 +2,8 @@ package com.grievance.Grievance.InDto;
 
 import javax.validation.constraints.NotEmpty;
 
+import com.grievance.Grievance.Constants.ValidationErrors;
+
 /**
  * Represents the input data for creating a new department.
  */
@@ -9,9 +11,8 @@ public class DepartmentInDto {
 	/**
 	 * The name of the department.
 	 */
-	@NotEmpty(message = "Department name can not be empty")
+	@NotEmpty(message = ValidationErrors.DEPARTMENT_ERROR)
 	private String deptName;
-
 	/**
 	 * Gets the name of the department.
 	 *

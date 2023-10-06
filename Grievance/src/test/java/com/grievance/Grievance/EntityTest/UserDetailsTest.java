@@ -106,4 +106,28 @@ public class UserDetailsTest{
     assertNotNull(userDetails.getDepartment());
 	}
 	
+	  @Test
+	    public void testToString() {
+	    
+	    Department department = new Department();
+	    department.setDeptId(1);
+	    department.setDeptName("IT");
+	    
+	    department.setTickets(new ArrayList<Ticket>());
+	    department.setUserDetails(new ArrayList<UserDetails>());
+	        UserDetails userDetails = new UserDetails();
+	        userDetails.setUserId(1L);
+	        userDetails.setName("Sneha");
+	        userDetails.setEmail("sneha@nucleusteq.com");
+	        userDetails.setPassword("secret");
+	        userDetails.setUsertype(UserType.Member);
+	        userDetails.setIsLoggedIn(false);
+	        userDetails.setDepartment(department);
+	        String expectedString = "UserDetails [userId=1, name=Sneha, email=sneha@nucleusteq.com, password=secret, usertype=Member, isLoggedIn=false, department=deptId=1, deptName=IT, tickets=null]";
+	        String actualString = userDetails.toString();
+
+	        assertEquals(expectedString, actualString);
+	    }
+	
+	
 }

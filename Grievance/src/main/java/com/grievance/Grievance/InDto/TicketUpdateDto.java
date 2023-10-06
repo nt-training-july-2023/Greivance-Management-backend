@@ -1,5 +1,8 @@
 package com.grievance.Grievance.InDto;
 
+import javax.validation.constraints.NotNull;
+
+import com.grievance.Grievance.Constants.ValidationErrors;
 import com.grievance.Grievance.Enum.TicketStatus;
 
 /**
@@ -13,6 +16,7 @@ public class TicketUpdateDto {
 	/**
 	 * The updated content of the ticket.
 	 */
+	@NotNull(message = ValidationErrors.COMMENT_CONTENT_ERROR)
 	private String content;
 
 	/**
@@ -71,7 +75,7 @@ public class TicketUpdateDto {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	@Override
 	public String toString() {

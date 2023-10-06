@@ -35,7 +35,7 @@ public interface UserRepository extends JpaRepository<UserDetails, Long> {
 	 *
 	 * @param email    The email address to check.
 	 * @param password The password to check.
-	 * @param userType To check the type of the user.
+	 * @param admin To check the type of the user.
 	 *
 	 * @return True if a user with the specified email, password, and user type
 	 *         exists, otherwise false.

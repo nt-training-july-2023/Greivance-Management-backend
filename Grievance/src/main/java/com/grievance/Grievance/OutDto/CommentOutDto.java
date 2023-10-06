@@ -19,7 +19,7 @@ public class CommentOutDto {
 	private String content;
 
 	/**
-	 * The last updated timestamp of the comment.
+	 * The last updated time stamp of the comment.
 	 */
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Kolkata")
 	private Date updatedAt;

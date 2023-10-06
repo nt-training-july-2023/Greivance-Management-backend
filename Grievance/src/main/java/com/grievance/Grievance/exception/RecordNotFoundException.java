@@ -2,7 +2,7 @@ package com.grievance.Grievance.exception;
 
 @SuppressWarnings("serial")
 public class RecordNotFoundException extends RuntimeException {
-	
+
 	/**
 	 * Constructs a new RecordNotFoundException with the specified detail message.
 	 *

@@ -30,70 +30,77 @@ import com.grievance.Grievance.service.TicketService;
 @CrossOrigin("*")
 public class TicketController {
 
-	/**
-	 * Auto wired TicketRepository.
-	 */
-	@Autowired
-	private TicketService ticketService;
+  /**
+   * Auto wired TicketRepository.
+   */
+  @Autowired
+  private TicketService ticketService;
 
-	/**
-	 * Create a new ticket.
-	 *
-	 * @param ticketInDto for creating the ticket.
-	 * @return ResponseEntity containing the created TicketOutDto.
-	 */
-	@PostMapping("/ticket")
-	public ResponseEntity<TicketOutDto> createTicket(@Validated @RequestBody TicketInDto ticketInDto) {
-		TicketOutDto ticketOutDto = ticketService.createTicket(ticketInDto);
-		ResponseEntity ticketResponse = new ResponseEntity(ticketOutDto, HttpStatus.CREATED);
-		return ticketResponse;
-	}
+  /**
+   * Create a new ticket.
+   *
+   * @param ticketInDto for creating the ticket.
+   * @return ResponseEntity containing the created TicketOutDto.
+   */
+  @PostMapping("/ticket")
+  public ResponseEntity<TicketOutDto> createTicket(
+      @Validated @RequestBody TicketInDto ticketInDto) {
+    TicketOutDto ticketOutDto = ticketService
+        .createTicket(ticketInDto);
+    ResponseEntity<TicketOutDto> ticketResponse = new ResponseEntity<TicketOutDto>(
+        ticketOutDto, HttpStatus.CREATED);
+    return ticketResponse;
+  }
 
-	/**
-	 * Get a list of all tickets based on filters like page number, page size,
-	 * email, and ticket status.
-	 *
-	 * @param pageNumber   The page number for pagination.
-	 * @param pageSize     The page size for pagination.
-	 * @param email        The email address for filtering by user.
-	 * @param type         Retrieving the Tickets by Ticket wise
-	 * @param filter       Tickets filter wise.
-	 * @return ResponseEntity containing a list of TicketOutDto objects.
-	 */
-	@GetMapping("/tickets")
-	public ResponseEntity<List<TicketOutDto>> getAllTickets(
-			@RequestParam(value = "pageNumber", required = false) Integer pageNumber,
-			@RequestParam(value = "pageSize", required = false) Integer pageSize,
-			@RequestHeader("email") String email,
-			@RequestParam String type, @RequestParam String filter) {
-		List<TicketOutDto> ticketOutDtos = ticketService.getAllTickets(pageNumber, pageSize, email, type, filter);
-		return ResponseEntity.ok(ticketOutDtos);
-	}
+  /**
+   * Get a list of all tickets based on filters like page number, page size,
+   * email, and ticket status.
+   *
+   * @param pageNumber The page number for pagination.
+   * @param pageSize   The page size for pagination.
+   * @param email      The email address for filtering by user.
+   * @param type       Retrieving the Tickets by Ticket wise
+   * @param filter     Tickets filter wise.
+   * @return ResponseEntity containing a list of TicketOutDto objects.
+   */
+  @GetMapping("/tickets")
+  public ResponseEntity<List<TicketOutDto>> getAllTickets(
+      @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
+      @RequestParam(value = "pageSize", required = false) Integer pageSize,
+      @RequestHeader("email") String email, @RequestParam String type,
+      @RequestParam String filter) {
+    List<TicketOutDto> ticketOutDtos = ticketService
+        .getAllTickets(pageNumber, pageSize, email, type, filter);
+    return ResponseEntity.ok(ticketOutDtos);
+  }
 
-	/**
-	 * Get a ticket by its ID.
-	 *
-	 * @param ticketId The ID of the ticket to retrieve.
-	 * @return ResponseEntity containing the TicketOutDto of the requested ticket.
-	 */
-	@GetMapping("/ticket/{ticketId}")
-	public ResponseEntity<TicketOutDto> getTicketById(@PathVariable("ticketId") long ticketId) {
-		TicketOutDto ticketOutDto = ticketService.getTicketById(ticketId);
-		return ResponseEntity.ok(ticketOutDto);
-	}
+  /**
+   * Get a ticket by its ID.
+   *
+   * @param ticketId The ID of the ticket to retrieve.
+   * @return ResponseEntity containing the TicketOutDto of the requested ticket.
+   */
+  @GetMapping("/ticket/{ticketId}")
+  public ResponseEntity<TicketOutDto> getTicketById(
+      @PathVariable("ticketId") long ticketId) {
+    TicketOutDto ticketOutDto = ticketService.getTicketById(ticketId);
+    return ResponseEntity.ok(ticketOutDto);
+  }
 
-	/**
-	 * Update a ticket by its ID.
-	 *
-	 * @param ticketUpdateDto for updating the ticket.
-	 * @param ticketId        The ID of the ticket to update.
-	 * @return ResponseEntity containing the updated TicketOutDto.
-	 */
-	@PutMapping("/ticket/{ticketId}")
-	public ResponseEntity<TicketOutDto> updateTicket(@RequestBody TicketUpdateDto ticketUpdateDto,
-			@PathVariable("ticketId") long ticketId) {
-		TicketOutDto ticketOutDto = ticketService.updateTicket(ticketUpdateDto, ticketId);
-		return ResponseEntity.ok(ticketOutDto);
-	}
+  /**
+   * Update a ticket by its ID.
+   *
+   * @param ticketUpdateDto for updating the ticket.
+   * @param ticketId        The ID of the ticket to update.
+   * @return ResponseEntity containing the updated TicketOutDto.
+   */
+  @PutMapping("/ticket/{ticketId}")
+  public ResponseEntity<TicketOutDto> updateTicket(
+      @RequestBody TicketUpdateDto ticketUpdateDto,
+      @PathVariable("ticketId") long ticketId) {
+    TicketOutDto ticketOutDto = ticketService
+        .updateTicket(ticketUpdateDto, ticketId);
+    return ResponseEntity.ok(ticketOutDto);
+  }
 
 }

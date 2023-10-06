@@ -97,7 +97,7 @@ public class TicketOutDto {
 	}
 
 	/**
-	 * 
+	 *
 	 * Returns the unique identifier for the ticket.
 	 * @return tickeId.
 	 */
@@ -276,11 +276,6 @@ public class TicketOutDto {
 		this.updatedAt = updatedAt;
 	}
 
-	@Override
-	public String toString() {
-		return "department=" + department + "]";
-	}
-
 	/**
 	 * @return the name
 	 */
@@ -322,5 +317,14 @@ public class TicketOutDto {
 	public void setDeptId(long deptId) {
 		this.deptId = deptId;
 	}
+	/**
+	 * Generates a string representation of the object.
+	 *
+	 * @return A string containing the department.
+	 */
+	@Override
+    public String toString() {
+        return "department=" + department + "]";
+    }
 
 }

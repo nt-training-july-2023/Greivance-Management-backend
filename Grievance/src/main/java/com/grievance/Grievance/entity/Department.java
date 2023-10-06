@@ -19,127 +19,133 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 public class Department {
 
-	/**
-	 * The unique identifier for this department.
-	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private long deptId;
-	/**
-	 * The name of the department (unique).
-	 */
-	@Column(name = "deptName", unique = true)
-	private String deptName;
-	/**
-	 * The list of tickets associated with this department.
-	 */
-	@JsonManagedReference(value = "dep")
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "department", fetch = FetchType.LAZY)
-	private List<Ticket> tickets;
-	/**
-	 * The list of user details associated with this department.
-	 */
-	@JsonManagedReference
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "department", fetch = FetchType.LAZY)
-	private List<UserDetails> userDetails;
+  /**
+   * The unique identifier for this department.
+   */
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  private long deptId;
+  /**
+   * The name of the department (unique).
+   */
+  @Column(name = "deptName", unique = true)
+  private String deptName;
+  /**
+   * The list of tickets associated with this department.
+   */
+  @JsonManagedReference(value = "dep")
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "department", fetch = FetchType.LAZY)
+  private List<Ticket> tickets;
+  /**
+   * The list of user details associated with this department.
+   */
+  @JsonManagedReference
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "department", fetch = FetchType.LAZY)
+  private List<UserDetails> userDetails;
 
-	/**
-	 * Get the unique identifier for this department.
-	 *
-	 * @return The department's identifier.
-	 */
-	public long getDeptId() {
-		return deptId;
-	}
+  /**
+   * Get the unique identifier for this department.
+   *
+   * @return The department's identifier.
+   */
+  public long getDeptId() {
+    return deptId;
+  }
 
-	/**
-	 * Set the unique identifier for this department.
-	 *
-	 * @param deptId The department's identifier.
-	 */
-	public void setDeptId(long deptId) {
-		this.deptId = deptId;
-	}
+  /**
+   * Set the unique identifier for this department.
+   *
+   * @param deptId The department's identifier.
+   */
+  public void setDeptId(long deptId) {
+    this.deptId = deptId;
+  }
 
-	/**
-	 * Get the name of the department.
-	 *
-	 * @return The department's name.
-	 */
-	public String getDeptName() {
-		return deptName;
-	}
+  /**
+   * Get the name of the department.
+   *
+   * @return The department's name.
+   */
+  public String getDeptName() {
+    return deptName;
+  }
 
-	/**
-	 * Set the name of the department.
-	 *
-	 * @param deptName The department's name.
-	 */
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
-	}
+  /**
+   * Set the name of the department.
+   *
+   * @param deptName The department's name.
+   */
+  public void setDeptName(String deptName) {
+    this.deptName = deptName;
+  }
 
-	/**
-	 * Get the list of tickets associated with this department.
-	 *
-	 * @return The list of tickets.
-	 */
-	public List<Ticket> getTickets() {
-		return tickets;
-	}
+  /**
+   * Get the list of tickets associated with this department.
+   *
+   * @return The list of tickets.
+   */
+  public List<Ticket> getTickets() {
+    return tickets;
+  }
 
-	/**
-	 * Set the list of tickets associated with this department.
-	 *
-	 * @param tickets The list of tickets.
-	 */
-	public void setTickets(List<Ticket> tickets) {
-		this.tickets = tickets;
-	}
+  /**
+   * Set the list of tickets associated with this department.
+   *
+   * @param tickets The list of tickets.
+   */
+  public void setTickets(List<Ticket> tickets) {
+    this.tickets = tickets;
+  }
 
-	/**
-	 * Get the list of user details associated with this department.
-	 *
-	 * @return The list of user details.
-	 */
-	public List<UserDetails> getUserDetails() {
-		return userDetails;
-	}
+  /**
+   * Get the list of user details associated with this department.
+   *
+   * @return The list of user details.
+   */
+  public List<UserDetails> getUserDetails() {
+    return userDetails;
+  }
 
-	/**
-	 * Set the list of user details associated with this department.
-	 *
-	 * @param userDetails The list of user details.
-	 */
-	public void setUserDetails(List<UserDetails> userDetails) {
-		this.userDetails = userDetails;
-	}
+  /**
+   * Set the list of user details associated with this department.
+   *
+   * @param userDetails The list of user details.
+   */
+  public void setUserDetails(List<UserDetails> userDetails) {
+    this.userDetails = userDetails;
+  }
 
-	/**
-	 * Create a new instance of the Department class.
-	 */
-	public Department() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+  /**
+   * Create a new instance of the Department class.
+   */
+  public Department() {
+    super();
+    // TODO Auto-generated constructor stub
+  }
 
-	/**
-	 * @param deptId
-	 * @param deptName
-	 * @param tickets
-	 * @param userDetails
-	 */
-	public Department(long deptId, String deptName, List<Ticket> tickets, List<UserDetails> userDetails) {
-		super();
-		this.deptId = deptId;
-		this.deptName = deptName;
-		this.tickets = tickets;
-		this.userDetails = userDetails;
-	}
+  /**
+   * @param deptId
+   * @param deptName
+   * @param tickets
+   * @param userDetails
+   */
+  public Department(long deptId, String deptName,
+      List<Ticket> tickets, List<UserDetails> userDetails) {
+    super();
+    this.deptId = deptId;
+    this.deptName = deptName;
+    this.tickets = tickets;
+    this.userDetails = userDetails;
+  }
 
-	@Override
-	public String toString() {
-		return "deptId=" + deptId + ", deptName=" + deptName + "";
-	}
+  /**
+   * Generates a string representation of the Department object.
+   *
+   * @return A string containing department ID and name.
+   */
+  @Override
+  public String toString() {
+    return "deptId=" + deptId + ", deptName=" + deptName + "";
+  }
 
 }

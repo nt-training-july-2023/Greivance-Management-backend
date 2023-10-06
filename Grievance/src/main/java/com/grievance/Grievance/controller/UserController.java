@@ -30,83 +30,93 @@ import com.grievance.Grievance.service.UserService;
 @CrossOrigin("*")
 public class UserController {
 
-	/**
-	 * Autowired UserService.
-	 */
-	@Autowired
-	private UserService userservice;
+  /**
+   * Auto wired UserService.
+   */
+  @Autowired
+  private UserService userservice;
 
-	/**
-	 * Create a new user.
-	 *
-	 * @param userDetailsInDto for creating the user.
-	 * @return ResponseEntity containing the created UserDetailsOutDto.
-	 */
-	@PostMapping("/user")
-	public ResponseEntity<UserDetailsOutDto> createUser(@Validated @RequestBody UserDetailsInDto userDetailsInDto) {
-		System.out.println(userDetailsInDto.getUserType());
-		UserDetailsOutDto userDetailsOutDto = userservice.createUser(userDetailsInDto);
-		System.out.println(userDetailsInDto.getUserType());
-		ResponseEntity userResponse = new ResponseEntity(userDetailsOutDto, HttpStatus.CREATED);
-		return userResponse;
-	}
+  /**
+   * Create a new user.
+   *
+   * @param userDetailsInDto for creating the user.
+   * @return ResponseEntity containing the created UserDetailsOutDto.
+   */
+  @PostMapping("/user")
+  public ResponseEntity<UserDetailsOutDto> createUser(
+      @Validated @RequestBody UserDetailsInDto userDetailsInDto) {
+    System.out.println(userDetailsInDto.getUserType());
+    UserDetailsOutDto userDetailsOutDto = userservice
+        .createUser(userDetailsInDto);
+    System.out.println(userDetailsInDto.getUserType());
+    ResponseEntity<UserDetailsOutDto> userResponse = new ResponseEntity<UserDetailsOutDto>(
+        userDetailsOutDto, HttpStatus.CREATED);
+    return userResponse;
+  }
 
-	/**
-	 * Authenticate a user by login credentials.
-	 *
-	 * @param loginInDto for user login.
-	 * @return ResponseEntity containing the UserDetailsOutDto after successful
-	 *         login.
-	 */
-	@PostMapping("/login")
-	public ResponseEntity<UserDetailsOutDto> userLogin(@Validated @RequestBody LoginInDto loginInDto) {
+  /**
+   * Authenticate a user by login credentials.
+   *
+   * @param loginInDto for user login.
+   * @return ResponseEntity containing the UserDetailsOutDto after successful
+   *         login.
+   */
+  @PostMapping("/login")
+  public ResponseEntity<UserDetailsOutDto> userLogin(
+      @Validated @RequestBody LoginInDto loginInDto) {
 
-		UserDetailsOutDto userDetailsOutDto = userservice.userLogin(loginInDto);
+    UserDetailsOutDto userDetailsOutDto = userservice
+        .userLogin(loginInDto);
 
-		ResponseEntity loginResponse = new ResponseEntity(userDetailsOutDto, HttpStatus.ACCEPTED);
+    ResponseEntity<UserDetailsOutDto> loginResponse = new ResponseEntity<UserDetailsOutDto>(
+        userDetailsOutDto, HttpStatus.ACCEPTED);
 
-		return loginResponse;
-	}
+    return loginResponse;
+  }
 
-	/**
-	 * Change the password for a user.
-	 *
-	 * @param changePasswordInDto for changing the user's password.
-	 * @return ResponseEntity containing the UserDetailsOutDto after successful
-	 *         password change.
-	 */
-	@PostMapping("/changepassword")
-	public ResponseEntity<UserDetailsOutDto> changePassword(
-			@Validated @RequestBody ChangePasswordInDto changePasswordInDto) {
-		UserDetailsOutDto userDetailsOutDto = userservice.changePassword(changePasswordInDto);
-		ResponseEntity passwordResponse = new ResponseEntity(userDetailsOutDto, HttpStatus.ACCEPTED);
-		return passwordResponse;
-	}
+  /**
+   * Change the password for a user.
+   *
+   * @param changePasswordInDto for changing the user's password.
+   * @return ResponseEntity containing the UserDetailsOutDto after successful
+   *         password change.
+   */
+  @PostMapping("/changepassword")
+  public ResponseEntity<UserDetailsOutDto> changePassword(
+      @Validated @RequestBody ChangePasswordInDto changePasswordInDto) {
+    UserDetailsOutDto userDetailsOutDto = userservice
+        .changePassword(changePasswordInDto);
+    ResponseEntity<UserDetailsOutDto> passwordResponse = new ResponseEntity<UserDetailsOutDto>(
+        userDetailsOutDto, HttpStatus.ACCEPTED);
+    return passwordResponse;
+  }
 
-	/**
-	 * Get a list of all users based on page number and page size.
-	 *
-	 * @param pageNumber The page number for pagination.
-	 * @param pageSize   The page size for pagination.
-	 * @return ResponseEntity containing a list of UserDetailsOutDto objects.
-	 */
-	@GetMapping("/users")
-	public ResponseEntity<List<UserDetailsOutDto>> getAllUsers(
-			@RequestParam(value = "pageNumber", defaultValue = "0", required = false) Integer pageNumber,
-			@RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer pageSize) {
-		List<UserDetailsOutDto> userDetailsOutDtos = userservice.getAllUsers(pageNumber, pageSize);
-		return ResponseEntity.ok(userDetailsOutDtos);
-	}
+  /**
+   * Get a list of all users based on page number and page size.
+   *
+   * @param pageNumber The page number for pagination.
+   * @param pageSize   The page size for pagination.
+   * @return ResponseEntity containing a list of UserDetailsOutDto objects.
+   */
+  @GetMapping("/users")
+  public ResponseEntity<List<UserDetailsOutDto>> getAllUsers(
+      @RequestParam(value = "pageNumber", defaultValue = "0", required = false) Integer pageNumber,
+      @RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer pageSize) {
+    List<UserDetailsOutDto> userDetailsOutDtos = userservice
+        .getAllUsers(pageNumber, pageSize);
+    return ResponseEntity.ok(userDetailsOutDtos);
+  }
 
-	/**
-	 * Delete a user by their ID.
-	 *
-	 * @param userId The ID of the user to delete.
-	 * @return ResponseEntity indicating a successful user deletion.
-	 */
-	@DeleteMapping("/user/{userId}")
-	public ResponseEntity<?> deleteUser(@PathVariable("userId") long userId) {
-		userservice.deleteUser(userId);
-		return ResponseEntity.ok(null);
-	}
+  /**
+   * Delete a user by their ID.
+   *
+   * @param userId The ID of the user to delete.
+   * @return ResponseEntity indicating a successful user deletion.
+   */
+  @DeleteMapping("/user/{userId}")
+  public ResponseEntity<?> deleteUser(
+      @PathVariable("userId") long userId) {
+    userservice.deleteUser(userId);
+    return ResponseEntity.ok(null);
+  }
 }

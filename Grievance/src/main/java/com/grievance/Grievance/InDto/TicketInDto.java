@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.grievance.Grievance.Constants.ValidationErrors;
 import com.grievance.Grievance.Enum.TicketStatus;
 import com.grievance.Grievance.Enum.TicketType;
 import com.grievance.Grievance.entity.Comment;
@@ -27,13 +28,13 @@ public class TicketInDto {
 	/**
 	 * The title of the ticket.
 	 */
-	@NotEmpty(message = "Title is required")
+	@NotEmpty(message = ValidationErrors.TICKET_TITLE_ERROR)
 	private String ticketTitle;
 
 	/**
 	 * The description of the ticket.
 	 */
-	@NotEmpty(message = "Must add description")
+	@NotEmpty(message = ValidationErrors.TICKET_DESCRIPTION_ERROR)
 	private String description;
 
 	/**
@@ -45,12 +46,12 @@ public class TicketInDto {
 	/**
 	 * The department associated with the ticket.
 	 */
-	@NotNull
+	@NotNull(message = ValidationErrors.DEPARTMENT_ERROR)
 	private Department department;
 	/**
 	 * The user details of the ticket creator.
 	 */
-	@NotNull
+	@NotNull(message = ValidationErrors.USER_NAME_ERROR)
 	private UserDetails userDetails;
 	/**
 	 * The list of comments associated with the ticket.
