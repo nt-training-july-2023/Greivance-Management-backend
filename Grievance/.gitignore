@@ -21,8 +21,8 @@ loggers/
 *.ipr
 .mvn
 .settings
-.mvnw
-.mvnw.cmd
+mvnw
+mvnw.cmd
 .project
 
 ### NetBeans ###
