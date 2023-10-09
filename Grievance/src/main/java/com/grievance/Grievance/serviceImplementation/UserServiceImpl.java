@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
     if (Objects.nonNull(userDetails2)) {
       LOGGER.error("Email Already Exist");
       throw new DuplicateKeyException(
-          ValidationErrors.USER_NAME_ERROR);
+          ValidationErrors.DUPALICATE_EMAIL_ERROR);
     }
     UserDetails savedUser = userRepository.save(userDetails);
     UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
