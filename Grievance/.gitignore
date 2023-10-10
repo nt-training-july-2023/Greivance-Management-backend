@@ -1,5 +1,6 @@
 HELP.md
 target/
+loggers/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -18,6 +19,11 @@ target/
 *.iws
 *.iml
 *.ipr
+.mvn
+.settings
+mvnw
+mvnw.cmd
+.project
 
 ### NetBeans ###
 /nbproject/private/
@@ -31,3 +37,4 @@ build/
 
 ### VS Code ###
 .vscode/
+

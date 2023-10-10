@@ -6,13 +6,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.grievance.Grievance.Enum.UserType;
-import com.grievance.Grievance.entity.Comment;
 import com.grievance.Grievance.entity.Department;
 import com.grievance.Grievance.entity.Ticket;
 import com.grievance.Grievance.entity.UserDetails;
@@ -107,5 +105,29 @@ public class UserDetailsTest{
     assertTrue(userDetails.getIsLoggedIn());
     assertNotNull(userDetails.getDepartment());
 	}
+	
+	  @Test
+	    public void testToString() {
+	    
+	    Department department = new Department();
+	    department.setDeptId(1);
+	    department.setDeptName("IT");
+	    
+	    department.setTickets(new ArrayList<Ticket>());
+	    department.setUserDetails(new ArrayList<UserDetails>());
+	        UserDetails userDetails = new UserDetails();
+	        userDetails.setUserId(1L);
+	        userDetails.setName("Sneha");
+	        userDetails.setEmail("sneha@nucleusteq.com");
+	        userDetails.setPassword("secret");
+	        userDetails.setUsertype(UserType.Member);
+	        userDetails.setIsLoggedIn(false);
+	        userDetails.setDepartment(department);
+	        String expectedString = "UserDetails [userId=1, name=Sneha, email=sneha@nucleusteq.com, password=secret, usertype=Member, isLoggedIn=false, department=deptId=1, deptName=IT, tickets=null]";
+	        String actualString = userDetails.toString();
+
+	        assertEquals(expectedString, actualString);
+	    }
+	
 	
 }

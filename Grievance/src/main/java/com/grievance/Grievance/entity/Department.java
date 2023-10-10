@@ -10,96 +10,142 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+/**
+ * Represents a department in the organization.
+ */
 @Entity
-public class Department{
+public class Department {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private long deptId;
-	
-	 @Column(name = "deptName", unique = true)
-	 private String deptName;
+  /**
+   * The unique identifier for this department.
+   */
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  private long deptId;
+  /**
+   * The name of the department (unique).
+   */
+  @Column(name = "deptName", unique = true)
+  private String deptName;
+  /**
+   * The list of tickets associated with this department.
+   */
+  @JsonManagedReference(value = "dep")
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "department", fetch = FetchType.LAZY)
+  private List<Ticket> tickets;
+  /**
+   * The list of user details associated with this department.
+   */
+  @JsonManagedReference
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "department", fetch = FetchType.LAZY)
+  private List<UserDetails> userDetails;
 
-	@JsonManagedReference(value = "dep")
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "department", fetch = FetchType.LAZY)
-	private List<Ticket> tickets;
-	
-	@JsonManagedReference 
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "department", fetch = FetchType.LAZY)
-	private List<UserDetails> userDetails;
-	
-	/**
-	 * @return the deptId
-	 */
-	public long getDeptId() {
-		return deptId;
-	}
+  /**
+   * Get the unique identifier for this department.
+   *
+   * @return The department's identifier.
+   */
+  public long getDeptId() {
+    return deptId;
+  }
 
-	/**
-	 * @param deptId the deptId to set
-	 */
-	public void setDeptId(long deptId) {
-		this.deptId = deptId;
-	}
+  /**
+   * Set the unique identifier for this department.
+   *
+   * @param deptId The department's identifier.
+   */
+  public void setDeptId(long deptId) {
+    this.deptId = deptId;
+  }
 
-	/**
-	 * @return the deptName
-	 */
-	public String getDeptName() {
-		return deptName;
-	}
+  /**
+   * Get the name of the department.
+   *
+   * @return The department's name.
+   */
+  public String getDeptName() {
+    return deptName;
+  }
 
-	/**
-	 * @param deptName the deptName to set
-	 */
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
-	}
+  /**
+   * Set the name of the department.
+   *
+   * @param deptName The department's name.
+   */
+  public void setDeptName(String deptName) {
+    this.deptName = deptName;
+  }
 
-	/**
-	 * @return the tickets
-	 */
-	public List<Ticket> getTickets() {
-		return tickets;
-	}
+  /**
+   * Get the list of tickets associated with this department.
+   *
+   * @return The list of tickets.
+   */
+  public List<Ticket> getTickets() {
+    return tickets;
+  }
 
-	/**
-	 * @param tickets the tickets to set
-	 */
-	public void setTickets(List<Ticket> tickets) {
-		this.tickets = tickets;
-	}
+  /**
+   * Set the list of tickets associated with this department.
+   *
+   * @param tickets The list of tickets.
+   */
+  public void setTickets(List<Ticket> tickets) {
+    this.tickets = tickets;
+  }
 
-	/**
-	 * @return the userDetails
-	 */
-	public List<UserDetails> getUserDetails() {
-		return userDetails;
-	}
+  /**
+   * Get the list of user details associated with this department.
+   *
+   * @return The list of user details.
+   */
+  public List<UserDetails> getUserDetails() {
+    return userDetails;
+  }
 
-	/**
-	 * @param userDetails the userDetails to set
-	 */
-	public void setUserDetails(List<UserDetails> userDetails) {
-		this.userDetails = userDetails;
-	}
+  /**
+   * Set the list of user details associated with this department.
+   *
+   * @param userDetails The list of user details.
+   */
+  public void setUserDetails(List<UserDetails> userDetails) {
+    this.userDetails = userDetails;
+  }
 
-	/**
-	 * 
-	 */
-	public Department() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+  /**
+   * Create a new instance of the Department class.
+   */
+  public Department() {
+    super();
+    // TODO Auto-generated constructor stub
+  }
 
-	@Override
-	public String toString() {
-		return "" + deptName + "";
-	}
-	
-	
+  /**
+   * @param deptId
+   * @param deptName
+   * @param tickets
+   * @param userDetails
+   */
+  public Department(long deptId, String deptName,
+      List<Ticket> tickets, List<UserDetails> userDetails) {
+    super();
+    this.deptId = deptId;
+    this.deptName = deptName;
+    this.tickets = tickets;
+    this.userDetails = userDetails;
+  }
+
+  /**
+   * Generates a string representation of the Department object.
+   *
+   * @return A string containing department ID and name.
+   */
+  @Override
+  public String toString() {
+    return "deptId=" + deptId + ", deptName=" + deptName + "";
+  }
+
 }

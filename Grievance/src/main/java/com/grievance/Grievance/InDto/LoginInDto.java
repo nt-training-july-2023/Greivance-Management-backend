@@ -2,67 +2,69 @@ package com.grievance.Grievance.InDto;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.grievance.Grievance.Constants.ValidationErrors;
+
+/**
+ * Represents the input data for user login.
+ */
 public class LoginInDto {
 
-	@NotEmpty(message = "Email is required")
-	@Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$")
-	@Column(unique = true)
-	private String email;
+  /**
+   * minSize password minimum size.
+   */
 
-	@NotEmpty(message = "length should be in limit ")
-	@Size(min = 8, message = "Password should be at least 8 characters")
-	private String password;
+  private final int minSize = 8;
+  /**
+   * The user's email address.
+   */
+  @NotEmpty(message = ValidationErrors.USER_NAME_ERROR)
+  @Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$")
+  @Column(unique = true)
+  private String email;
+  /**
+   * The user's password.
+   */
+  @NotEmpty(message = ValidationErrors.PASSWORD_ERROR)
+  @Size(min = minSize, message = ValidationErrors.PASSWORD_SIZE_ERROR)
+  private String password;
 
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
+  /**
+   * Gets the user's email address.
+   *
+   * @return The email address.
+   */
+  public String getEmail() {
+    return email;
+  }
 
-	/**
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
+  /**
+   * Sets the user's email address.
+   *
+   * @param email The email address.
+   */
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-	/**
-	 * @return the password
-	 */
-	public String getPassword() {
-		return password;
-	}
+  /**
+   * Gets the user's password.
+   *
+   * @return The user's password.
+   */
+  public String getPassword() {
+    return password;
+  }
 
-	/**
-	 * @param password the password to set
-	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	/**
-	 * @param email
-	 * @param password
-	 */
-	public LoginInDto(
-			@NotEmpty(message = "Email is required") @Pattern(regexp = "^[A-Za-z0-9._%+-]+@nucleusteq.com+$") String email,
-			@NotEmpty(message = "length should be in limit ") @Size(min = 8, message = "Password should be at least 8 characters") String password) {
-		super();
-		this.email = email;
-		this.password = password;
-	}
-
-	/**
-	 * 
-	 */
-	public LoginInDto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+  /**
+   * Sets the user's password.
+   *
+   * @param password The user's password.
+   */
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
 }
