@@ -1,0 +1,184 @@
+package com.grievance.Grievance.OutDto;
+
+import java.sql.Date;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.grievance.Grievance.Enum.TicketStatus;
+import com.grievance.Grievance.Enum.TicketType;
+import com.grievance.Grievance.entity.Comment;
+
+public class TicketOutDto {
+
+	private long ticketId;
+
+	private TicketType ticketType;
+
+	private TicketStatus ticketStatus;
+
+	private String ticketTitle;
+
+	private String description;
+
+	private Date createdAt;
+
+	private Date updatedAt;
+	
+
+//	 @JsonBackReference(value = "dep")
+//	  private DepartmentOutDto department;
+
+	
+	@JsonBackReference(value = "dep")
+	private DepartmentOutDto department;
+//
+//	  @JsonBackReference(value = "emp")
+//	  private EmployeeOutDto employee;
+	
+	@JsonBackReference(value = "user")
+	private UserDetailsOutDto userDetails;
+
+	private List<Comment> comments;
+
+	
+	/**
+	 * @return the ticketId
+	 */
+	public long getTicketId() {
+		return ticketId;
+	}
+
+	/**
+	 * @param ticketId the ticketId to set
+	 */
+	public void setTicketId(long ticketId) {
+		this.ticketId = ticketId;
+	}
+
+	/**
+	 * @return the ticketType
+	 */
+	public TicketType getTicketType() {
+		return ticketType;
+	}
+
+	/**
+	 * @param ticketType the ticketType to set
+	 */
+	public void setTicketType(TicketType ticketType) {
+		this.ticketType = ticketType;
+	}
+
+	/**
+	 * @return the ticketStatus
+	 */
+	public TicketStatus getTicketStatus() {
+		return ticketStatus;
+	}
+
+	/**
+	 * @param ticketStatus the ticketStatus to set
+	 */
+	public void setTicketStatus(TicketStatus ticketStatus) {
+		this.ticketStatus = ticketStatus;
+	}
+
+	/**
+	 * @return the ticketTitle
+	 */
+	public String getTicketTitle() {
+		return ticketTitle;
+	}
+
+	/**
+	 * @param ticketTitle the ticketTitle to set
+	 */
+	public void setTicketTitle(String ticketTitle) {
+		this.ticketTitle = ticketTitle;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @return the createdAt
+	 */
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	/**
+	 * @param createdAt the createdAt to set
+	 */
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	/**
+	 * @return the updatedAt
+	 */
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	/**
+	 * @param updatedAt the updatedAt to set
+	 */
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	/**
+	 * @return the department
+	 */
+	public DepartmentOutDto getDepartment() {
+		return department;
+	}
+
+	/**
+	 * @param department the department to set
+	 */
+	public void setDepartment(DepartmentOutDto department) {
+		this.department = department;
+	}
+
+	/**
+	 * @return the userDetails
+	 */
+	public UserDetailsOutDto getUserDetails() {
+		return userDetails;
+	}
+
+	/**
+	 * @param userDetails the userDetails to set
+	 */
+	public void setUserDetails(UserDetailsOutDto userDetails) {
+		this.userDetails = userDetails;
+	}
+
+	/**
+	 * @return the comments
+	 */
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	/**
+	 * @param comments the comments to set
+	 */
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+}
