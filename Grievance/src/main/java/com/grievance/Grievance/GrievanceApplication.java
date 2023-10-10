@@ -14,6 +14,6 @@ public class GrievanceApplication {
    * @param args The command line arguments.
    */
   public static void main(String[] args) {
-    SpringApplication.run(GrievanceApplication  .class, args);
+    SpringApplication.run(GrievanceApplication.class, args);
   }
-}  
+}

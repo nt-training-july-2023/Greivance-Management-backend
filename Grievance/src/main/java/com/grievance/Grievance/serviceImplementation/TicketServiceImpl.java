@@ -144,7 +144,7 @@ public class TicketServiceImpl implements TicketService {
         }
       } else {
         TicketStatus ticketStatus = TicketStatus.valueOf(filter);
-        if (type.equals("My Ticket")) {
+        if (type.equals("My Tickets")) {
           tickets = ticketRepository.findByUserDetailsAndTicketStatus(
               userDetails, ticketStatus, pageable);
         } else if (type.equals("My Department")) {
