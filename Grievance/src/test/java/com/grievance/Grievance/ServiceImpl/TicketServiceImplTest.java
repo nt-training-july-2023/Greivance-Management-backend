@@ -159,7 +159,7 @@ public class TicketServiceImplTest {
 		String email = "admin@nculeusteq.com";
 		Integer pageNumber = 0;
 		Integer pageSize = 10;
-		String type = "My Ticket";
+		String type = "My Tickets";
 		String filter = "Open";
 
 		TicketStatus ticketStatus = TicketStatus.valueOf(filter);
@@ -313,7 +313,7 @@ public class TicketServiceImplTest {
 		String email = "admin@nculeusteq.com";
 		Integer pageNumber = 0;
 		Integer pageSize = 10;
-		String type = "My Ticket";
+		String type = "My Tickets";
 		String filter = "Being_Addressed";
 
 		TicketStatus ticketStatus = TicketStatus.valueOf(filter);

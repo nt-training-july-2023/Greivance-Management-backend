@@ -58,7 +58,6 @@ public class SecurityFilter implements javax.servlet.Filter {
    * @return True if the URL belongs to admin URLs, otherwise false.
    */
   public Boolean checkAdminUrl(String currentUrl) {
-    System.out.println("current url" + currentUrl);
     if (adminUrls.contains(currentUrl)) {
       return true;
     }
@@ -97,14 +96,12 @@ public class SecurityFilter implements javax.servlet.Filter {
       httpServletResponse.setContentType("application/json");
       httpServletResponse.setStatus(HttpServletResponse.SC_OK);
     } else {
-
       if (email == null || password == null) {
         ((HttpServletResponse) response).sendError(
             HttpServletResponse.SC_UNAUTHORIZED, "Invalid User");
       } else if (userRepository.existsByEmailAndPasswordAndUsertype(
           email, password, UserType.Admin)
           && checkAdminUrl(currentUrl)) {
-        System.out.println("Inside admin");
         chain.doFilter(request, response);
       } else if (userRepository.existsByEmailAndPassword(email,
           password) && !(checkAdminUrl(currentUrl))) {
