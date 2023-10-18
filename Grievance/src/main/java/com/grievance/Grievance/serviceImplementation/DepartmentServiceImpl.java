@@ -92,7 +92,6 @@ public class DepartmentServiceImpl implements DepartmentService {
       departmentOutDto.setDeptName(department.getDeptName());
       list.add(departmentOutDto);
     }
-
     return list;
   }
 

@@ -112,7 +112,6 @@ public class UserDetailsTest{
 	    Department department = new Department();
 	    department.setDeptId(1);
 	    department.setDeptName("IT");
-	    
 	    department.setTickets(new ArrayList<Ticket>());
 	    department.setUserDetails(new ArrayList<UserDetails>());
 	        UserDetails userDetails = new UserDetails();

@@ -37,7 +37,7 @@ public class DepartmentControllerTest {
 	DepartmentService departmentService;
 
 	@Autowired
-	MockMvc mockMvc;
+	private MockMvc mockMvc;
 
 	@InjectMocks
 	DepartmentController departmentController;
@@ -46,7 +46,7 @@ public class DepartmentControllerTest {
 
 	@BeforeEach
 	void setUp() {
-		mockMvc = MockMvcBuilders.standaloneSetup(departmentController).build();
+	  mockMvc = MockMvcBuilders.standaloneSetup(departmentController).build();
 		objectMapper = new ObjectMapper();
 	}
 

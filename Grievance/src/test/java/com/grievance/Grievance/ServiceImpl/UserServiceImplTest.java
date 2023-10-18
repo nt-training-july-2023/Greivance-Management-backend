@@ -19,7 +19,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -41,8 +40,6 @@ import com.grievance.Grievance.serviceImplementation.UserServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceImplTest {
-  @Mock
-  private ModelMapper modelMapper;
 
   @Mock
   private UserRepository userRepository;

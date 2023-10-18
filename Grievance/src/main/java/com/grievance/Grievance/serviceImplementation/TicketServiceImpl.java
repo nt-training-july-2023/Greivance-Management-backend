@@ -253,6 +253,7 @@ public class TicketServiceImpl implements TicketService {
     ticketOutDto.setComments(ticket.getComments());
     ticketOutDto.setDeptId(ticket.getDepartment().getDeptId());
     ticketOutDto.setUserId(ticket.getUserDetails().getUserId());
+    ticketOutDto.setDeptName(ticket.getUserDetails().getDepartment().getDeptName());
 
     return ticketOutDto;
   }

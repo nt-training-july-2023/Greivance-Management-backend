@@ -105,6 +105,7 @@ public class UserServiceImpl implements UserService {
     UserDetailsOutDto userDetailsOutDto = new UserDetailsOutDto();
     userDetailsOutDto.setId(userDetailsSaved.getUserId());
     userDetailsOutDto.setIsLoggedIn(userDetailsSaved.getIsLoggedIn());
+    userDetailsOutDto.setDepartment(userDetailsSaved.getDepartment().getDeptName());
     userDetailsOutDto.setUserType(userDetailsSaved.getUsertype());
     userDetailsOutDto.setEmail(userDetailsSaved.getEmail());
     userDetailsOutDto.setPassword(userDetailsSaved.getPassword());

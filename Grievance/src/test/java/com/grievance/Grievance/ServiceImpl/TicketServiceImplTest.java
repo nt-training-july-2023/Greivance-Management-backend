@@ -87,39 +87,6 @@ public class TicketServiceImplTest {
 		assertEquals(adminTickets.size(), result.size());
 	}
 
-//	@Test
-//	public void testGetAllTickets_Administrator_All_MyDepartment() {
-//	    
-//	    String email = "admin@nculeusteq.com";
-//	    Integer pageNumber = 0;
-//	    Integer pageSize = 10;
-//	    String type = "My Department";
-//	    String filter = "All";
-//
-//	    UserDetails adminUser = new UserDetails();
-//	    adminUser.setUsertype(UserType.Admin);
-//	    adminUser.setEmail(email);
-//	    adminUser.getDepartment();
-//	  
-//
-//	    Department department = new Department();
-//	    department.setDeptId(1);
-//	    department.setDeptName("AdminDept");
-//	    
-//	    
-//	    Sort sort = Sort.by("ticketStatus");
-//		Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
-//	    List<Ticket> adminTickets = new ArrayList<>();
-//	    Page<Ticket> ticketPage = new PageImpl<>(adminTickets);
-//	    
-//	    when(userRepository.findByEmail(email)).thenReturn(adminUser);
-//	    when(ticketRepository.findByDepartment(department, pageable)).thenReturn(ticketPage);
-//
-//	    List<TicketOutDto> result = ticketService.getAllTickets(pageNumber, pageSize, email, type, filter);
-//
-//	    assertNotNull(result);
-//	    assertEquals(adminTickets.size(), result.size());
-//	}
 
 	@Test
 	public void testGetAllTickets_Administrator_All_All() {
@@ -274,40 +241,6 @@ public class TicketServiceImplTest {
 		assertNotNull(result);
 		assertEquals(adminTickets.size(), result.size());
 	}
-//	
-//	@Test
-//	public void testGetAllTickets_Administrator_MyDepartment_Open() {
-//	    String email = "admin@nculeusteq.com";
-//	    Integer pageNumber = 0;
-//	    Integer pageSize = 10;
-//	    String type = "My Department";
-//	    String filter = "Open";
-//
-//	    TicketStatus ticketStatus = TicketStatus.valueOf(filter);
-//
-//	    UserDetails adminUser = new UserDetails();
-//	    adminUser.setUsertype(UserType.Admin);
-//	    adminUser.setEmail(email);
-//	    adminUser.getDepartment();
-//
-//	    Department department = new Department();
-//	    department.setDeptId(1);
-//	    department.setDeptName("AdminDept");
-//
-//	    Sort sort = Sort.by("ticketStatus");
-//	    Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
-//	    List<Ticket> adminTickets = new ArrayList<>();
-//	    Page<Ticket> ticketPage = new PageImpl<>(adminTickets);
-//
-//	    when(userRepository.findByEmail(email)).thenReturn(adminUser);
-//	    when(ticketRepository.findByDepartmentAndTicketStatus(department, ticketStatus, pageable)).thenReturn(ticketPage);
-//
-//	    List<TicketOutDto> result = ticketService.getAllTickets(pageNumber, pageSize, email, type, filter);
-//
-//	    assertNotNull(result);
-//	    assertEquals(adminTickets.size(), result.size());
-//	}
-
 	@Test
 	public void testGetAllTickets_Administrator_MyTicket_BeingAddressed() {
 		String email = "admin@nculeusteq.com";
@@ -643,6 +576,7 @@ public class TicketServiceImplTest {
 		UserDetails userDetails = new UserDetails();
 		userDetails.setUserId(1);
 		userDetails.setName("sneha");
+		userDetails.setDepartment(department);
 
 		Ticket ticket = new Ticket();
 		ticket.setTicketId(1);
